@@ -49,7 +49,8 @@
 <br>
 
 <b>6. git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?</b>
-- clone: 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어<br>　　　원격저장소의 데이터를 카피하는 명령어
+- clone: 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어
+<br>　　　원격저장소의 데이터를 카피하는 명령어
   - git clone Github Reapository주소
 - add : 작업 디렉토리 상의 변경내용을 스테이징 영역에 추가하기 위해서 사용하는 명령어 
   - git add 파일/디렉토리경로.확장자 (= 변경 내용의 일부만 넘기고 싶을 때
@@ -64,7 +65,7 @@
   - git branch 브랜치명 (=생성) / git checkout 브랜치명 (=전환)
   - git checkout -b 브랜치명 (=브랜치 생성 후 이동) / git switch 브랜치명 (= 브랜치 생성후 전환)
 - stash : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어
-　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음
+<br>　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음
     - git stash (= git stash save, 스택에 새로운 stash 생성)
     - git stash list (=목록확인)
     - git stash apply (= 가장 최근의 stash 꺼내오기) / git stash apply stash이름
