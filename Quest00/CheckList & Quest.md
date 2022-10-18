@@ -22,36 +22,20 @@
    🔹 GitHub
    * Git Repository를 위한 웹 기반 호스팅 서비스, 클라우드 서버를 사용해서 로컬에서 버전 관리한 소스코드를 업로드하여 공유 가능
    * 클라우드 기반으로 다른 사람과 소스코드 공유가 가능, git의 기본적인 기능을 확장하여 제공
-* **git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?**<br>🔹 clone : 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어<br>　　　　　원격저장소의 데이터를 카피하는 명령어
-  　　`$ git clone Github ReapositoryURL`
+* **git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?**<br>🔹 clone : 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어<br>　　　　　원격저장소의 데이터를 카피하는 명령어<br>  　　`$ git clone Github ReapositoryURL`
 
-  🔹 add : 작업 디렉토리 상의 변경내용을 스테이징 영역에 추가하기 위해서 사용하는 명령어
-  　　`$ git add 파일/디렉토리경로.확장자` ▸ 변경 내용의 일부만 추가하고 싶을 때
-  　　`$ git add .` ▸ 모든 변경 내용을 추가하고 싶을 때
+  🔹 add : 작업 디렉토리 상의 변경내용을 스테이징 영역에 추가하기 위해서 사용하는 명령어<br>  　　`$ git add 파일/디렉토리경로.확장자` ▸ 변경 내용의 일부만 추가하고 싶을 때<br>  　　`$ git add .` ▸ 모든 변경 내용을 추가하고 싶을 때
 
-  🔹 commit : 버전(의미있는 변화, 작업이 완결된 상태)에 변화에 대한 기록 저장
-  　　`$ git commit -m '메시지내용'`
+  🔹 commit : 버전(의미있는 변화, 작업이 완결된 상태)에 변화에 대한 기록 저장<br>  　　`$ git commit -m '메시지내용'`
   
-  🔹 push : 내 PC에 있는 코드를 Github Repository로 업데이트 하는 명령어
-  　　`$ git push` = `$ git push origin 현재작업중인브랜치명`
+  🔹 push : 내 PC에 있는 코드를 Github Repository로 업데이트 하는 명령어<br>  　　`$ git push` = `$ git push origin 현재작업중인브랜치명`
   
   🔹 pull : Github Repository에 있는 코드를 내 PC로 업데이트 하는 명령어
-  　　`$ git pull` = `$ git pull origin 현재작업중인브랜치명`
+<br> 　　`$ git pull` = `$ git pull origin 현재작업중인브랜치명`
   
-  🔹 branch : 독립적인 작업 영역(저장소) 안에서 마음대로 소스코드를 변경할 수 있도록 해주는 명령어
-  　　`$ git branch 브랜치명` : 생성
-  　　`$ git checkout 브랜치명` : 전환
-  　　`$ git checkout -b 브랜치명` : 브랜치 생성 후 이동
-  　　`$ git switch 브랜치명` : 브랜치 생성 후 전환
+  🔹 branch : 독립적인 작업 영역(저장소) 안에서 마음대로 소스코드를 변경할 수 있도록 해주는 명령어<br>  　　`$ git branch 브랜치명` : 생성<br>  　　`$ git checkout 브랜치명` : 전환<br>  　　`$ git checkout -b 브랜치명` : 브랜치 생성 후 이동<br>  　　`$ git switch 브랜치명` : 브랜치 생성 후 전환
   
-  🔹 stash : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어<br>　　　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음
-    　　`$ git stash` = `$ git stash save` : 스택에 새로운 stash 생성
-    　　`$ git stash list` : 목록확인
-    　　`$ git stash apply` :  가장 최근의 stash 꺼내오기
-    　　`$ git stash apply stash명` : 해당 stash 상태로 돌아가기
-    　　`$ git stash apply --index` : Staged 상태로 복원
-    　　`$ git stash drop` : 스택에 가장 최근에 남아있는 stash 제거
-    　　`$ git stash drop stash명` : 해당 stash 제거
+  🔹 stash : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어<br>　　　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음<br>  　　`$ git stash` = `$ git stash save` : 스택에 새로운 stash 생성<br>  　　`$ git stash list` : 목록확인<br>  　　`$ git stash apply` :  가장 최근의 stash 꺼내오기<br>  　　`$ git stash apply stash명` : 해당 stash 상태로 돌아가기<br>  　　`$ git stash apply --index` : Staged 상태로 복원<br>  　　`$ git stash drop` : 스택에 가장 최근에 남아있는 stash 제거<br>  　　`$ git stash drop stash명` : 해당 stash 제거
 
 * git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?<br>🔹 Object : Git이 파일들을 관리하기 위해 만든 파일<br> 🔹 Commit: index(Staging area)에 있는 변경사항을 저장소에 저장하는 작업<br> 🔹 Head: 현재 체크아웃된 브랜치의 가장 최신 커밋, 현재 작업중인 커밋<br> 🔹 Branch: 여러 개발자들이 동시에 다양한 작업을 할 수 있게 만들어주는 기능(독립적인 작업공간)<br> 🔹 Tag: 특정 커밋을 태깅하는 기능, 수정 불가<br> 🔹 Git의 프로젝트 히스토리 저장방법
   *  모든데이터를 저장하기 전에 해시를 구하고 그 해시로 데이터를 관리<br>각 파일의 내용이나 디렉토리 구조를 이용해 해시를 구함. 파일의 해시로 저장
