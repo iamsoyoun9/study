@@ -34,9 +34,11 @@
   
   🔹 stash : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어<br>　　　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음<br>  　　`$ git stash` = `$ git stash save` : 스택에 새로운 stash 생성<br>  　　`$ git stash list` : 목록확인<br>  　　`$ git stash apply` :  가장 최근의 stash 꺼내오기<br>  　　`$ git stash apply stash명` : 해당 stash 상태로 돌아가기<br>  　　`$ git stash apply --index` : Staged 상태로 복원<br>  　　`$ git stash drop` : 스택에 가장 최근에 남아있는 stash 제거<br>  　　`$ git stash drop stash명` : 해당 stash 제거
 
-* git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?<br>🔹 Object : Git이 파일들을 관리하기 위해 만든 파일<br> 🔹 Commit: index(Staging area)에 있는 변경사항을 저장소에 저장하는 작업<br> 🔹 Head: 현재 체크아웃된 브랜치의 가장 최신 커밋, 현재 작업중인 커밋<br> 🔹 Branch: 여러 개발자들이 동시에 다양한 작업을 할 수 있게 만들어주는 기능(독립적인 작업공간)<br> 🔹 Tag: 특정 커밋을 태깅하는 기능, 수정 불가<br> 🔹 Git의 프로젝트 히스토리 저장방법
+### <br>⑤ git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?
+🔹 Object : Git이 파일들을 관리하기 위해 만든 파일<br> 🔹 Commit: index(Staging area)에 있는 변경사항을 저장소에 저장하는 작업<br> 🔹 Head: 현재 체크아웃된 브랜치의 가장 최신 커밋, 현재 작업중인 커밋<br> 🔹 Branch: 여러 개발자들이 동시에 다양한 작업을 할 수 있게 만들어주는 기능(독립적인 작업공간)<br> 🔹 Tag: 특정 커밋을 태깅하는 기능, 수정 불가<br> 🔹 Git의 프로젝트 히스토리 저장방법
   * 모든데이터를 저장하기 전에 해시를 구하고 그 해시로 데이터를 관리<br>각 파일의 내용이나 디렉토리 구조를 이용해 해시를 구함. 파일의 해시로 저장
-### <br>⑤ 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?
+
+### <br>⑥ 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?
 ##### 방법 1. `$ git rm -cached 파일명` : 로컬파일은 그대로 두고 원격 저장소에 잘못 올라간 **파일만** 삭제
 
 <hr>
