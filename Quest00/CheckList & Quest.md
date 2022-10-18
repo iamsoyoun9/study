@@ -1,72 +1,105 @@
-## <br> ✔ CheckList
-<p><b>1. 형상관리시스템은 왜 나오게 되었을까요?</b>
-<br>　　-  형상관리<br>　　　▸ 어떠한 문서나 파일이 변경된 경우, 변경된 내용과 그 원인을 기록하였다가 나중에 필요한 경우 찾아볼 수 있도록 하여 관리하는 것
-<br>　　- 소프트웨어 개발에서 발생할 수 있는 다양한 결과물에 대해 체계적으로 관리하고자 나온 것 같음
-<br>　　-  도구의 종류 : CVS(Concurrent Version System) / SVN(Subversion) / GIT</p>
-<p><b>2. git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요?</b><br>　　- git은 분산형 버전 관리 시스템
-<br>　　- 해당 저장소를 복제할 때 변경사항의 기록들을 함께 가져오는 특징
+## ✔ CheckList
+<b>1. 형상관리시스템은 왜 나오게 되었을까요?</b>
+-  형상관리
+   - 어떠한 문서나 파일이 변경된 경우, 변경된 내용과 그 원인을 기록하였다가 나중에 필요한 경우 찾아볼 수 있도록 하여 관리하는 것
+   - 소프트웨어 개발에서 발생할 수 있는 다양한 결과물에 대해 체계적으로 관리하고자 나온 것 같음
+   - 도구의 종류 : CVS(Concurrent Version System) / SVN(Subversion) / GIT
+
 <br>
-<br>　　- 각 파일을 이전 상태로 되돌릴 수 있다
-<br>　　- 프로젝트를 통째로 이전 상태로 되돌릴 수 있다
-<br>　　- 시간에 따라 수정 내용을 비교해 볼 수 있다
-<br>　　-누가 문제를 일으켰는지도 추적할 수 있다
-<br>　　-누가 언제 만들어낸 이슈인지도 알 수 있다
-<br>　　-파일을 잃어버리거나 잘못 고쳤을 때도 쉽게 복구할 수 있다</p>
 
-<p><b>3. 분산형 형상관리 시스템이란 무엇일까요?</b><br>　　- 파일변화를 시간에 따라 기록했다가 나중에 특정시점의 버전을 다시 꺼내올 수 있는 시스템</p>
-<p><b>4. git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?</b>
-<br>　　- 여러 사람이 함께 개발 파일들을 조율하기 위해
-<br>　　- 로컬형 : 다른 사람들과 공유가 어려움, 복구가 어려움
-<br>　　- 중앙형 : 최신 버전만 사용 가능, 중앙 서버에 문제가 생기면 모든 작업 불가능, 서버가 날라가면, 프로젝트에 대한 정보가 날라갈 위험有
-<br>　　- 소스코드를 주고 받을 필요 없이 다수의 개발자가 프로젝트가 동일한 기능을 동시에 개발할 수 있음(동시성)
-<br>　　- 기능을 작성하다가 오류가 발생하거나 기능이 취소될 경우, 작업하던 코드를 과거로 돌려야할 때, 이전 코드로 돌릴 수 있음(가역성)
-<br>　　- 이전 코드의 내용과 수정한 에디터가 저장되기에 오류의 추적에 용이 (기록성)</p>
-<p>
+<b>2. git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요?</b>
+- git : 분산형 버전 관리 시스템
+  - 해당 저장소를 복제할 때 변경사항의 기록들을 함께 가져오는 특징
+  - 각 파일을 이전 상태로 되돌릴 수 있다
+  - 프로젝트를 통째로 이전 상태로 되돌릴 수 있다
+  - 시간에 따라 수정 내용을 비교해 볼 수 있다
+  - 누가 문제를 일으켰는지도 추적할 수 있다
+  - 누가 언제 만들어낸 이슈인지도 알 수 있다
+  - 파일을 잃어버리거나 잘못 고쳤을 때도 쉽게 복구할 수 있다</p>
+
+<br>
+
+<b>3. 분산형 형상관리 시스템이란 무엇일까요?</b>
+- 파일변화를 시간에 따라 기록했다가 나중에 특정시점의 버전을 다시 꺼내올 수 있는 시스템
+
+<br>
+
+<b>4. git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?</b>
+- 로컬형 : 다른 사람들과 공유가 어려움, 복구가 어려움
+- 중앙형 : 최신 버전만 사용 가능, 중앙 서버에 문제가 생기면 모든 작업 불가능, 서버가 날라가면, 프로젝트에 대한 정보가 날라갈 위험有<br>
+
+- 여러 사람이 함께 개발 파일들을 조율하기 위해
+- 소스코드를 주고 받을 필요 없이 다수의 개발자가 프로젝트가 동일한 기능을 동시에 개발할 수 있음(동시성)
+- 기능을 작성하다가 오류가 발생하거나 기능이 취소될 경우, 작업하던 코드를 과거로 돌려야할 때, 이전 코드로 돌릴 수 있음(가역성)
+- 이전 코드의 내용과 수정한 에디터가 저장되기에 오류의 추적에 용이 (기록성)
+
+<br>
+
 <b>5. git과 GitHub은 어떻게 다를까요?</b>
-<br>　<b>▸ Git</b><br>　　- 오픈 소스 버전 관리 시스템 / 로컬에서 버전 관리 / 소프트웨어 개발 및 소스 코드 관리에 사용<br>　　- git을 통해 브랜치를 생성하고 이전 브랜치로 복구, 삭제, 병합 가능<br>　　(but,로컬 저장소를 사용하기 때문에 다른 개발자와 실시간으로 작업을 공유 X)
-<br>　<b>▸ Github</b><br>　　- Git Repository를 위한 웹 기반 호스팅 서비스 / 클라우드 서버를 사용해서 로컬에서 버전 관리한 소스코드를 업로드하여 공유 가능<br>　　- 클라우드 기반으로 다른 사람과 소스코드 공유가 가능, git의 기본적인 기능을 확장하여 제공<br>　<b>▸ 정리</b><br>　　- Git은 버전 관리 '프로그램 ' / 로컬 저장소<br>　　- Github는 버전 관리, 소스 코드 고유 등이 가능한 원격 저장소</p>
-<p><b>6. git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?</b>
-<br>　　- clone : 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어<br>　　　　　　원격저장소의 데이터를 카피하는 명령어
-<br>　　　　▸ git clone <u>Github Reapository주소</u></span>
-<br>　　- add : 작업 디렉토리 상의 변경내용을 스테이징 영역에 추가하기 위해서 사용하는 명령어 
-<br>　　　　▸ git add 파일/디렉토리경로.확장자 (= 변경 내용의 일부만 넘기고 싶을 때) / git add . (= 모든 변경 내용을 넘기고 싶을 때)
-<br>　　- commit : 버전(의미있는 변화, 작업이 완결된 상태)에 변화에 대한 기록 저장
-<br>　　　　▸ git commit -m '메시지내용'
-<br>　　- push : 내 PC에 있는 코드를 Github Repository로 업데이트 하는 명령어
-<br>　　　　▸  git push (= git push origin / 현재작업중인브랜치명)
-<br>　　- pull : Github Repository에 있는 코드를 내 PC로 업데이트 하는 명령어
-<br>　　　　▸ git pull (= git pull origin / 현재작업중인브랜치명)
-<br>　　- branch : 독립적인 작업 영역(저장소) 안에서 마음대로 소스코드를 변경할 수 있도록 해주는 명령어
-<br>　　　　▸ git branch 브랜치명 (=생성) / git checkout 브랜치명 (=전환)
-<br>　　　　▸ git checkout -b 브랜치명 (=브랜치 생성 후 이동) / git switch 브랜치명 (= 브랜치 생성후 전환)
-<br>　　- stash : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어<br>　　　　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음
-<br>　　　　▸ git stash (= git stash save, 스택에 새로운 stash 생성)
-<br>　　　　▸ git stash list (=목록확인)
-<br>　　　　▸ git stash apply (= 가장 최근의 stash 꺼내오기) / git stash apply stash이름
-<br>　　　　▸ git stash apply --index (= Staged 상태로 복원)
-<br>　　　　▸ git stash drop (=스택에 가장 최근에 남아있는 stash 제거) / git stash drop stash이름
-</p>
-<p><b>7. git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?</b>
-<br>　　- Object : git이 파일들을 관리하기 위해 만든 파일
-<br>　　- Commit : index(Staging area)저장소에 저장하는 작업
-<br>　　- Head : 현재 체크아숫된 브랜치의 가장 최신 커밋 / 내가 바라보고있는 커밋
-<br>　　- Branch : 여러 개발자들이 동시에 다양한 작업을 할 수 있게 만들어주는 기능(독립적인 작업공간)
-<br>　　- Tag : 특정 커밋을 태깅하는 기능 / 수정 불가
-<br>　　- git 시스템은 프로젝트의 히스토리를 어떻게 저장?<br>　　　　▸ 모든데이터를 저장하기 전에 해시를 구하고 그 해시로 데이터를 관리,<br>　　　　　각 파일의 내용이나 디렉토리 구조를 이용해 해시를 구함. 파일의 해시로 저장</p>
+- <b>Git</b>
+  - 오픈 소스 버전 관리 시스템 / 로컬에서 버전 관리 / 소프트웨어 개발 및 소스 코드 관리에 사용
+  - git을 통해 브랜치를 생성하고 이전 브랜치로 복구, 삭제, 병합 가능<br>　(but,로컬 저장소를 사용하기 때문에 다른 개발자와 실시간으로 작업을 공유 X)
+- <b>Github</b>
+  - Git Repository를 위한 웹 기반 호스팅 서비스 / 클라우드 서버를 사용해서 로컬에서 버전 관리한 소스코드를 업로드하여 공유 가능
+  - 클라우드 기반으로 다른 사람과 소스코드 공유가 가능, git의 기본적인 기능을 확장하여 제공
+- <b>정리</b>
+  - Git은 버전 관리 '프로그램 '
+  - Github는 버전 관리, 소스 코드 고유 등이 가능한 '원격 저장소'
+  
+<br>
 
-<p><b>8. 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?</b><br>　　- $ git rm -cached 파일명<br>　　　▸ 로컬파일은 그대로 두고 원격 저장소에 잘못 올라간 파일만 삭제</p><br>
+<b>6. git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?</b>
+- <span style="background-color:#BCE29E;">　clone　</span> : 내 PC에 Repositroy 생성 없이, romote 등록 없이 해당 Github Repository 주소에 있는 코드를 단순히 내려받는 명령어<br>　　　원격저장소의 데이터를 카피하는 명령어
+　　　　▸ git clone <u>Github Reapository주소</u></span>
+- <span style="background-color:#BCE29E;">　add　</span> : 작업 디렉토리 상의 변경내용을 스테이징 영역에 추가하기 위해서 사용하는 명령어 
+　　　　▸ git add 파일/디렉토리경로.확장자 (= 변경 내용의 일부만 넘기고 싶을 때
+　　　　▸ git add . (= 모든 변경 내용을 넘기고 싶을 때)
+- <span style="background-color:#BCE29E;">　commit　</span> : 버전(의미있는 변화, 작업이 완결된 상태)에 변화에 대한 기록 저장
+　　　　▸ git commit -m '메시지내용'
+- <span style="background-color:#BCE29E;">　push　</span> : 내 PC에 있는 코드를 Github Repository로 업데이트 하는 명령어
+　　　　▸  git push (= git push origin / 현재작업중인브랜치명)
+- <span style="background-color:#BCE29E;">　pull　</span> : Github Repository에 있는 코드를 내 PC로 업데이트 하는 명령어
+　　　　▸ git pull (= git pull origin / 현재작업중인브랜치명)
+- <span style="background-color:#BCE29E;">　branch　</span> : 독립적인 작업 영역(저장소) 안에서 마음대로 소스코드를 변경할 수 있도록 해주는 명령어
+　　　　▸ git branch 브랜치명 (=생성) / git checkout 브랜치명 (=전환)
+　　　　▸ git checkout -b 브랜치명 (=브랜치 생성 후 이동) / git switch 브랜치명 (= 브랜치 생성후 전환)
+- <span style="background-color:#BCE29E;">　stash　</span> : 아직 마무리하지 않은 작업을 스택에 잠시 저장할 수 있도록 하는 명령어
+　　　아직 완료하지 않은 일을 commit하지 않고 나중에 다시 꺼내와 마무리 할 수 있음
+　　　　▸ git stash (= git stash save, 스택에 새로운 stash 생성)
+　　　　▸ git stash list (=목록확인)
+　　　　▸ git stash apply (= 가장 최근의 stash 꺼내오기) / git stash apply stash이름
+　　　　▸ git stash apply --index (= Staged 상태로 복원)
+　　　　▸ git stash drop (=스택에 가장 최근에 남아있는 stash 제거) / git stash drop stash이름
+
+<br>
+
+<b>7. git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?</b>
+- <span style="background-color:#BCE29E;">　Object　</span> : git이 파일들을 관리하기 위해 만든 파일
+- <span style="background-color:#BCE29E;">　Commit　</span> : index(Staging area)저장소에 저장하는 작업
+- <span style="background-color:#BCE29E;">　Head　</span> : 현재 체크아숫된 브랜치의 가장 최신 커밋 / 내가 바라보고있는 커밋
+- <span style="background-color:#BCE29E;">　Branch　</span> : 여러 개발자들이 동시에 다양한 작업을 할 수 있게 만들어주는 기능(독립적인 작업공간)
+- <span style="background-color:#BCE29E;">　Tag　</span> : 특정 커밋을 태깅하는 기능 / 수정 불가
+- git 시스템은 프로젝트의 히스토리를 어떻게 저장?
+  　　▸ 모든데이터를 저장하기 전에 해시를 구하고 그 해시로 데이터를 관리,
+  　　　각 파일의 내용이나 디렉토리 구조를 이용해 해시를 구함. 파일의 해시로 저장
+
+<br>
+
+<b>8. 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?</b>
+- git rm -cached 파일명
+　▸ 로컬파일은 그대로 두고 원격 저장소에 잘못 올라간 파일만 삭제</p><br>
 
 <hr>
 
-## <br> ★ Quest
-<p>✔ GitHub에 가입한 뒤, 이 커리큘럼의 GitHub 저장소의 우상단의 Fork 버튼을 눌러 자신의 저장소에 복사해 둡니다.</p>
-<p>✔ Windows의 경우 같이 설치된 git shell을, MacOSX의 경우 터미널을 실행시켜 커맨드라인에 들어간 뒤, 명령어를 이용하여 복사한 저장소를 clone합니다.</p>
-<p>✔ 앞으로의 git 작업은 되도록 커맨드라인을 통해 하는 것을 권장합니다.</p>
-<p>✔ 이 문서가 있는 폴더 바로 밑에 있는 sandbox 폴더에 파일을 추가한 후 커밋해 보기도 하고, 파일을 삭제해 보기도 하고, 수정해 보기도 하면서 각각의 단계에서 커밋했을 때 어떤 것들이 저장되는지를 확인합니다.</p>
- <p>🔺clone/add/commit/push/pull/branch/stash 명령을 충분히 익혔다고 생각되면, 자신의 저장소에 이력을 push합니다.</p><br>
+## ★ Quest
+✔ GitHub에 가입한 뒤, 이 커리큘럼의 GitHub 저장소의 우상단의 Fork 버튼을 눌러 자신의 저장소에 복사해 둡니다.
+✔ Windows의 경우 같이 설치된 git shell을, MacOSX의 경우 터미널을 실행시켜 커맨드라인에 들어간 뒤, 명령어를 이용하여 복사한 저장소를 clone합니다.
+✔ 앞으로의 git 작업은 되도록 커맨드라인을 통해 하는 것을 권장합니다.
+✔ 이 문서가 있는 폴더 바로 밑에 있는 sandbox 폴더에 파일을 추가한 후 커밋해 보기도 하고, 파일을 삭제해 보기도 하고, 수정해 보기도 하면서 각각의 단계에서 커밋했을 때 어떤 것들이 저장되는지를 확인합니다.
+🔺clone/add/commit/push/pull/branch/stash 명령을 충분히 익혔다고 생각되면, 자신의 저장소에 이력을 push합니다.<br>
 
 <hr>
 
- ## <br> + Advanced
- <p>Mercurial은 어떤 형상관리 시스템일까요? 어떤 장점이 있을까요?</p>
- <p>실리콘밸리의 테크 대기업들은 어떤 형상관리 시스템을 쓰고 있을까요?</p><br>
+ ## + Advanced
+ Mercurial은 어떤 형상관리 시스템일까요? 어떤 장점이 있을까요?
+ 실리콘밸리의 테크 대기업들은 어떤 형상관리 시스템을 쓰고 있을까요?
