@@ -1,20 +1,215 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<!-- TODO: 또 무엇이 필요할까요? -->
-	</head>
-	<body>
-		<header>
-			<!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
-		</header>
+<!--html의 버전을 웹 브라우저에 알려주는 역할을 하는 선언문-->
+<html lang="ko">
+<!--HTML 문서임을 알려주는 역할 / 언어는 한글-->
 
-		<section class="main">
-			<!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
-		</section>
+<head>
+	<!--기계가 식별할 수 있는 문서 정보(메타데이터)-->
+	<meta charset="UTF-8">
+	<!--인코딩시 UTF-8로 지정-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--모든 장치에서 웹사이트가 잘보이도록 뷰포트를 설정-->
+	<title>NAVER</title>
+	<!--제목-->
+	<!-- 아이콘 사용 import-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://kit.fontawesome.com/30e8ed642c.js" crossorigin="anonymous"></script>
+	<!-- TODO: 또 무엇이 필요할까요? -->
+	<style>
+		@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: 'LeeSeoyun';
+}
+		.content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 
-		<footer>
-			<!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
-		</footer>
-	</body>
+		.nav {
+			display: flex;
+			justify-content: space-between;
+		}
+		.nav>i{
+			color: #bec2c5;
+		}
+
+		.btn {
+			display: flex;
+			align-items: center;
+		}
+		.nav_right>span>button{
+			background-color: #dadee2;
+			border: 1px solid #ccd0d4ce;
+			border-radius: 15px;
+			padding: 5px;
+		}
+
+		.logo>a {
+			margin-top: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.search {
+			border: 2px solid #00C43B;
+			margin: 20px 0;
+			padding: 5px;
+			width: 50%;
+		}
+
+		.search>section {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.search input[type=text] {
+			border: none;
+			padding: 10px;
+		}
+		input[type=text]:focus{
+			outline: none;
+		}
+		.menu>ul{
+			display: flex;
+			list-style: none;
+			text-align: center;
+			padding: 0;
+		}
+		.menu>ul>li{
+			float: left;
+			margin: 15px;
+		}
+		.m_c_area{
+		display: flex;
+		flex-direction: column;	
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		}
+		a{
+			text-decoration: none;
+		}
+		.m_c_area>span{
+			font-size: 12px;
+		}
+		.btn>button{
+			border: none;
+			background-color: #fff;
+		}
+		.btn > button > i{
+			color: #00C43B;
+		}
+		button{
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
+		<!-- 제목, 로고, 검색 폼 등-->
+		<!-- 아이콘 -->
+		<div class="nav">
+			<i class="fa-solid fa-bars"></i>
+			<div class="nav_right">
+				<span><a href="">QR 체크인</a></span>
+				<span><button>Npay</button></span>
+				<span><button><i class="fa-solid fa-inbox"></i></button></span>
+			</div>
+		</div>
+		<div class="content">
+			<!--네이버 로고-->
+			<div class="logo">
+				<a href=""><img width="30%" height="10%" src="naver_logo.png" alt="네이버로고"></a>
+			</div>
+	
+			<!--검색 폼-->
+			<div class="search">
+				<section>
+					<form action="">
+						<input type="text" placeholder="검색어를 입력해주세요.">
+					</form>
+					<div class="btn">
+						<button><i class="fa-solid fa-microphone"></i></button>
+						<button><i class="fa-solid fa-camera"></i></button>
+						<button><i class="fa-solid fa-location-dot"></i></button>
+					</div>
+				</section>
+			</div>
+	
+			<!--메뉴-->
+			<div class="menu">
+				<ul>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/20220303_0/upload_1646297330983vHTOQ.png"
+									alt="뉴스판"><span>뉴스판</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_16194098613516y6da.png"
+									alt=""><span>경제지표판</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_1619409873291ZKgsb.png"
+									alt=""><span>연예판</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40" src="" alt=""><span>트렌드판</span></div>
+						</a></li>
+					</ul>
+						<ul>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_19411917574.png"
+									alt=""><span>메일</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_191015178706.png"
+									alt=""><span>카페</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_181505455420.png"
+									alt=""><span>블로그</span></div>
+						</a></li>
+					<li class="menu_content"><a href="">
+							<div class="m_c_area"><img width="40" height="40"
+									src="https://s.pstatic.net/static/www/mobile/edit/2021/0427/upload_1619497854375Q53rw.png"
+									alt=""><span></span></div>
+						</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	
+	
+	<section class="main">
+		<!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
+		<div class="temperature">
+			<i class="fa-solid fa-circle" style="color:orange;"></i>
+			<i class="fa-solid fa-cloud" style="color:blue;"></i>
+		</div>
+		<div class="weather"></div>
+	</section>
+
+	<footer>
+		<!-- 작성자, 저작권 정보, 관련 문서 등-->
+		<!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
+	</footer>
+</body>
+
 </html>
