@@ -2,6 +2,7 @@
 
 <details>
 <summary>목차(Click)</summary>
+
 　　⭐ [HTML 표준 역사](1.-HTML-표준의-역사는-어떻게-될까요?)<br>
 　　　　　▫ [HTML 표준 중요성](HTML-표준을-지키는-것은-왜-중요할까요?)<br>
 　　　　　▫ [XHTML 2.0](XHTML-2.0은-왜-세상에-나오지-못하게-되었을까요?)<br>
