@@ -17,6 +17,7 @@
 		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://kit.fontawesome.com/30e8ed642c.js" crossorigin="anonymous"></script>
+
 	<!-- TODO: 또 무엇이 필요할까요? -->
 </head>
 
@@ -56,46 +57,59 @@
 			<!--메뉴-->
 			<div class="menu">
 				<ul>
+					<li class="menu_content">
+						<a href="">
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/20220303_0/upload_1646297330983vHTOQ.png"alt="뉴스판"><span>뉴스판</span>
+							</div>
+						</a>
+					</li>
+					<li class="menu_content">
+						<a href="">
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_16194098613516y6da.png"alt=""><span>경제지표판</span>
+							</div>
+						</a>
+					</li>
 					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/20220303_0/upload_1646297330983vHTOQ.png"
-									alt="뉴스판"><span>뉴스판</span></div>
-						</a></li>
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_1619409873291ZKgsb.png"alt=""><span>연예판</span>
+							</div>
+						</a>
+					</li>
 					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_16194098613516y6da.png"
-									alt=""><span>경제지표판</span></div>
-						</a></li>
+							<div class="m_c_area">
+								<img width="40" height="40" src="" alt="이미지"><span>트렌드판</span>
+							</div>
+						</a>
+					</li>
+					<li class="menu_content">
+						<a href="">
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_19411917574.png"alt=""><span>메일</span>
+							</div>
+						</a>
+					</li>
 					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_1619409873291ZKgsb.png"
-									alt=""><span>연예판</span></div>
-						</a></li>
-					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40" src="" alt=""><span>트렌드판</span></div>
-						</a></li>
-					</ul>
-						<ul>
-					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_19411917574.png"
-									alt=""><span>메일</span></div>
-						</a></li>
-					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_191015178706.png"
-									alt=""><span>카페</span></div>
-						</a></li>
-					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_181505455420.png"
-									alt=""><span>블로그</span></div>
-						</a></li>
-					<li class="menu_content"><a href="">
-							<div class="m_c_area"><img width="40" height="40"
-									src="https://s.pstatic.net/static/www/mobile/edit/2021/0427/upload_1619497854375Q53rw.png"
-									alt=""><span></span></div>
-						</a></li>
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_191015178706.png" alt=""><span>카페</span>
+							</div>
+						</a>
+					</li>
+					<li class="menu_content">
+						<a href="">
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_181505455420.png" alt=""><span>블로그</span>
+							</div>
+						</a>
+					</li>
+					<li class="menu_content">
+						<a href="">
+							<div class="m_c_area">
+								<img width="40" height="40" src="https://s.pstatic.net/static/www/mobile/edit/2021/0427/upload_1619497854375Q53rw.png" alt=""><span></span>
+							</div>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -104,16 +118,124 @@
 	
 	<section class="main">
 		<!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
-		<div class="temperature">
-			<i class="fa-solid fa-circle" style="color:orange;"></i>
-			<i class="fa-solid fa-cloud" style="color:blue;"></i>
+		<div class="main_con">
+			<div class="temperature">
+				<i class="fa-solid fa-cloud" style="color:blue;"></i>
+				<strong>10° 맑음</strong>
+				<div>어제보다 2°높아요</div>
+			</div>
+
+			<div class="weather">
+				<div class="w_top">
+					<div class="w_con"><strong>날씨</strong> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"
+							style="color:#6799FF"></i></div>
+					<div class="w_icon"><a><i class="fa-solid fa-chevron-up"></i></a></div>
+				</div>
+				<div class="w_main">
+						<ul>
+							<li><a href="">시간대별 날씨</li></a>
+							<li><a href="">시간대별 미세먼지</li></a>
+							<li class="click"><a href="">주간 날씨</li></a>
+							<li><a href="">주간 미세먼지</li></a>
+						</ul>
+				</div>
+				<div class="w_info">
+					<ul>
+						<li>
+							<span>19°</span>|<span>8°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>어제</span>
+						</li>
+						<li>
+							<span>22°</span>|<span>7°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span class="today">오늘</span>
+						</li>
+						<li>
+							<span>17°</span>|<span>11°</span>
+							<i class="fa-solid fa-cloud-rain" style="color:gray;"></i>
+							<span>월</span>
+						</li>
+						<li>
+							<span>18°</span>|<span>12°</span>
+							<i class="fa-solid fa-cloud-rain" style="color:gray;"></i>
+							<span>화</span>
+						</li>
+						<li>
+							<span>17°</span>|<span>4°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>수</span>
+						</li>
+						<li>
+							<span>19°</span>|<span>4°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>목</span>
+						</li>
+						<li>
+							<span>19°</span>|<span>6°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>금</span>
+						</li>
+						<li>
+							<span>19°</span>|<span>8°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>토</span>
+						</li>
+						<li>
+							<span>19°</span>|<span>6°</span>
+							<i class="fa-solid fa-circle" style="color:orange;"></i>
+							<span>일</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="covid">
+				<div class="covid_con">
+					<a href=""><i class="fa-solid fa-virus-covid-slash"></i> <strong>코로나19</strong><div>국내외 확진 현황</div></a>
+				</div>
+				<div class="covid_fact">
+					<a href=""><i class="fa-solid fa-pen"></i> <strong>코로나19 팩트체크</strong><div>백신 정보 팩트는?</div></a>
+				</div>
+			</div>
+
+			<div class="anniversary">제102주년 <Strong>대한민국 임시정부 수립일</Strong></div>
+			<div class="naver">
+				<div class="naver_con">
+					<img width="40" height="40" src="naver_icon.jpg" alt="네이버아이콘"><div>앱으로 <strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</div>
+				</div>
+				<button>앱 사용하기</button>
+			</div>
+			<div class="webtoon">
+				<div class="webtoon_con">
+					<strong>웹툰</strong><a><i class="fa-solid fa-chevron-down"></i></a>
+				</div>
+			</div>
+			<div class="pann">
+				<div class="pann_top">
+					<strong>인기 주제 판을 확인해보세요</strong><div><a>판관리</a></div>
+				</div>
+			</div>
+			<div class="notice">
+				<div class="notice_con">
+					<span>알립니다</span><strong>네이버앱 업데이트 사전 안내</strong>
+				</div>
+				<a><i class="fa-solid fa-chevron-right"></i></a>
+			</div>
 		</div>
-		<div class="weather"></div>
 	</section>
 
 	<footer>
 		<!-- 작성자, 저작권 정보, 관련 문서 등-->
 		<!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
+		<div class="footer">
+			<div>
+				<a>로그인</a>|<a>전체서비스</a>|<a>PC버전</a>
+			</div>
+			<div>
+				<a>이용약관</a> | <a><strong>개인정보처리방침</strong></a>|<a>고객센터</a>
+			</div>
+			<div>NAVER</div>
+		</div>
 	</footer>
 </body>
 
