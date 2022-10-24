@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--모든 장치에서 웹사이트가 잘보이도록 뷰포트를 설정-->
     <title>NAVER</title><!--제목-->
     <script src="https://kit.fontawesome.com/30e8ed642c.js" crossorigin="anonymous"></script><!-- 아이콘 사용 import-->
+
 </head>
 <body>
     <header><!-- 제목, 로고, 검색폼 등-->
@@ -64,7 +65,7 @@
     <section class="main">
         <!-- 현재 날씨 / NOW -->
         <div class="main_con">
-            <div class="main_top">
+            <div class="m_top">
                 <div class="temperature">
                     <i class="fa-solid fa-cloud" style="color:blue;"></i>
                     <strong>10° 맑음</strong>
@@ -89,8 +90,10 @@
         <div class="main_con">
             <div class="weather">
                 <div class="w_top">
-                    <div class="w_con"><strong>날씨</strong> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"></i></div>
-                    <div class="w_icon"><a><i class="fa-solid fa-chevron-up"></i></a></div>
+                    <div class="w_con"><em>날씨</em> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"></i></div>
+                    <div class="w_icon">
+                        <a href=""><i class="fa-solid fa-chevron-up"></i></a>
+                    </div>
                 </div>
                 <div class="w_main">
                         <ul>
@@ -179,7 +182,7 @@
         <div class="main_con">
             <div class="webtoon">
 				<div class="w_top">
-					<em>웹툰</em><a href=""><i class="fa-solid fa-chevron-down"></i></a>
+					<a href=""><em>웹툰</em><i class="fa-solid fa-chevron-down"></i></a>
 				</div>
 			</div>
         </div>
@@ -226,7 +229,9 @@
             <div class="notice">
                 <div class="n_info">
                     <a href="">
-                        <span>알립니다</span><em>네이버앱 업데이트 사전 안내</em>
+                        <span class="n_left">
+                            <span>알립니다</span><em>네이버앱 업데이트 사전 안내</em>
+                        </span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </a>
                 </div>
