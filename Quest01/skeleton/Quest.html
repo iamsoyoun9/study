@@ -10,12 +10,12 @@
     <header><!-- 제목, 로고, 검색폼 등-->
         <div class="h_top">
             <div class="nav">
-                <i class="fa-solid fa-bars"></i>
+                <button onclick=""><i class="fa-solid fa-bars"></i></button>
             </div>
-            <div class="my_btn">
-                <button onclick="location.href=''">QR 체크인</button>
-                <button onclick="location.href=''">NPay</button>
-                <button onclick="location.href=''"><i class="fa-solid fa-inbox"></i></button>
+            <div class="move">
+                <a href="">QR 체크인</a>
+                <a href="">NPay</a>
+                <a href=""><i class="fa-solid fa-inbox"></i></a>
             </div>
         </div>
         <div class="logo">
@@ -62,11 +62,11 @@
     </header>
 
     <section class="main">
-        <!-- 현재 날씨 / NOW -->
+        <!-- 오늘의 날씨 / NOW -->
         <div class="main_con">
             <div class="m_top">
                 <div class="temperature">
-                    <i class="fa-solid fa-cloud" style="color:blue;"></i>
+                    <i class="fa-solid fa-cloud"></i>
                     <strong>10° 맑음</strong>
                     <div>어제보다 2°높아요</div>
                 </div>
@@ -89,12 +89,14 @@
         <div class="main_con">
             <div class="weather">
                 <div class="w_top">
-                    <div class="w_con"><em>날씨</em> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"></i></div>
+                    <div class="w_con">
+                        <em>날씨</em> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"></i>
+                    </div>
                     <div class="w_icon">
                         <a href=""><i class="fa-solid fa-chevron-up"></i></a>
                     </div>
                 </div>
-                <div class="w_main">
+                <div class="w_cate">
                         <ul>
                             <li><a href="">시간대별 날씨</li></a>
                             <li><a href="">시간대별 미세먼지</li></a>
@@ -172,7 +174,7 @@
                     <img src="naver_icon.jpg" alt="네이버아이콘"><span>앱으로 <em>새로운 네이버</em>를 더 쾌적하게 사용해 보세요.</span>
                 </div>
                 <div class="app_right">
-                    <button onclick="location.href=''">앱 사용하기</button>
+                    <a href="">앱 사용하기</a>
                 </div>
             </div>
         </div>
@@ -180,46 +182,46 @@
         <!-- 웹툰 -->
         <div class="main_con">
             <div class="webtoon">
-				<div class="w_top">
-					<a href=""><em>웹툰</em><i class="fa-solid fa-chevron-down"></i></a>
-				</div>
-			</div>
+                <div class="wt_top">
+                    <a href=""><em>웹툰</em><i class="fa-solid fa-chevron-down"></i></a>
+                </div>
+            </div>
         </div>
 
         <!-- 인기 주제 판 -->
         <div class="main_con">
             <div class="pann">
                 <div class="p_top">
-					<em>인기 주제 판을 확인해보세요</em><span><a href="">판관리</a></span>
-				</div>
-				<div class="p_info">
-					<ul>
-						<li class="p_name">
+                    <em>인기 주제 판을 확인해보세요</em><span><a href="">판관리</a></span>
+                </div>
+                <div class="p_info">
+                    <ul>
+                        <li class="p_name">
                             <a href="">
                                 <img src="https://s.pstatic.net/static/www/mobile/edit/2021/0512/upload_1620798153325F6zTO.png" alt=""><span>영화판</span>
-							<i class="fa-solid fa-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </a>
-						</li>
-						<li class="p_name">
+                        </li>
+                        <li class="p_name">
                             <a href="">
                                 <img src="https://s.pstatic.net/static/www/mobile/edit/2021/0512/upload_1620799019973qX1J9.png" alt=""><span>뿜판</span>
-							    <i class="fa-solid fa-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </a>
-						</li>
-						<li class="p_name">
+                        </li>
+                        <li class="p_name">
                             <a href="">
                                 <img src="https://s.pstatic.net/static/www/mobile/edit/2021/0512/upload_16207989622495n0Cu.png" alt=""><span>웹툰판</span>
-							    <i class="fa-solid fa-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </a>
-						</li>
-						<li class="p_name">
+                        </li>
+                        <li class="p_name">
                             <a href="">
                                 <img src="https://s.pstatic.net/static/www/mobile/edit/2021/0512/upload_1620798450855mH4jj.png" alt="경제M판"><span>경제M판</span>
-							    <i class="fa-solid fa-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </a>
-						</li>
-					</ul>
-				</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         
