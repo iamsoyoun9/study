@@ -1,0 +1,132 @@
+/* 폰트 */
+/* 나눔스퀘어라운드 */
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 배달의민족 도현체*/
+@font-face {
+    font-family: 'BMDOHYEON';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 강원교육튼튼체 */
+@font-face {
+    font-family: 'GangwonEduPowerExtraBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/*==============================================*/
+
+
+
+/* 전체 */
+* {font-family: 'NanumSquareRound';}
+body {margin: 0;}
+a {text-decoration: none; color: #000;}
+button {cursor: pointer;}
+ul {list-style: none; display: flex; padding: 0; flex-wrap: wrap; justify-content: center;}
+em {font-style: normal; font-weight: bold;}
+
+/*==============================================*/
+
+
+/* header */
+/* header_top*/
+.nav > button {background: #fff; border: none;}
+.nav i {color: #929294; font-size: large; margin: 10px;}
+.move {position: absolute; top: 10px; right: 10px;}
+.move > a {background-color: #f4f6f8; border: 2px solid #e2eefa; border-radius: 15px; padding: 5px 10px;}
+.move > a:nth-child(1) {background-color: #fff; border: none;}
+
+/* logo */
+.logo {margin-top: 100px;}
+.logo img {width:25%; height:10%; }
+
+/* header_search*/
+.logo{text-align: center;}
+.h_search {margin: 20px auto; padding: 10px; border: 2px solid #00C43B; width: 50%; display: flex;justify-content: space-between; align-items: center;}
+.h_search > form > input {padding: 10px; width: 40vw; border: none;}
+.h_search > form > input:focus { outline: none;}
+.h_btn > button {border: none; background-color: #fff;}
+.h_btn > button > i {color: #00C43B;}
+/* hearder_menu*/
+.h_menu {display: flex; justify-content: center;}
+.h_menu > ul { width: 40%;}
+.h_menu > ul > li {margin: 15px 5px; width: 20%;}
+.h_menu a { display: flex; flex-direction: column; align-items: center;}
+.h_menu img {width: 40px; height: 40px; margin: 10px 0;}
+
+/*==============================================*/
+
+/* main */
+.main {background-color: #eaeef3; padding: 50px; display: flex; flex-direction: column; align-items: center; height: 100%;}
+.main_con {background-color: #fff; border-radius: 10px; margin: 10px; padding: 15px 20px; width: 50%; }
+
+/* top */
+.m_top, .w_top, .wt_top > a, .p_top, .notice a {display: flex; justify-content: space-between; align-items: center;}
+.m_top > div {width: 50%;}
+
+/* now */
+.now {display: flex; justify-content: flex-end; align-items: center;}
+.n_left a {display: flex; flex-direction: column; margin-right: 10px;}
+.n_left img {width: 80px; height: 40px;}
+.n_left strong {bottom: 5px; left: 5px;}
+.n_right {display: flex; align-items: center; justify-content: flex-end;}
+.n_right  img {height: 50px; padding: 5px; border-radius: 50%;}
+
+/* weather */
+.w_con i {color:#6799FF;}
+.fa-circle {color:orange;}
+.fa-cloud-rain {color:gray;}
+.fa-cloud {color: blue;}
+.w_cate ul {justify-content: flex-start;}
+.w_cate li {background-color: #eaeef3; margin: 5px; padding: 5px 10px; border-radius: 10px;}
+.w_info {display: flex; justify-content: center;}
+.w_info ul {justify-content: space-between; width: 70%;}
+.w_info li {display: flex; flex-direction: column; align-items: center; width: 45px;}
+.w_info span { margin: 5px 0;}
+.w_info span:nth-last-child(1) {padding: 5px 7px;}
+.click {background-color: #6e9af8 !important;}
+.click > a {color: #fff;}
+.today {background-color: #929496; border-radius: 10px; color: #fff; }
+
+/* covid */
+.covid {display: flex; align-items: center;}
+.covid > div {width: 50%;}
+
+/* holiday */
+.holiday {display: flex; align-items: center; justify-content: center}
+.holiday > img {width: 50px; padding: 10px;}
+
+/* app */
+.app {display: flex; align-items: center;justify-content: space-between;}
+.app_left {display: flex; align-items: center;}
+.app_left > span {margin: 10px;}
+.app_left > img {width:40px; height:40px;}
+.app_right > a {padding: 5px 10px; background-color: #fff; border-radius: 5px; border: 1px solid #6e9af8; color: #6e9af8; box-shadow: 1px 1px #6e9af8;}
+
+/* pann */
+.p_info li {margin: 5px; width: 40%; background-color: #eaeef3; padding: 5px 15px;}
+.p_name > a {display: flex; align-items: center; justify-content: space-between;}
+.p_name img { width:40px; height:40px;}
+
+/* notice */
+.n_left > span {padding: 5px 10px; border: 2px solid #00C43B; border-radius: 15px; color: #00C43B;}
+.n_info em {padding: 10px;}
+
+/*==============================================*/
+
+/*footer*/
+footer {bottom: 0;}
+.footer {background-color: #eaeef3;  padding-bottom: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;}
+.f_info {margin: 5px;}
+.f_info > a {margin: 5px; color: #929294;}
+.f_info:nth-child(3) > a {font-family: 'GangwonEduPowerExtraBoldA'; font-size: large;}
