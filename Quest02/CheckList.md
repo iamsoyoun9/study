@@ -96,7 +96,8 @@
 ---
 
 ### **3. CSS의 [박스모델](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)은 무엇일까요? 박스가 화면에서 차지하는 크기는 어떻게 결정될까요?**
-![박스모델](https://dasima.xyz/wp-content/uploads/2019/12/css-box-model-box-sizing.png)
+<img src="https://dasima.xyz/wp-content/uploads/2019/12/css-box-model-box-sizing.png" style="display: block; margin: auto; width:400px;">
+
 
 |영역|설명|크기|
 |:-:|:--|:-:|
@@ -111,6 +112,64 @@
 ---
 
 ### **5. Flexbox(Flexible box)와 CSS Grid의 차이와 장단점은 무엇일까요?**
+> **Flexbox**
+
+<img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_01.png" style="display: block; margin: auto; width:500px;">
+<br>
+<img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_02.png" style="display: block; margin: auto; width:500px"><br>
+
+> **flex-direction : column**<br>
+> ▸ 수직 방향 정렬 설정
+> flexbox 레이아웃에서 왼쪽에서 오른쪽으로 향하는 **수평**방향이 기본
+> 
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_05.png" style="display: block; margin: auto; width:300px">
+> **flex : 1**<br>
+> ▸ 자식요소의 크기 확장
+> 
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_06.png" style="display: block; margin: auto; width:300px"><br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_11.png" style="display: block; margin: auto; width:300px"><br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_13.png">
+> `.flex-item { flex-grow: 1; flex-shrink: 1; flex-basis: 0; }`<br>
+> `.flex-item { flex: 1; } /* flex: 1 1 0 */`<br>
+> **flex-grow**<br>
+> ▸ flex item의 확장에 관련한 속성<br>
+> **flex-shrink**<br>
+> ▸ flex item의 축소에 관련한 속성<br>
+> **flex-basis**<br>
+> ▸ flex item의 기본크기를 결정하는 속성<br>
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_10.png" style="display: block; margin: auto;"><br>
+> **margin**<br>
+> ▸ 자식요소를 수평으로 배치<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_14.png" style="display: block; margin: auto;"><br>
+> ▸ 자식요소를 수직으로 배치<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_15.png" style="display: block; margin: auto;"><br>
+> ▸ 자식 요소를 수평 정렬<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_19.png"><br>
+> ▸ 자식 요소를 수직 정렬<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_21.png"><br>
+> ▸ 자식 요소를 중앙 정렬<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_23.png"><br>
+> ▸ 유동 너비 박스<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_26.png" style="display: block; margin: auto;"><br>
+> ▸ 부모요소를 인라인 블록요소로 만들기<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_28.png" style="display: block; margin: auto;"><br>
+> ▸ 위에서 아래로 흐르게 하기<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_30.png" style="display: block; margin: auto;"><br>
+> ▸ 줄 바꾸기<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_31.png" style="display: block; margin: auto;"><br>
+> ▸ 균등간격<br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_32.png" style="display: block; margin: auto;"><br>
+> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_33.png" style="display: block; margin: auto;"><br>
+
+
+
+
+
+
+
+> **Grid**
+
+
 
 ---
 
