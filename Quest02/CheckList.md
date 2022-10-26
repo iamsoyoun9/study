@@ -96,7 +96,7 @@
 ---
 
 ### **3. CSS의 [박스모델](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)은 무엇일까요? 박스가 화면에서 차지하는 크기는 어떻게 결정될까요?**
-<img src="https://dasima.xyz/wp-content/uploads/2019/12/css-box-model-box-sizing.png" style="display: block; margin: auto; width:400px;">
+<img src="https://dasima.xyz/wp-content/uploads/2019/12/css-box-model-box-sizing.png" style="width:400px;">
 
 
 |영역|설명|크기|
@@ -108,68 +108,97 @@
 ---
 
 ### **4. `float` 속성은 왜 좋지 않을까요?**
+> **float** : 요소의 배치를 제어할 때 사용하는 속성<br>
+> \- `float: lef;` : 태그를 **왼쪽**에 붙임<br>
+> \- `float: right;` : 태그를 **오른쪽**에 붙임<br>
+> \- `float: none;` : 레이아웃을 정렬하지 않음<br>
+> \- `float: initial;` : 기본값으로 초기화 상태<br>
+> \- `float: inherit;` : 상위 태그의 정렬 속성을 **상속**받아서 정렬시킴<br>
+> - 문제점 : 모든 자식 요소에 float 속성을 적용하면, 부모 요소는 **해당 자식 요소가 존재하지 않는 것으로 판단**하여, (부모가)**높이를 인식하지 못하는 문제**가 발생<br>
+> - 해결방법<br>
+> 　1) `float`을 적용한 자식의 부모에게 "`overflow:hidden;`"을 적용<br>
+> 　2) 맨 뒤에 `float`가 해지된 (내용이 없는)빈 자식을 만든 후, 부모(태그)에게 적용<br>
+`
 
 ---
 
 ### **5. Flexbox(Flexible box)와 CSS Grid의 차이와 장단점은 무엇일까요?**
-> **Flexbox**
-
-<img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_01.png" style="display: block; margin: auto; width:500px;">
 <br>
-<img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_02.png" style="display: block; margin: auto; width:500px"><br>
 
-> **flex-direction : column**<br>
-> ▸ 수직 방향 정렬 설정
-> flexbox 레이아웃에서 왼쪽에서 오른쪽으로 향하는 **수평**방향이 기본
+> **Flexbox**<br>
+> 　\- `display: flex;`<br>
+> 　\- 부모요소 : **flexcontainer**<br>
+> 　\- 복수의 자식요소 : **flex item**<br>
+
+<br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_01.png" style="width:500px"><br>
+
+> **flex container** 속성<br>
+> \- flex-direction, flex-wrap, justify-content, align-items, align-content<br>
+> **flex item** 속성<br>
+> \- flex, flex-grow, flex-shrink, flex-basis, order<br>
+
+<br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_02.png" style="width:500px"><br>
+
+> **flex-direction**<br>
+> \- 수직 방향 정렬 설정
+> flexbox 레이아웃에서 왼쪽에서 오른쪽으로 향하는 **수평**방향이 기본<br>
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_05.png"><br>
+> `flex-direction: row` ▸ 왼쪽에서 오른쪽 →<br>
+> `flex-direction: column` ▸ 위에서 아래 ↓<br>
+> `flex-direction: row-reverse` ▸ 오른쪽에서 왼쪽 ←<br>
+> `flex-direction: column-reverse` ▸ 아래에서 위 ↑<br>
+
+> **flex-wrap**<br>
+> \- flex item이 flex container를 벗어났을 때 **줄을 바꾸는** 속성<br>
+> <br> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_31.png"><br>
+> `flex-wrap: nowrap`<br>
+> `flex-wrap: wrap`<br>
 > 
-> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_05.png" style="display: block; margin: auto; width:300px">
-> **flex : 1**<br>
-> ▸ 자식요소의 크기 확장
-> 
-> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_06.png" style="display: block; margin: auto; width:300px"><br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_11.png" style="display: block; margin: auto; width:300px"><br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_13.png">
-> `.flex-item { flex-grow: 1; flex-shrink: 1; flex-basis: 0; }`<br>
-> `.flex-item { flex: 1; } /* flex: 1 1 0 */`<br>
-> **flex-grow**<br>
-> ▸ flex item의 확장에 관련한 속성<br>
-> **flex-shrink**<br>
-> ▸ flex item의 축소에 관련한 속성<br>
-> **flex-basis**<br>
-> ▸ flex item의 기본크기를 결정하는 속성<br>
-> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_10.png" style="display: block; margin: auto;"><br>
-> **margin**<br>
-> ▸ 자식요소를 수평으로 배치<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_14.png" style="display: block; margin: auto;"><br>
-> ▸ 자식요소를 수직으로 배치<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_15.png" style="display: block; margin: auto;"><br>
-> ▸ 자식 요소를 수평 정렬<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_19.png"><br>
-> ▸ 자식 요소를 수직 정렬<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_21.png"><br>
-> ▸ 자식 요소를 중앙 정렬<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_23.png"><br>
-> ▸ 유동 너비 박스<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_26.png" style="display: block; margin: auto;"><br>
-> ▸ 부모요소를 인라인 블록요소로 만들기<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_28.png" style="display: block; margin: auto;"><br>
-> ▸ 위에서 아래로 흐르게 하기<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_30.png" style="display: block; margin: auto;"><br>
-> ▸ 줄 바꾸기<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_31.png" style="display: block; margin: auto;"><br>
-> ▸ 균등간격<br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_32.png" style="display: block; margin: auto;"><br>
-> <img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_33.png" style="display: block; margin: auto;"><br>
+> 응용 ver.<br>
+> `{display: flex; flex-direction: column; flex-wrap: wrap;}` = `{display: flex; flex-flow: column wrap;}`
+
+> **align-content**<br>
+> \- 자식요소를 **균등한 간격** 정렬<br>
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_32.png"><br>
+> `align-content: stretch`<br>
+> `align-content: flex-start`<br>
+> `align-content: flex-end`<br>
+> `align-content: center`<br>
+> `align-content: space-between`<br>
+> `align-content: space-around`<br>
 
 
+> **align-items**<br>
+> \- 자식요소를 **수직** 정렬<br>
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_21.png"><br>
+> `align-items: stretch`<br>
+> `align-items: flex-start`<br>
+> `align-items: center`<br>
+> `align-items: baseline`<br>
+> `align-items: flex-end`<br>
+
+> **justify-content**<br>
+> \- 자식요소를 **수평** 정렬<br>
+> <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_19.png"><br>
+> `justify-content: flex-start`<br>
+> `justify-content: center`<br>
+> `justify-content: flex-end`<br>
+> `justify-content: space-around`<br>
+> `justify-content: space-between`<br>
+> `justify-content: space-evenly`<br>
+
+---
+
+> **Grid**<br>
+> 　\- `display: grid;`<br>
+> 　\- 부모요소 : **grid**<br>
+> 　\- 복수의 자식요소 : **grid cell**<br>
 
 
-
-
-
-> **Grid**
-
-
+>**grid**속성<br>
+>　\- grid-template-columns, grid-template-rows, grid-template-areas, grid-gap<br>
+>**grid cell**속성<br>
+>　\- grid-column-start, grid-column-end, grid-row-start, grid-row-end,<br>
 
 ---
 
