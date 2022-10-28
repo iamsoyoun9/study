@@ -87,7 +87,7 @@
 
 |우선순위|설명|사용방법|결과|
 |:-:|:-:|:-:|:-:|
-|**`!important`**|우선순위를 무시하고 `최상위`|`#hello { background-color : #96CEB4; !important }`|<span style="background-color:#96CEB4;">　hello　</span> |
+|**`!important`**|우선순위를 무시하고 `최상위`|`#hello { background-color : #96CEB4; !important }`|<span style="background-color:#96CEB4;">　hello 　</span> |
 |**inline**|html에서 `style`을 직접 지정|`<span style = "color : #FFAD60;"> hello </span>`|<span style = "color : #FFAD60"> hello </span>|
 |**id**|`#id`로 지정한 속성|`#hello { background-color : #FFED99; }`|<span style="background-color:#FFED99;">　hello　</span>|
 |**class**|`.클래스` , `:추상클래스`로 지정한 속성|`.hello { color : #6F69AC; }`|<span style="color:#6F69AC;">　hello　</span>|
@@ -99,12 +99,12 @@
 <img src="https://dasima.xyz/wp-content/uploads/2019/12/css-box-model-box-sizing.png" style="width:400px;">
 
 
-|영역|설명|크기|
-|:-:|:--|:-:|
-|**콘텐츠<br>(content)**|- 글이나 이미지, 비디오 등 요소의 실제 내용||
-|**안쪽여백<br>(padding)**|- ||
-|**테두리<br>(border)**|-||
-|**바깥여백<br>(margin)**|- ||
+|영역|설명|
+|:-:|:--|
+|**콘텐츠<br>(content)**|- 글이나 이미지, 비디오 등 요소의 실제 내용 부분|
+|**안쪽여백<br>(padding)**|- 내용과 테두리 사이의 간격, 눈에 보이지 않음|
+|**테두리<br>(border)**|- 내용과 패딩 주변을 감싸는 테두리|
+|**바깥여백<br>(margin)**|- 테두리와 이웃하는 요소 사이의 간격, 눈에 보이지 않음|
 ---
 
 ### **4. `float` 속성은 왜 좋지 않을까요?**
@@ -128,9 +128,19 @@
 ### **5. Flexbox(Flexible box)와 CSS Grid의 차이와 장단점은 무엇일까요?**
 <br>
 
+**Flexbox 레이아웃**<br>
+![Flexbox](https://968663149-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LH1dN99ZXtZTFG_0JKV%2F-LH5jUEzOmxZUnS9Icq1%2F-LH5kFFAK9tf4zwc1v5P%2Fimage.png?alt=media&token=0ce914a6-f77e-472c-a1a1-0d50e4cee8d4)<br>
+
+**Grid 레이아웃**<br>
+![Grid](https://968663149-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LH1dN99ZXtZTFG_0JKV%2F-LH5jUEzOmxZUnS9Icq1%2F-LH5kJM_kwTZRUbeGDb_%2Fimage.png?alt=media&token=7b65e84c-0a30-479c-8804-bb8ecec4035c)
+
+---
+
+<br>
+
 > **Flexbox**<br>
 > 　\- `display: flex;`<br>
-> 　\- 부모요소 : **flexcontainer**<br>
+> 　\- 부모요소 : **flex container**<br>
 > 　\- 복수의 자식요소 : **flex item**<br>
 
 <br><img src = "https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_01.png" style="width:500px"><br>
@@ -192,17 +202,40 @@
 
 ---
 
+<br>
+
 > **Grid**<br>
 > 　\- `display: grid;`<br>
-> 　\- 부모요소 : **grid**<br>
-> 　\- 복수의 자식요소 : **grid cell**<br>
+> 　\- 부모요소 : **grid container**<br>
+> 　\- 복수의 자식요소 : **grid item**<br>
 
 
->**grid**속성<br>
+>**grid container**속성<br>
 >　\- grid-template-columns, grid-template-rows, grid-template-areas, grid-gap<br>
->**grid cell**속성<br>
+>**grid item**속성<br>
 >　\- grid-column-start, grid-column-end, grid-row-start, grid-row-end,<br>
 
+> **grid container**<br>
+> `display: grid;`<br>
+> `display: inline-grid;`<br>
 ---
 
 ### **6. CSS의 비슷한 요소들을 어떤 식으로 정리할 수 있을까요?**
+
+
+---
+## ➕ Advanced
+
+<details>
+<summary>📄 목차(Click)</summary>
+
+　　⭐ [CSS의 어려움](#1-왜-css는-어려울까요)<br>
+　　⭐ [CSS 극복 방법](#2-css의-어려움을-극복하기-위해-어떤-방법들이-제시되고-나왔을까요)<br>
+　　⭐ [CSS가 적용되는 과정](#3-css가-브라우저에-의해-해석되고-적용되기까지-내부적으로-어떤-과정을-거칠까요)<br>
+　　⭐ [웹 폰트의 렌더링 과정](#4-웹-폰트의-경우에는-브라우저-엔진-별로-어떤-과정을-통해-렌더링-될까요)<br>
+</details>
+
+### **1. 왜 CSS는 어려울까요?**
+### **2. CSS의 어려움을 극복하기 위해 어떤 방법들이 제시되고 나왔을까요?**
+### **3. CSS가 브라우저에 의해 해석되고 적용되기까지 내부적으로 어떤 과정을 거칠까요?**
+### **4. 웹 폰트의 경우에는 브라우저 엔진 별로 어떤 과정을 통해 렌더링 될까요?**
