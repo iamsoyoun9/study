@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>가위바위보 게임</title>
+
+    <style>
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>가위바위보 게임</h1>
+
+    <li style="margin-bottom:5px;">게임시작을 누르면 랜덤값으로 가위,바위,보중 하나가 지정됩니다.</li>
+    <li style="margin-bottom:15px;">유저도 가위,바위,보중에 하나를 선택하고 결과를 확인합니다.</li>
+    <div class="setDigitForm">
+      <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
+    </div>
+	
+    <div class="form" style="margin-top:40px;">
+      <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
+      <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
+      <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
+    </div>
+
+    <div class="resultArea" style="margin-top:40px;">
+      <span>승패여부는 여기에!!</span>
+    </div>
+
+    <script>
+        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
+        let pc;
+        let user;
+
+        /* pc */
+        /* 주먹 : 1 / 가위 : 2 / 보 : 3*/
+        $('.setPrsSubmit').click(function () {
+            pc = Math.floor((Math.random() * (4 - 1) + 1));
+            switch (pc) {
+                case 1:
+                    pc_ko = '주먹';
+                    break;
+                case 2:
+                    pc_ko = '가위';
+                    break;
+                case 3:
+                    pc_ko = '보';
+                    break;
+
+            }
+        });
+
+        /* user */
+        $('#btnRock').click(function () { user = 1 });
+        $('#btnScissors').click(function () { user = 2 });
+        $('#btnPaper').click(function () { user = 3 });
+
+        /* game */
+        $('.form').click(function () {
+            $('.form').before("<h3>", pc_ko, "</h3>");
+            if( user == pc){
+                $('.resultArea > span').append("<h3>비겼습니다</h3>");
+            }else{
+                if(user >= 1 && pc <= 3 ){
+                    if((user == 1 && pc == 2) || user == 2 && pc == 3 || user == 3 && pc == 1){
+                        $('.resultArea > span').append("<h3>이겼습니다</h3>");
+                    }else{
+                        $('.resultArea > span').append("<h3>졌습니다</h3>");
+                    }
+                }
+            }
+            console.log('pc >> ', pc)
+            console.log('user >> ', user)
+        })
+
+    </script>
+  </body>
+</html>

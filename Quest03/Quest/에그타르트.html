@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>에그타르트</title>
+
+    <style>
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>엘리트는?</h1>
+
+    <div class="setDigitForm">
+      <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
+    </div>
+
+    <div class="resultArea" style="margin-top:40px;">
+      <span>당첨 축하!</span>
+    </div>
+
+    <script>
+        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
+        let pc;
+        let user;
+
+        /* pc */
+        /* 주먹 : 1 / 가위 : 2 / 보 : 3*/
+        $('.setPrsSubmit').click(function () {
+            pc = Math.floor((Math.random() * (6 - 1) + 1));
+            switch (pc) {
+                case 1:
+                    pc_ko = '혜빈';
+                    break;
+                case 2:
+                    pc_ko = '명호';
+                    break;
+                case 3:
+                    pc_ko = '윤한';
+                    break;
+                case 4:
+                    pc_ko = '명현';
+                    break;
+                case 5:
+                    pc_ko = '소영';
+                    break;
+            }
+        });
+
+        /* user */
+        $('#btnRock').click(function () { user = 1 });
+        $('#btnScissors').click(function () { user = 2 });
+        $('#btnPaper').click(function () { user = 3 });
+
+        /* game */
+        $('.setPrsSubmit').click(function () {
+            $('.resultArea > span').append("<h3>",pc_ko,"</h3>");
+            console.log('pc >> ', pc)
+            console.log('user >> ', user)
+        })
+
+    </script>
+  </body>
+</html>

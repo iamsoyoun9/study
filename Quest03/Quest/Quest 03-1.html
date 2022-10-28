@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>별찍기 프로그램</title>
+</head>
+<body>
+    <script>
+        let num = Number(prompt("숫자를 입력하세요"));
+        console.log("입력받은 숫자 >> ",num)
+            for(let i = 1; i <= num ; i++){
+                console.log(" ".repeat(num-i) + "*".repeat(i*2-1))
+            }
+    </script>
+</body>
+</html>
