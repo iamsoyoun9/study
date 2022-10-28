@@ -221,8 +221,204 @@
 ---
 
 ### **6. CSS의 비슷한 요소들을 어떤 식으로 정리할 수 있을까요?**
-
-
+> **CSS 선택자** : 특성 요소들을 선택하여 스타일 적용<br>
+> **[ 선택자 종류 ]**
+> - 선택자 하나만 쓸 경우
+>   - 전체 선택자<br>
+> `*` 사용<br>
+> `* { color : #FFD384; }`
+>   - 태그 선택자<br>
+> `태그명` 사용 <br>
+> `p { color : #FFD384; }`
+>   - 클래스 선택자<br>
+> `.클래스명` 사용<br>
+> `.classname { color : #FFD384; }`
+>   - 아이디 선택자<br>
+> `#아이디명` 사용<br>
+> `#idname { color : #FFD384; }`
+> <hr>
+> 
+> - 선택자 여러개 쓸 경우
+>   - 하위 선택자 (= 자손 선택자)<br>
+> `공백` 사용<br>
+> <br><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99E7E0445C967F6C07" alt="자손선택자" style = "width:400px;"><br>
+> <br>`section ul { color : #FFD384; }`
+> 
+>   - 자식 선택자<br>
+> `>` 사용<br>
+> <br><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99E838445C967F6D07" alt="자식선택자" style = "width:400px;"><br>
+> <br>`section > ul { color : #FFD384; }`
+> 
+>   - 인접 형제 선택자<br>
+> `+` 사용<br>
+> <br><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99C8A9435C9681E207" alt="인접형제선택자" style = "width:400px;"><br>
+> <br>`h1 + ul { color : #FFD384; }`
+> 
+>   - 일반 형제 선택자<br>
+> `~` 사용<br>
+> <br><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99C8B3435C9681E207" alt="일반형제선택자" style = "width:400px;"><br>
+> <br>`h1 ~ ul { color : #FFD384; }`
+> <hr>
+>  
+>
+> - 속성 선택자 : 적절한 id와 class 이름이 없을 경우 사용<br>
+> <table  border="1px solid #000;" style="margin: 0 50px;">
+>   <tr>
+>       <th>구성</th>
+>       <th>설명</th>
+>       <th>예시</th>
+>   </tr>
+>   <tr>
+>       <td>태그[속성]</td>
+>       <td>'속성이름' 해당 </td>
+>       <td>a [href] { }</td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성="변수"]</td>
+>       <td>'속성'의 속성값이 '변수'인 태그 선택</td>
+>       <td></td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성~="변수"]</td>
+>       <td>'속성'의 속성값이 '변수'를 포함하는 태그 선택</td>
+>       <td></td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성^="변수"]</td>
+>       <td>'속성'의 속성값이 '변수'로 시작하는 태그 선택</td>
+>       <td></td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성$="변수"]</td>
+>       <td>'속성'의 속성값이 '변수'로 끝나는 태그 선택</td>
+>       <td></td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성*="변수"]</td>
+>       <td>'속성'의 속성값이'변수'를 포함하는 태그 선택</td>
+>       <td></td>
+>   </tr>
+>   <tr>
+>       <td>태그[속성|="변수"]</td>
+>       <td>'속성'의 속성값이'변수'이거나 '변수'로 시작하는 태그 선택</td>
+>       <td></td>
+>   </tr>
+> </table>
+> <br>
+> 
+> ▸ `태그[속성~="변수"]`와 `태그[속성*="변수"]`의 차이는?<br>
+> 　　~ : 포함여부를 **단어**를 기준으로 판단<br>
+> 　　\* : 포함여부를 **문자열**을 기준으로 판단<br>
+> 　　　　ex) navers<br>
+> 　　　　　　~="naver" : 단어가 다르기 때문에 선택 X<br>
+> 　　　　　　*="naver" : 문자열을 포함하기 때문에 선택 O
+> <hr>
+> 
+> 
+>- 의사 선택자 (= 의사 클래스) : html요소, 아이디, 클래스 선택자에게 특별한 상태를 명시할 때 사용<br>
+> `:(콜론)`을 사용하여 표현<br>
+>   - 동적 의사 클래스
+> <table border="1px solid #000;" style="margin: 0 50px;">
+>   <tr>
+>       <td>:link</td>
+>       <td>사용자가 아직 한 번도 해당 링크를 누르지 않은 상태 (a요소 기본)</td>
+>   </tr>
+>   <tr>
+>       <td>:visited</td>
+>       <td>사용자가 한 번이라도 해당 링크를 누른 상태</td>
+>   </tr>
+>   <tr>
+>       <td>:hover</td>
+>       <td>사용자가의 마우스 커서가 위에 올라가 있는 상태</td>
+>   </tr>
+>   <tr>
+>       <td>:active</td>
+>       <td>사용자의 마우스 커서가 클릭중인 상태</td>
+>   </tr>
+>   <tr>
+>       <td>:focus</td>
+>       <td>tab키로 focus가 맞춰진 상태</td>
+>   </tr>
+> </table><br>
+> 
+>   - 상태 의사 클래스
+> <table border="1px solid #000;" style="margin: 0 50px;">
+>   <tr>
+>       <td>:checked</td>
+>       <td>input의 checkbox나 raidobutton이 체크된 상태</td>
+>   </tr>
+>   <tr>
+>       <td>:enabled</td>
+>       <td>input의 "type=text", selct, option에서 사용자가 선택한 상태</td>
+>   </tr>
+>   <tr>
+>       <td>:disabled</td>
+>       <td>input의 "type=text", selct, option을 사용자가 선택할 수 없도록 만든 상태</td>
+>   </tr>
+> </table><br>
+> 
+>   - 구조 의사 클래스
+> <table border="1px solid #000;" style="margin: 0 50px;">
+>   <tr>
+>       <td>:first-child</td>
+>       <td>모든 자식 요소 중에서 첫 번째에 위치하는 자식을 선택</td>
+>   </tr>
+>   <tr>
+>       <td>:nth-child(n)</td>
+>       <td>모든 자식 요소 중에서 n번재 위치하는 자식을 선택</td>
+>   </tr>
+>   <tr>
+>       <td>:last-child</td>
+>       <td>모든 자식 요소 중에서 마지막에 위치하는 자식을 선택</td>
+>   </tr>
+>   <tr>
+>       <td>:first-of-type</td>
+>       <td>모든 자식 요소 중에서 첫 번째에 등장하는 특정 요소를 선택</td>
+>   </tr>
+>   <tr>
+>       <td>:nth-of-type(n)</td>
+>       <td>모든 자식 요소 중에서 n번째로 등장하는 특정 요소를 선택</td>
+>   </tr>
+>   <tr>
+>       <td>:last-of-type</td>
+>       <td>모든 자식 요소 중에서 마지막으로 등장하는 특정 요소를 선택</td>
+>   </tr>
+> </table><br>
+> 
+> ▸ `:first-child`와 `:first-of-type`의 차이?<br>
+> ```
+> <div class="parent">
+>   <div>text1</div>
+>   <p>text2</p>
+>   <p>text2</p>
+> </div>
+> ```
+> <hr>
+> 
+> ```
+> .parent p:first-child {
+>   color: #ff0000;
+> }
+> 
+> .parent p:first-of-type {
+>   color: #ff0000;
+> }
+> ```
+> <hr>
+> ▸ 결과<br>
+> 
+> `:first-child` : .parent의 첫번째 자식은 div이기 때문에 적용 X<br>
+> `:first-of-type` : .parent의 두번째 자식이자 자식중 첫번째 p이기 때문에 적용 O
+> <br>
+> #### **[ 선택자를 묶는 방법 ]**<br>
+> ```
+> ▸ ,(쉼표) 로 분리
+>     p {color:red;}
+>     div {color:red;}
+>             ↓
+>     p, div {color:red;}
+> ```
+><br>
 ---
 ## ➕ Advanced
 
