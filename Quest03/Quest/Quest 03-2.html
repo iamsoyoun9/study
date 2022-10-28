@@ -33,6 +33,8 @@
 		</section>
 
 		<script>
+			// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
+			// 풀이방법 1. 클릭할 때, 클릭한 박스의 배경 색이 노란색 ↔ 흰색
 			let row1Squares = document.querySelectorAll('.row1 .square');
 			for(let node of row1Squares) {
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
@@ -44,6 +46,20 @@
                     }
                 })
 			}
+			
+			// 풀이방법 2. 클릭할 때, 배경 색이 노란색 ↔ 흰색
+			// let row1Squares = document.querySelectorAll('.row1 .square');
+			// for(let node of row1Squares) {
+			// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
+			// 	let body = document.querySelector('body');
+            //     node.addEventListener('click',function(){
+            //         if(body.style.backgroundColor != 'yellow'){
+            //             body.style.backgroundColor = 'yellow';
+            //         }else{
+            //             body.style.backgroundColor = 'white';
+            //         }
+            //     })
+			// }
 
 			let row2Squares = document.querySelectorAll('.row2 .square');
 			for(let node of row2Squares) {
