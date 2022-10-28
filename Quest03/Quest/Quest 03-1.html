@@ -6,14 +6,14 @@
 </head>
 <body>
     <script>
-        let num = Number(prompt("숫자를 입력하세요"));
+        var num = Number(prompt("숫자를 입력하세요"));
         console.log("입력받은 숫자 >> ",num)
         // num = 3
         //   *   공백 2 / 출력 1 
         //  ***  공백 1 / 출력 3
         // ***** 공백 0 / 출력 5
         // 공백 = 입력받은 숫자 -1 / 출력 = 층수*2-1
-            for(let i = 1; i <= num ; i++){ // i = 층수
+            for(var i = 1; i <= num ; i++){ // i = 층수
                 console.log(" ".repeat(num-i) + "*".repeat(i*2-1))
             }
     </script>
