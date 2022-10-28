@@ -40,39 +40,43 @@
 
     <script>
         /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-        let n1;
-        let n2;
-        $('.setDigitSubmit').click(function () {
-            let num = Number($('#setDigitNum').val());
-
-            function rd(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
-
-            if (num == 1) {
-                n1 = rd(1, 9);
-                n2 = rd(1, 9);
+        var n1;
+        var n2;
+        var set = document.querySelector('.setDigitSubmit');
+        var form = document.querySelector('.setDigitForm');
+        var get = document.querySelector('.guessSubmit');
+        var result = document.querySelector('.resultArea > span');
+        
+        set.addEventListener('click',function(){
+          var num = Number(document.querySelector('#setDigitNum').value);
+          console.log("입력한 자릿수 >> ",num)
+          function rd(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+          }
+          if (num == 1) {
+              n1 = rd(1, 9);
+              n2 = rd(1, 9);
             } else if (num == 2) {
-                n1 = rd(10, 99);
-                n2 = rd(10, 99);
+              n1 = rd(10, 99);
+              n2 = rd(10, 99);
             }else if (num == 3) {
-                n1 = rd(100, 999);
-                n2 = rd(100, 999);
+              n1 = rd(100, 999);
+              n2 = rd(100, 999);
             }
-            $('.form').before("<h3>", n1, " X ", n2, "</h3>")
-
+            console.log("랜덤숫자 1 >> ",n1)
+            console.log("랜덤숫자 2 >> ",n2)
+            form.innerHTML += ("<h2>"+ n1+ " X "+ n2+ "</h2>");
+          })
+          get.addEventListener('click',function(){
+          var quest = Number(document.querySelector('#guessField').value);
+          var mul = n1 * n2;
+          console.log("입력 받은 정답 >> ", quest)
+          if(quest == mul){
+              result.innerHTML = ("<h3>정답입니다</h3>");
+          }else if (quest != mul){
+              result.innerHTML = ("<h3>틀렸습니다</h3>");
+          }
         })
-        $('.guessSubmit').click(function () {
-            let mul = Number($('#guessField').val());
-            let result = n1 * n2;
-            if(mul == result){
-                $('.resultArea > span').append("<h3>정답입니다</h3>");
-            }else if (mul != result){
-                $('.resultArea > span').append("<h3>틀렸습니다</h3>");
-            }
-        })
-
-
     </script>
   </body>
 </html>
