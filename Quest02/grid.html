@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        @font-face {
+            font-family: 'ChosunGs';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'ChosunGs';
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: 100px auto 50px;
+            grid-template-areas: 
+            'header header'
+            'main side'
+            'footer footer'
+            ;
+
+        }
+
+        .header, .side, .main, .footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header {
+            background-color: #000;
+            color: #fff;
+            grid-area: header;
+        }
+
+        .side {
+            background-color: rgb(255, 165, 9);
+            grid-area: side;
+        }
+        .main{
+            grid-area: main;
+        }
+        .footer{
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">header</div>
+    <div class="main">main :)</div>
+    <div class="side">side</div>
+    <div class="footer">footer</div>
+</body>
+
+</html>
