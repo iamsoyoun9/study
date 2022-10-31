@@ -40,17 +40,27 @@
 
     <script>
         /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-        var n1;
-        var n2;
+        var n1 = 0 ;
+        var n2 = 0 ;
         var set = document.querySelector('.setDigitSubmit');
         var form = document.querySelector('.setDigitForm');
         var get = document.querySelector('.guessSubmit');
         var result = document.querySelector('.resultArea > span');
+        var randA = document.querySelector('#randA')
+        var randB = document.querySelector('#randB')
+
+        
+        get.disabled = true;
         
         set.addEventListener('click',function(){
+          result.innerHTML = ("<span>정답여부는 여기에!!</span>");
+          get.disabled = false;
           var num = Number(document.querySelector('#setDigitNum').value);
           console.log("입력한 자릿수 >> ",num)
           function rd(min, max) {
+            // Math.random() * 100 => 0~99 / Math.random() * 최댓값;
+            // 최솟값 ~ 최댓값 : Math.random() * (최댓값 - 최솟값 +1 ) + 최솟값;
+            // 50 ~ 100 : Math.random() * (100-50+1)+50;
             return Math.floor(Math.random() * (max - min + 1)) + min;
           }
           if (num == 1) {
@@ -65,16 +75,18 @@
             }
             console.log("랜덤숫자 1 >> ",n1)
             console.log("랜덤숫자 2 >> ",n2)
-            form.innerHTML += ("<h2>"+ n1+ " X "+ n2+ "</h2>");
+            randA.innerHTML = ("<b>"+n1+"</b>");
+            randB.innerHTML = ("<b>"+n2+"</b>");
           })
           get.addEventListener('click',function(){
           var quest = Number(document.querySelector('#guessField').value);
           var mul = n1 * n2;
           console.log("입력 받은 정답 >> ", quest)
           if(quest == mul){
-              result.innerHTML = ("<h3>정답입니다</h3>");
+              result.innerHTML = ("<h3>⭕ 정답입니다 ⭕</h3>");
+              get.disabled = true;
           }else if (quest != mul){
-              result.innerHTML = ("<h3>틀렸습니다</h3>");
+              result.innerHTML = ("<h3>❌ 틀렸습니다 ❌</h3>");
           }
         })
     </script>

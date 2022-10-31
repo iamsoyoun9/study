@@ -35,10 +35,10 @@
 		<script>
 			// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
 			// 풀이방법 1. 클릭할 때, 클릭한 박스의 배경 색이 노란색 ↔ 흰색
-			let row1Squares = document.querySelectorAll('.row1 .square');
-			for(let node of row1Squares) {
+			let row1Squares = document.querySelectorAll('.row1 .square'); // CSS선택자를 사용하여 요소들을 변수에 담아주기 위해 querySelectorAll
+			for(let node of row1Squares) { // 클릭할 때마다 바뀌는 것이기 때문에 반복문 사용(for of 반복문은 ES6에 추가된 반복 구문)
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-                node.addEventListener('click',function(){
+                node.addEventListener('click',function(){ // 'Click'이벤트를 할 때, 함수 실행
                     if(node.style.backgroundColor != 'yellow'){
                         node.style.backgroundColor = 'yellow';
                     }else{
