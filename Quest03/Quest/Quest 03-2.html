@@ -65,26 +65,26 @@
 
 
 			// 풀이방법 1. 조건문
-			// let row2Squares = document.querySelectorAll('.row2 .square');
-			// for(let node of row2Squares) {
-			// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
-            //     node.addEventListener('click',function(){
-            //         if(node.className == 'square'){
-            //             node.classList.add('enabled');
-            //         }else{
-            //             node.classList.remove('enabled')
-            //         }
-            //     })
-			// }
-
-			// 풀이방법 2. 토글메서드
 			let row2Squares = document.querySelectorAll('.row2 .square');
 			for(let node of row2Squares) {
-				node.addEventListener('click',function(){ // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
-					node.classList.toggle('enabled');
-				})
-
+				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+                node.addEventListener('click',function(){
+                    if(node.className == 'square'){
+                        node.classList.add('enabled');
+                    }else if(node.className == 'square enabled'){
+                        node.classList.remove('enabled')
+                    }
+                })
 			}
+
+			// 풀이방법 2. 토글메서드
+			// let row2Squares = document.querySelectorAll('.row2 .square');
+			// for(let node of row2Squares) {
+			// 	node.addEventListener('click',function(){ // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
+			// 		node.classList.toggle('enabled');
+			// 	})
+
+			// }
 		</script>
 	</body>
 </html>
