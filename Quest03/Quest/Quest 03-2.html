@@ -39,7 +39,7 @@
 			for(let node of row1Squares) { // 클릭할 때마다 바뀌는 것이기 때문에 반복문 사용(for of 반복문은 ES6에 추가된 반복 구문)
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
                 node.addEventListener('click',function(){ // 'Click'이벤트를 할 때, 함수 실행
-                    if(node.style.backgroundColor != 'yellow'){
+					if(node.style.backgroundColor != 'yellow'){
                         node.style.backgroundColor = 'yellow';
                     }else{
                         node.style.backgroundColor = 'white';
@@ -61,16 +61,29 @@
             //     })
 			// }
 
+
+
+
+			// 풀이방법 1. 조건문
+			// let row2Squares = document.querySelectorAll('.row2 .square');
+			// for(let node of row2Squares) {
+			// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
+            //     node.addEventListener('click',function(){
+            //         if(node.className == 'square'){
+            //             node.classList.add('enabled');
+            //         }else{
+            //             node.classList.remove('enabled')
+            //         }
+            //     })
+			// }
+
+			// 풀이방법 2. 토글메서드
 			let row2Squares = document.querySelectorAll('.row2 .square');
 			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-                node.addEventListener('click',function(){
-                    if(node.className == 'square'){
-                        node.classList.add('enabled');
-                    }else{
-                        node.classList.remove('enabled')
-                    }
-                })
+				node.addEventListener('click',function(){ // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
+					node.classList.toggle('enabled');
+				})
+
 			}
 		</script>
 	</body>
