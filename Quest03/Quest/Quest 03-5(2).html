@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>가위바위보 게임</title>
+
+    <style>
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>가위바위보 게임</h1>
+
+    <li style="margin-bottom:5px;">게임시작을 누르면 랜덤값으로 가위,바위,보중 하나가 지정됩니다.</li>
+    <li style="margin-bottom:15px;">유저도 가위,바위,보중에 하나를 선택하고 결과를 확인합니다.</li>
+    <div class="setDigitForm">
+      <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
+    </div>
+	
+    <div class="form" style="margin-top:40px;">
+      <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
+      <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
+      <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
+    </div>
+
+    <div class="resultArea" style="margin-top:40px;">
+      <span>승패여부는 여기에!!</span>
+    </div>
+
+    <script>
+        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
+        var pc;
+        var user;
+
+        /* pc */
+        var start = document.querySelector('.setPrsSubmit');
+        var rock = document.querySelector('#btnRock');
+        var scissors = document.querySelector('#btnScissors');
+        var paper = document.querySelector('#btnPaper');
+        var result = document.querySelector('.resultArea > span');
+        var form = document.querySelector('.form');
+
+        start.addEventListener('click',function(){
+            var list = ['바위','가위','보'];
+            pc = list[Math.floor(Math.random() * list.length)];
+            console.log(pc)
+        })
+
+        /* user */
+        /* 1 단순한 방법 */
+        rock.addEventListener('click',function(){
+          user = "바위"
+        });
+        scissors.addEventListener('click',function(){
+          user = '가위';
+        });
+        paper.addEventListener('click',function(){
+          user = '보';
+        });
+
+        /* game */
+
+        form.addEventListener('click',function(){
+            if( user == pc){
+              result.innerHTML = ("<h3>비겼습니다</h3>");
+            }else{
+                if(user == "보" && pc == "바위" || user == "바위" && pc =="가위"|| user == "가위" && pc == "보"){
+                      result.innerHTML = ("<h3>이겼습니다</h3>");
+                    }else{
+                      result.innerHTML = ("<h3>졌습니다</h3>");
+                    }
+                }
+            console.log('user >> ', user)
+        })
+
+    </script>
+  </body>
+</html>
