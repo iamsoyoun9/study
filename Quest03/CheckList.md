@@ -50,7 +50,13 @@
 
 
 ### **3. 자바스크립트를 통해 DOM 객체에 CSS Class를 주거나 없애려면 어떻게 해야 하나요?**
-
+- `querySelector()` 또는 `getElementById()` 메소드를 이용하여 제어하고자 하는 요소를 특정<br>예 : `var element = document.querySelector('h1');;`
+- **클래스 추가**
+  - `.classList.add()` : HTML 요소가 가진 기존 class 속성을 유지한 채, **새로운 클래스 값을 추가**<br>예 : `element.classList.add('h1');` / `element.classList.add('h2');`
+- **클래스 삭제**
+  - `.classList.remove()` : HTML 요소의 class 속성 중에서 인자로 사용된 **클래스 값을 삭제**<br> 인자로 사용된 클래스 값 이외에 **다른 class 속성들은 그대로 유지**, **존재하지 않는 클래스를 제거해도 에러가 발생하지 않음**<br>예 : `element.classList.remove('h2');`
+- **클래스 변경**
+  - `.className` : HTML 요소의 class 속성을 인자로 사용된 **클래스 값으로 변경**<br>**기존  class 속성은 초기화**<br>예 : `element.className= 'h_tag';`
 > #### **IE9나 그 이전의 옛날 브라우저들에서는 어떻게 해야 하나요?**
 
 
@@ -62,7 +68,43 @@
 
 
 
+---
 
 ### **5. 자바스크립트의 익명 함수는 무엇인가요?**
+- 익명함수(Anonymous function) : 함수명 대신 변수명에 함수 코드를 저장하는 구현 방식, 익명함수의 소스코드는 변수 값이므로 끝에 세미콜론을 대입
+- 호출 : 변수명을 함수명처럼 사용하면 됨
+```
+var 변수명 = function (매개변수)
+{
+    실행문;
+};
+```
+---
+```
+<script>
+    var hello = function(){
+        document.write("안녕하소영");
+    };
+
+    hello();
+</script>
+```
+- 단점 : 호이스팅이 적용되지 않는다.<br>* 호이스팅 : 함수 선언보다 함수 호출이 윗 줄에 위치해도 실행되는 기능
+
 
 > #### **자바스크립트의 Arrow function은 무엇일까요?**
+> - 함수 표현식보다 간결한 문법
+> - **화살표 함수** 이름 : 문법의 생김새를 차용
+> ```
+> function add(a,b){
+>   return a+b;
+> }
+>       ⬇
+> const add = (a,b) => ({a+b});
+> ```
+> - 화살표 함수가 기존 함수를 대체하지 못하는 이유
+>   - 일반 함수에서는 자체적인 **this**를 가지는데, 화살표함수는 부모의 **this**를 따름
+> - 추천하는 함수 사용법
+>   - this를 쓸 꺼면 일반 함수
+>   - this를 안 쓸 거면 화살표 함수
+>   - react에서는 this를 엄청 많이 사용함
