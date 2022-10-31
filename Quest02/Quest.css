@@ -61,6 +61,7 @@ body{
     'footer footer footer';
     align-content: space-between;
     align-items: center;
+    background-image: linear-gradient(var(--btn-bg),var(--btn-bg),var(--btn-bg),#f2f5f7);
 }
 header{
     grid-area: header;
@@ -72,7 +73,6 @@ header{
 
 section{
     grid-area: main;
-    /* background-color: var(--bg-color); */
     display: flex;
     flex-direction: column;
     align-items: center;
