@@ -218,6 +218,122 @@
 > **grid container**<br>
 > `display: grid;`<br>
 > `display: inline-grid;`<br>
+> <img src="https://css-tricks.com/wp-content/uploads/2018/11/template-columns-rows-01.svg" alt="그리드 행열" style="width:400px"><br>
+> **grid-template-columns**<br>
+> \- 그리트 템플릿 열<br>
+> **grid-template-rows**<br>
+> \- 그리트 템플릿 행<br>
+
+> **track-size**<br>
+> \- 그리드의 여유 공간의 일부<br>
+> ```
+> .container {
+> grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+> grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+> }
+> ```
+> <br>
+> <img src="https://css-tricks.com/wp-content/uploads/2018/11/template-column-rows-02.svg" alt="라인이름" style="width:400px">
+<br>
+
+> **grid-template-areas** : 그리드 템플릿 영역<br>
+> **grid-area-name**<br>
+> \- grid-area로 지정된 그리드 영역의 이름<br>
+> **.(마침표)**<br>
+> \- 빈 그리드 셀<br>
+> **none**<br>
+> \- 그리드 영역이 정의되지 않음<br>
+> ```
+> .item-a {
+>   grid-area: header;
+> }
+> .item-b {
+>   grid-area: main;
+> }
+> .item-c {
+>   grid-area: sidebar;
+> }
+> .item-d {
+>   grid-area: footer;
+> }
+> .container {
+>   display: grid;
+>   grid-template-columns: 50px 50px 50px 50px;
+>   grid-template-rows: auto;
+>   grid-template-areas: 
+>     "header header header header"
+>     "main main . sidebar"
+>     "footer footer footer footer";
+> }
+> ```
+> <br><img src = "https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-template-areas.svg" alt = "그리드 영영 설정" style="width:400px"><br>
+
+> **grid-gap**<br>
+> \- 그리드 선의 크기 / 거터 너비 설정, 열&행 간격<br>
+> ```
+> .container {
+>   grid-template-columns: 100px 50px 100px;
+>   grid-template-rows: 80px auto 80px; 
+>   column-gap: 10px;
+>   row-gap: 15px;
+> }
+> ```
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-gap.svg" alt="그리드간격" style="width:400px"><br>
+> 
+
+>**justify-items** : 행에 따른 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-items-start.svg" alt="start" style="width:400px"><br>
+> \- start : 셀의 시작 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-items-end.svg" alt="end" style="width:400px"><br>
+> \- end : 셀의 끝 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-items-center.svg" alt="center" style="width:400px"><br>
+> \- center : 셀의 중앙에 항목을 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-items-stretch.svg" alt="stretch" style="width:400px"><br>
+> \- stretch : 셀의 전체 너비를 채움(기본값)<br>
+
+
+>**align-items** : 열에 따른 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-items-start.svg" alt="start" style="width:400px"><br>
+> \- start : 셀의 시작 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-items-end.svg" alt="end" style="width:400px"><br>
+> \- end : 셀의 끝 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-items-center.svg" alt="center" style="width:400px"><br>
+> \- center : 셀의 중앙에 항목을 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-items-stretch.svg" alt="stretch" style="width:400px"><br>
+> \- stretch : 셀의 전체 너비를 채움(기본값)<br>
+> \- baseline : 텍스트 기준선을 따라 항목을 정렬<br>
+
+>**justify-content** : 컨테이너를 행에 따른 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-start.svg" alt="start" style="width:400px"><br>
+> \- start : 그리드 컨테이너의 시작 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-end.svg" alt="end" style="width:400px"><br>
+> \- end : 그리드 컨테이너의 끝 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-center.svg" alt="center" style="width:400px"><br>
+> \- center : 그리드 컨테이너의 중앙에 항목을 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-stretch.svg" alt="stretch" style="width:400px"><br>
+> \- stretch : 그리드 컨테이너의 전체 너비를 채움<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-space-around.svg" alt="space-around" style="width:400px"><br>
+> \- space-around : 각 그리드 항목 사이에 일정한 양의 공간을 배치하고 맨 끝에는 절반 크기의 공간이 있음<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-space-between.svg" alt="space-between" style="width:400px"><br>
+> \- space-between : 맨 끝에 공백 없이 각 그리드 항목 사이에 일정한 양의 공백을 배치<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/justify-content-space-evenly.svg" alt="space-evenly" style="width:400px"><br>
+> \- space-evenly : 맨 끝을 포함하여 각 그리드 항목 사이에 일정한 양의 공간을 배치<br>
+> 
+>**align-content** : 컨테이너를 열에 따른 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-start.svg" alt="start" style="width:400px"><br>
+> \- start : 그리드 컨테이너의 시작 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-end.svg" alt="end" style="width:400px"><br>
+> \- end : 그리드 컨테이너의 끝 가장자리와 같은 높이로 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-center.svg" alt="center" style="width:400px"><br>
+> \- center : 그리드 컨테이너의 중앙에 항목을 정렬<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-stretch.svg" alt="stretch" style="width:400px"><br>
+> \- stretch : 그리드 컨테이너의 전체 너비를 채움<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-space-around.svg" alt="space-around" style="width:400px"><br>
+> \- space-around : 각 그리드 항목 사이에 일정한 양의 공간을 배치하고 맨 끝에는 절반 크기의 공간이 있음<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-space-between.svg" alt="space-between" style="width:400px"><br>
+> \- space-between : 맨 끝에 공백 없이 각 그리드 항목 사이에 일정한 양의 공백을 배치<br>
+> <br><img src="https://css-tricks.com/wp-content/uploads/2018/11/align-content-space-evenly.svg" alt="space-evenly" style="width:400px"><br>
+> \- space-evenly : 맨 끝을 포함하여 각 그리드 항목 사이에 일정한 양의 공간을 배치<br>
 
 ---
 
