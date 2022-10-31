@@ -37,48 +37,66 @@
 
     <script>
         /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-        let pc;
-        let user;
+        var pc;
+        var user;
+        var pc_ko;
+        var user_ko;
 
         /* pc */
         /* 주먹 : 1 / 가위 : 2 / 보 : 3*/
-        $('.setPrsSubmit').click(function () {
-            pc = Math.floor((Math.random() * (4 - 1) + 1));
-            switch (pc) {
-                case 1:
-                    pc_ko = '주먹';
-                    break;
-                case 2:
-                    pc_ko = '가위';
-                    break;
-                case 3:
-                    pc_ko = '보';
-                    break;
+        var start = document.querySelector('.setPrsSubmit');
+        var rock = document.querySelector('#btnRock');
+        var scissors = document.querySelector('#btnScissors');
+        var paper = document.querySelector('#btnPaper');
+        var result = document.querySelector('.resultArea > span');
+        var form = document.querySelector('.form');
 
-            }
-        });
+        start.addEventListener('click',function(){
+          pc = Math.floor((Math.random() * (4 - 1) + 1));
+          switch (pc) {
+              case 1:
+                  pc_ko = '바위';
+                  break;
+              case 2:
+                  pc_ko = '가위';
+                  break;
+              case 3:
+                  pc_ko = '보';
+                  break;
+          }
+          console.log('pc >> ',pc_ko)
+        })
 
         /* user */
-        $('#btnRock').click(function () { user = 1 });
-        $('#btnScissors').click(function () { user = 2 });
-        $('#btnPaper').click(function () { user = 3 });
+        /* 1 단순한 방법 */
+        rock.addEventListener('click',function(){
+          user = 1
+          user_ko = '바위';
+        });
+        scissors.addEventListener('click',function(){
+          user = 2
+          user_ko = '가위';
+        });
+        paper.addEventListener('click',function(){
+          user = 3
+          user_ko = '보';
+        });
 
         /* game */
-        $('.form').click(function () {
-            $('.form').before("<h3>", pc_ko, "</h3>");
+
+        form.addEventListener('click',function(){
             if( user == pc){
-                $('.resultArea > span').append("<h3>비겼습니다</h3>");
+              result.innerHTML = ("<h3>비겼습니다</h3>");
             }else{
                 if(user >= 1 && pc <= 3 ){
                     if((user == 1 && pc == 2) || user == 2 && pc == 3 || user == 3 && pc == 1){
-                        $('.resultArea > span').append("<h3>이겼습니다</h3>");
+                      result.innerHTML = ("<h3>이겼습니다</h3>");
                     }else{
-                        $('.resultArea > span').append("<h3>졌습니다</h3>");
+                      result.innerHTML = ("<h3>졌습니다</h3>");
                     }
                 }
             }
-            console.log('pc >> ', pc)
-            console.log('user >> ', user)
+            console.log('user >> ', user_ko)
         })
 
     </script>
