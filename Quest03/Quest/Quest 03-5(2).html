@@ -38,10 +38,9 @@
     <script>
         /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
         var pc;
-        var pc_icon;
         var user;
+        var pc_icon;
         var user_icon;
-        
 
         /* pc */
         var start = document.querySelector('.setPrsSubmit');
@@ -87,12 +86,12 @@
 
         form.addEventListener('click',function(){
             if( user == pc){
-              result.innerHTML = ("<h1> PC >> "+ pc_icon + " | USER >> "+ user_icon + "</h1><h3>비겼습니다</h3>")
+              result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>비겼습니다</h3>")
             }else{
               if(user == "보" && pc == "바위" || user == "바위" && pc =="가위"|| user == "가위" && pc == "보"){
-                    result.innerHTML = ("<h1> PC >> "+ pc_icon + " | USER >> "+ user_icon + "</h1><h3>이겼습니다</h3>")
+                    result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>이겼습니다</h3>")
                   }else{
-                      result.innerHTML = ("<h1> PC >> "+ pc_icon + " | USER >> "+ user_icon + "</h1><h3>졌습니다</h3>")
+                      result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>졌습니다</h3>")
                     }
                 }
             console.log('user >> ', user)
