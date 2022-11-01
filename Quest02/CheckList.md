@@ -1,4 +1,4 @@
-## ✔ Checklist
+****## ✔ Checklist
 
 <details>
 <summary>📄 목차(Click)</summary>
@@ -23,29 +23,28 @@
 
 ### **1. CSS를 HTML에 적용하는 세 가지 방법은 무엇일까요?**
 **#1. 인라인 방식**<br>▸ html 문서의 `<body>` 태그 영역에 해당 태그의 `style` 속성을 넣는 방식<br>
-> **html**<br>
-
-    <span style="color:#FF884B;"> 안녕하세요 </span>
-
+```css
+<span style="color:#FF884B;"> 안녕하세요 </span>
+```
 결과 >> <span style="color:#FF884B;"> 안녕하세요 </span>
+
 
 ---
 
 **#2. 내부 스타일 시트**<br>▸ html 문서의 `<head>` 태그 영역에 `<style>` 태그 내부에 기입하는 방식<br>
-> **html**<br>
- 
-    <head>
-        <style>
-        #hello {
-            color:#FF577F;
-        }
-        </style>
-    </head>
+```html
+<head>
+    <style>
+    #hello {
+        color:#FF577F;
+    }
+    </style>
+</head>
 
-    <body>
-        <span id="hello"> 안녕하세요 </span>
-    </body>
-
+<body>
+    <span id="hello"> 안녕하세요 </span>
+</body>
+```
 결과 >> <span style="color:#FF577F;"> 안녕하세요 </span>
 
 ---
@@ -58,15 +57,15 @@
     }
 
 > **HTML**<br>▸ 파일명 : **main.html**<br>
+```html
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
 
-    <head>
-        <link rel="stylesheet" href="main.css">
-    </head>
-    
-    <body>
-        <span id="hello"> 안녕하세요 </span>
-    </body>
-
+<body>
+    <span id="hello"> 안녕하세요 </span>
+</body>
+```
 결과 >> <span style="color:#36AE7C;"> 안녕하세요 </span>
 
 > #### **세 가지 방법 각각의 장단점은 무엇일까요?**
@@ -226,7 +225,7 @@
 
 > **track-size**<br>
 > \- 그리드의 여유 공간의 일부<br>
-> ```
+> ```css
 > .container {
 > grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
 > grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
@@ -243,7 +242,7 @@
 > \- 빈 그리드 셀<br>
 > **none**<br>
 > \- 그리드 영역이 정의되지 않음<br>
-> ```
+> ```css
 > .item-a {
 >   grid-area: header;
 > }
@@ -270,7 +269,7 @@
 
 > **grid-gap**<br>
 > \- 그리드 선의 크기 / 거터 너비 설정, 열&행 간격<br>
-> ```
+> ```css
 > .container {
 >   grid-template-columns: 100px 50px 100px;
 >   grid-template-rows: 80px auto 80px; 
@@ -503,7 +502,7 @@
 > </table><br>
 > 
 > ▸ `:first-child`와 `:first-of-type`의 차이?<br>
-> ```
+> ```html
 > <div class="parent">
 >   <div>text1</div>
 >   <p>text2</p>
@@ -512,7 +511,7 @@
 > ```
 > <hr>
 > 
-> ```
+> ```css
 > .parent p:first-child {
 >   color: #ff0000;
 > }
