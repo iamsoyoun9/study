@@ -14,10 +14,10 @@
         <div class="nav">
             <button onclick=""><i class="fa-solid fa-bars"></i></button>
         </div>
-        <div class="move">
-            <a href="">QR 체크인</a>
-            <a href=""><img src="img/NPay.png" alt=""></a>
-            <a href=""><i class="fa-solid fa-inbox"></i></a>
+        <div>
+            <a href="" class="move">QR 체크인</a>
+            <a href="" class="move"><img src="img/NPay.png" alt=""></a>
+            <a href="" class="move"><i class="fa-solid fa-inbox"></i></a>
         </div>
     </header>
     <!-- header 끝 -->
@@ -32,15 +32,15 @@
             <form action="">
                 <input type="search" placeholder="검색어를 입력해주세요.">
             </form>
-            <div class="h_btn">
-                <button><img src="img/mic.png" alt=""></button>
-                <button><img src="img/cam.png" alt=""></button>
-                <button><img src="img/map.png" alt=""></button>
+            <div>
+                <button class="h_btn"><img src="img/mic.png" alt=""></button>
+                <button class="h_btn"><img src="img/cam.png" alt=""></button>
+                <button class="h_btn"><img src="img/map.png" alt=""></button>
             </div>
         </div>
         <!-- 메뉴 -->
-        <div class="h_menu">
-            <ul>
+        <div>
+            <ul class="h_menu">
                 <li>
                     <a href="">
                         <img src="https://s.pstatic.net/static/www/mobile/edit/20220303_0/upload_1646297330983vHTOQ.png" alt="">
@@ -96,23 +96,18 @@
             <div class="main_con m_top">
                 <!-- 오늘의 날씨 -->
                 <div class="temperature">
-                    <div class="tem_left">
-                        <img src="img/moon.png" alt="">
-                    </div>
-                    <div class="tem_right">
+                    <img src="img/moon.png" alt=""  class="tem_left">
+                    <div><!-- tem_right -->
                         <strong>10° 맑음</strong>
                         <div>어제보다 2°높아요</div>
                     </div>
                 </div>
                 <!-- Now -->
                 <div class="now">
-                    <div class="n_left">
-                        <a href="">
-                            <img src="img/now.png" alt=""><strong>지금 방송중</strong>
-                        </a>
-                    </div>
-                    <div class="n_right">
-                        
+                    <a href="" class="n_left">
+                        <img src="img/now.png" alt=""><strong>지금 방송중</strong>
+                    </a>
+                    <div class="n_right">           
                         <a href="">
                             <img src="https://s.pstatic.net/nnow.phinf/20221024_266/1666583812689memUF_PNG/210d3f.png?type=f152_152" alt="">
                         </a>
@@ -123,19 +118,19 @@
                 </div>
             </div>
             <!-- con_2 -->
-            <div class="main_con weather">
+            <div class="main_con">
                 <!-- 날씨 / 현재위치 -->
                 <div class="w_top">
-                    <div class="w_left">
+                    <div>
                         <em>날씨</em> <span>서울시 잠실동</span> <i class="fa-solid fa-crosshairs"></i>
                     </div>
-                    <div class="w_right">
+                    <div>
                         <a href=""><i class="fa-solid fa-chevron-up"></i></a>
                     </div>
                 </div>
                 <!-- 날씨 카테고리 -->
-                <div class="w_cate">
-                    <ul>
+                <div>
+                    <ul class="w_cate">
                         <li onclick="">시간대별 날씨</li>
                         <li onclick="">시간대별 미세먼지</li>
                         <li onclick="">주간 날씨</li>
@@ -143,8 +138,8 @@
                     </ul>
                 </div>
                 <!-- 날씨 정보 -->
-                <div class="w_info">
-                    <ul>
+                <div>
+                    <ul class="w_info">
                         <li>
                             <span>19°</span><span>|</span><span>8°</span>
                             <img src="img/sun.png" alt="맑음"><span>어제</span>
@@ -218,26 +213,24 @@
                 <div class="app_left">
                     <img src="img/naver_icon.jpg" alt="네이버아이콘"><span>앱으로 <em>새로운 네이버</em>를 더 쾌적하게 사용해 보세요.</span>
                 </div>
-                <div class="app_right">
-                    <a href="">앱 사용하기</a>
-                </div>
+                <a href=""  class="app_right">앱 사용하기</a>
             </div>
             <!-- con_5 -->
-            <div class="main_con webtoon wt_top">
+            <div class="main_con">
                 <!-- 웹툰 -->
-                <a href="">
+                <a href="" class="wt_top">
                     <em>웹툰</em><i class="fa-solid fa-chevron-down"></i>
                 </a>
             </div>
             <!-- con_6 -->
-            <div class="main_con pann">
+            <div class="main_con">
                 <!-- 인기 주제 판 -->
                 <div class="p_top">
                     <em>인기 주제 판을 확인해보세요</em><span><a href="">판관리</a></span>
                 </div>
                 <!-- 판 정보 -->
-                <div class="p_info">
-                    <ul>
+                <div>
+                    <ul class="p_info">
                         <li class="p_name">
                             <a href="">
                                 <img src="img/movie_pan.png" alt=""><span>영화판</span>
@@ -267,10 +260,10 @@
             </div>
             <!-- con_7 -->
             <!-- 네이버 업데이트 공지 -->
-            <div class="main_con notice n_info">
-                <a href="">
-                    <span class="n_left">
-                        <span>알립니다</span><em>네이버앱 업데이트 사전 안내</em>
+            <div class="main_con">
+                <a href="" class="notice">
+                    <span>
+                        <span class="n_btn">알립니다</span><em>네이버앱 업데이트 사전 안내</em>
                     </span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
