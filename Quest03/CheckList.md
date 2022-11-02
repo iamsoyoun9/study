@@ -274,11 +274,10 @@ var 변수명 = function (매개변수)
 ```
 ---
 ```js
-    var hello = function(){
-        document.write("안녕하소영");
-    };
-
-    hello();
+var hello = function(){
+  document.write("안녕하소영");
+};
+hello();
 ```
 - 단점 : 호이스팅이 적용되지 않는다.<br>* 호이스팅 : 함수 선언보다 함수 호출이 윗 줄에 위치해도 실행되는 기능
 
