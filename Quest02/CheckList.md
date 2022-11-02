@@ -431,9 +431,9 @@
 > <hr>
 > 
 > 
->- 의사 선택자 (= 의사 클래스) : html요소, 아이디, 클래스 선택자에게 특별한 상태를 명시할 때 사용<br>
+>- 유사 선택자 (= 유사 클래스) : html요소, 아이디, 클래스 선택자에게 특별한 상태를 명시할 때 사용<br>
 > `:(콜론)`을 사용하여 표현<br>
->   - 동적 의사 클래스
+>   - 동적 유사 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>:link</td>
@@ -457,7 +457,7 @@
 >   </tr>
 > </table><br>
 > 
->   - 상태 의사 클래스
+>   - 상태 유사 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>:checked</td>
@@ -473,7 +473,7 @@
 >   </tr>
 > </table><br>
 > 
->   - 구조 의사 클래스
+>   - 구조 유사 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>:first-child</td>
@@ -526,6 +526,72 @@
 > `:first-child` : .parent의 첫번째 자식은 div이기 때문에 적용 X<br>
 > `:first-of-type` : .parent의 두번째 자식이자 자식중 첫번째 p이기 때문에 적용 O
 > <br>
+> 
+> ---
+>   - 유사 요소
+> <table border="1px solid #000;" style="margin: 0 50px;">
+>   <tr>
+>       <td>::after</td>
+>       <td>- 선택한 요소의 맨 마지막 자식으로 유사 요소를 하나 생성<br>- 보통 content속성과 함께 장식용 컨텐츠(→) 추가할 대 사용<br>- 기본값 : 인라인</td>
+>   </tr>
+>   <tr>
+>       <td>::backdrop</td>
+>       <td>- 전체 화면 모드로 표시되는 요소 바로 아래에 렌더링되는 뷰포트 크기의 상자</td>
+>   </tr>
+>   <tr>
+>       <td>::before</td>
+>       <td>- 선택한 요소의 첫 번째 자식인 유사 요소 하나 생성<br>- 속성이 있는 요소에 장식용 콘텐츠를 추가(<<)<br>- 기본값 : 인라인</td>
+>   </tr>
+>   <tr>
+>       <td>::cue<br>::cue-region</td>
+>       <td>- WebVTT와 일치<br>- WebVTT(웹 비디오 텍스트 트랙형식) : 요소를 사용하여 시간이 지정된 텍스트 트랙(자막, 캡션 등)을 표시하기 위한 형식</td>
+>   </tr>
+>   <tr>
+>       <td>::file-selector-button</td>
+>       <td>- 버튼을 나타냄</td>
+>   </tr>
+>   <tr>
+>       <td>::first-letter</td>
+>       <td>- 블록 요소의 첫 번째 줄 첫 글자에 스타일을 적용<br>- 다른 콘텐츠가 선행되지 않은 경우에만 적용</td>
+>   </tr>
+>   <tr>
+>       <td>::first-line</td>
+>       <td>- 블록 요소의 첫 줄에 스타일을 적용</td>
+>   </tr>
+>   <tr>
+>       <td>::grammar-error</td>
+>       <td>- 문법적으로 잘못된 것으로 표시한 텍스트 세그먼트를 나타냄</td>
+>   </tr>
+>   <tr>
+>       <td>::marker</td>
+>       <td>- 글머리 기호 또는 숫자가 포함된 목록 항목의 마커 상자를 선택</td>
+>   </tr>
+>   <tr>
+>       <td>::part()</td>
+>       <td>- 일치하는 속성이 있는 새도우 트리 내의 모든 요소</td>
+>   </tr>
+>   <tr>
+>       <td>::placeholder</td>
+>       <td>- 요소의 자리표시자 텍스트를 나타냄</td>
+>   </tr>
+>   <tr>
+>       <td>::selection</td>
+>       <td>- 사용자가 강조 표시한 문서 부분에 스타일을 적용</td>
+>   </tr>
+>   <tr>
+>       <td>::slotted()</td>
+>       <td>- HTML 템플릿 내부의 슬롯에 배치된 모든 요소를 나타냄</td>
+>   </tr>
+>   <tr>
+>       <td>::spelling-error</td>
+>       <td>- 철자가 잘못된 것으로 표시한 텍스트 세그먼트를 나타냄</td>
+>   </tr>
+>   <tr>
+>       <td>::target-text</td>
+>       <td>- 브라우저가 텍스트로 스크롤 조각을 지원하는 경우 스크롤된 텍스트를 나타냄<br>- 작성자는 텍스트의 해당 섹션을 강조 표시하는 방법을 선택할 수 있음</td>
+>   </tr>
+> </table><br>
+> 
 > #### **[ 같은 CSS 적용하는 방법 ]**<br>
 > ```
 > ▸ 똑같은 class명 부여
