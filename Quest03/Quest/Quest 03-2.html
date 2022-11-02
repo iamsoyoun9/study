@@ -15,6 +15,7 @@
 				background-color: limegreen;
 				border: 1px solid black;
 			}
+
 		</style>
 	</head>
 	<body>
@@ -46,14 +47,33 @@
                     }
                 })
 			}
+
+			// 풀이방법 2. 클릭할 때, 박스들의 색이 노란 ↔ 흰색 일괄 바뀌기
+			// let row1Squares = document.querySelectorAll('.row1 .square');
+			// for(let node of row1Squares) { 
+            //     node.addEventListener('click',function(){
+			// 		if(node.style.backgroundColor != 'yellow'){
+			// 			for(let i = 0; i < row1Squares.length; i++){
+			// 				row1Squares[i].style.backgroundColor = 'yellow';
+			// 			}
+            //         }else{
+			// 			for(let i = 0; i < row1Squares.length; i++){
+			// 				row1Squares[i].style.backgroundColor = 'white';
+			// 			}
+            //         }
+            //     })
+			// }
 			
-			// 풀이방법 2. 클릭할 때, 배경 색이 노란색 ↔ 흰색
+			// 풀이방법 3. 클릭할 때, 배경 색이 노란색 ↔ 흰색
 			// let row1Squares = document.querySelectorAll('.row1 .square');
 			// for(let node of row1Squares) {
 			// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
 			// 	let body = document.querySelector('body');
             //     node.addEventListener('click',function(){
             //         if(body.style.backgroundColor != 'yellow'){
+			// 			for(let i = 0; i < row1Squares.length; i++){
+			// 				row1Squares[i].style.backgroundColor = 'white';
+			// 			}
             //             body.style.backgroundColor = 'yellow';
             //         }else{
             //             body.style.backgroundColor = 'white';
@@ -83,7 +103,6 @@
 			// 	node.addEventListener('click',function(){ // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
 			// 		node.classList.toggle('enabled');
 			// 	})
-
 			// }
 		</script>
 	</body>
