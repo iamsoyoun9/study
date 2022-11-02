@@ -18,14 +18,31 @@
 
 ### **1. 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?**
 > #### **자바스크립트의 버전들을 가리키는 ES5, ES6, ES2016, ES2017 등은 무엇을 이야기할까요?**
-- ES = Ecma Script
-- ECMA = ECMA International
-- ECMA = European Computer Manufacturers Association
-  <hr>
-- **ES5** = ES2015년도에 정한 ES라는 뜻
-- **ES6** = ES2015
-- ES7 = **ES2016**
-- ES8 = **ES2017**
+> - ES = Ecma Script
+> - ECMA = ECMA International
+> - ECMA = European Computer Manufacturers Association
+> 
+> ---
+> 
+> |공개일|버전명|
+> |:-:|:-:|
+> |1997.06|ECMAScript 1 (ES1)|
+> |1998.06|ECMAScript 2 (ES2)|
+> |1999.12|ECMAScript 3 (ES3)|
+> |0000.00|ECMAScript 4 (ES4)<br>▸ 버려짐|
+> |2009.12|**ECMAScript 5 (ES5)**|
+> |2011.06|ECMAScript 5.1 (ES5.1)|
+> |2015.06|**ECMAScript 2015 (ES2015, ES6)**|
+> |2016.06|**ECMAScript 2016 (ES2016, ES7)**|
+> |2017.06|**ECMAScript 2017 (ES2017, ES8)**|
+> |2018.06|ECMAScript 2018 (ES2018, ES9)|
+> |2019.06|ECMAScript 2019 (ES2019, ES10)|
+> |2020.06|ECMAScript 2020 (ES2020, ES11)|
+> |2021.06|ECMAScript 2021 (ES2021, ES12)|
+> 
+> ---
+
+
 > #### **자바스크립트의 표준은 어떻게 제정될까요?**
 > - ECMA International 기술 위원회39(TC39)가 Ecma Script표준에 대한 업데이트된 사양을 만들고 배포하는 것을 담당
 > - 위원회 : 자바스크립트 개발자, 프레임워크 작성자, 대규모 웹사이트 작성자/관리자, 프로그래밍 언어 연구원, 모든 주요 자바스크립트 엔진 대표, 영향력 있는 자바스크립트 작성자, 기타 자바스크립트의 성공과 미래에 대한 이해관계자로 구성
@@ -195,6 +212,10 @@ do{
 - **클래스 변경**
   - `.className` : HTML 요소의 class 속성을 인자로 사용된 **클래스 값으로 변경**<br>**기존  class 속성은 초기화**<br>예 : `element.className= 'h_tag';`
 > #### **IE9나 그 이전의 옛날 브라우저들에서는 어떻게 해야 하나요?**
+\- `element.classList`는 IE9이하 브라우저에 지원 X<br>
+\- `element.className += "add"`<br>
+\- **Polyfill classList** 사용<br>
+　　* 폴리필 : 브라우저에서 지원하지 않는 코드를 사용가능한 코드 조각이나 프러그인으로 변환한 코드를 의미
 
 
 ---
