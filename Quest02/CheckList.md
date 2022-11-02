@@ -431,7 +431,7 @@
 > <hr>
 > 
 > 
->- 유사 선택자 (= 유사 클래스) : html요소, 아이디, 클래스 선택자에게 특별한 상태를 명시할 때 사용<br>
+>- 유사(가상) 선택자 (= 유사(가상) 클래스) : html요소, 아이디, 클래스 선택자에게 특별한 상태를 명시할 때 사용<br>
 > `:(콜론)`을 사용하여 표현<br>
 >   - 동적 유사 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
@@ -457,7 +457,7 @@
 >   </tr>
 > </table><br>
 > 
->   - 상태 유사 클래스
+>   - 상태 유사(가상) 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>:checked</td>
@@ -473,7 +473,7 @@
 >   </tr>
 > </table><br>
 > 
->   - 구조 유사 클래스
+>   - 구조 유사(가상) 클래스
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>:first-child</td>
@@ -528,7 +528,9 @@
 > <br>
 > 
 > ---
->   - 유사 요소
+>   - 유사(가상) 요소<br>
+> :after vs ::after<br> - CSS2에서는 :after, CSS3에서는 ::after<br> - ::after로 표기되는 이유는 가상클래스와 가상요소의 차이를 분명하게 하기 위함<br>▸ 가상클래스(:), 가상요소(::)
+> 
 > <table border="1px solid #000;" style="margin: 0 50px;">
 >   <tr>
 >       <td>::after</td>
@@ -615,6 +617,53 @@
 </details>
 
 ### **1. 왜 CSS는 어려울까요?**<br>
+1. 어떤 CSS 규칙이 최종적으로 적용될지 예측이 어려움 ▸ CSS는 같은 규칙을 여러번 선언 가능, 선언된 모든 규칙을 빠짐없이 파악하는 부분
+2. CSS 규칙의 상호작용을 모두 알기 어려움 ▸ CSS속성은 다른 속성과 상호작용을 하여 결과값을 내기 때문(cursur, text-decoration 등은 속성과 무관하게 결과값을 냄)
+3. 런타임 환경을 예상하기 어려움 ▸ 웹브라우저의 버전과 개발사, 운영체제가 CSS 결과값에 영향을 줌
+---
+
 ### **2. CSS의 어려움을 극복하기 위해 어떤 방법들이 제시되고 나왔을까요?**
+> |||
+> |:-:|:--|
+> |**SCSS**|- CSS의 확장판, Variable와 import, Nesting 등을 활용하여 복잡한 코드를 쉽게 작성하는데 도움을 주는 언어|
+> |**BEM**|- CSS 특유의 글로벌 네임스페이스에서 이름이 중복되지 않도록 CSS 아이디와 클래스를 명명하는 방법론|
+> |**CSS Modules**|- 각 파일에 선언된 CSS 선택자에 고유한 해시 문자열을 추가<br>- 해당 선택자가 각 파일의 네임스페이스에서만 동작하도록 자동적으로 관리|
+> |**CSS in JS**|- CSS Modules의 문제점인 방대한 CSS 파일을 관리해야 하는 것을 해결하기 위해 나온 방법론|
+
+
+---
+
 ### **3. CSS가 브라우저에 의해 해석되고 적용되기까지 내부적으로 어떤 과정을 거칠까요?**
+<img src ="https://miro.medium.com/max/720/1*EwKyxocOfQGBW-9aCVvLjg.png" alt="CSS적용과정" style = "width:600px;"><br>
+1. 네트워크로부터 HTML을 받아서 브라우저로 로딩
+2. HTML을 파싱하여 **DOM**(Document Object Model)으로 변환
+3. HTML에 연결된 리소스를 가져옴. (HTML에 삽입 된 이미지, 비디오, CSS등이 해당)
+4. **렌더 트리**(Render Tree) : 가져온 CSS를 파싱, 셀렉터에 따라 서로 다르게 작성한 스타일을 정리, 최종적으로 어느 DOM노드에 어떤 스타일을 적용할지 정한 뒤 스타일을 DOM노드에 붙임
+5. 페이지를 화면이 그림
+
+- **DOM**이란?<br>
+  \- HTML을 파싱한 결과 컴퓨터 메모리에 남아서 HTML 문서를 대신하는 객체<br>
+  \- 각각의 DOM노드가 트리구조로 관계를 이루며 구성
+
+---
+
 ### **4. 웹 폰트의 경우에는 브라우저 엔진 별로 어떤 과정을 통해 렌더링 될까요?**
+<img src = "https://armadillo-dev.github.io/assets/images/webfont-rendering-flow.png" alt="렌더링과정" style = "width:600px;"><br>
+- Paint text가 끝난 시점(텍스트가 화면에 렌더링 된 시점)에 아직 웹폰트 로딩이 완료되지 않았을 경우, 브라우저에 따라 웹폰트 렌더링을 차단, 이후 로딩이 완료되면 웹 폰트를 적용해서 텍스트를 렌더링
+  - 차단하는 방법
+  1. **FOIT** : 웹폰트가 적용된 텍스트 영역을 여백으로 처리, 웹폰트 로딩이 완료되면 해당 폰트를 적용.<br>단, 3초의 제한 시간이 있어 로딩이 3초를 넘어가면 폴백 폰트로 렌더링
+  2. **FOUT** : 폴백 폰트를 먼저 표시하고, 웹폰트 로딩이 완료되면 해당 폰트를 적용
+<br>
+
+- 글꼴 형식
+  
+  |글꼴|설명|
+  |:-:|:--|
+  |**TTF**<br>(트루타입)|- 가장 **일반**적인 글꼴 형식<br>- **Apple**과 **Microsoft**에서 개발한 글꼴|
+  |**OTF**<br>(오픈타입)|- **확장** 가능한 컴퓨터 글꼴 형식<br>- TrueType을 기반으로 제작<br>- Microsoft의 등록 상표|
+  |**WOFF**<br>(웹오픈타입)|- **웹 페이지**에서 사용하기 위한 글꼴 형식<br>- 압축 및 추가 메타데이터가 있는 OpenType 또는 TrueType|
+  |**WOFF2**<br>(웹오픈타입)|-  더 나은 압축을 제공하는 TrueType/OpenType|
+  |**SVG**|- 사용하면 텍스트를 표시할 때 SVG를 글리프로 사용할 수 있음<br>- SVG 문서에 CSS를 적용할 수도 있고 SVG 문서의 텍스트에 **@font-face** 규칙을 적용|
+  |**EOT**<br>(임베디드오픈타입)|- 웹 페이지에 포함된 글꼴로 사용하기 위해 Microsoft에서 설계한 OpenType 글꼴의 압축된 형태|
+- 글꼴 형식에 대한 브라우저 지원
+<img src="https://armadillo-dev.github.io/assets/images/browser-support-webfont-type.png" alt="브라우저별폰트"><br>
