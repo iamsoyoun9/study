@@ -665,5 +665,6 @@
   |**WOFF2**<br>(웹오픈타입)|-  더 나은 압축을 제공하는 TrueType/OpenType|
   |**SVG**|- 사용하면 텍스트를 표시할 때 SVG를 글리프로 사용할 수 있음<br>- SVG 문서에 CSS를 적용할 수도 있고 SVG 문서의 텍스트에 **@font-face** 규칙을 적용|
   |**EOT**<br>(임베디드오픈타입)|- 웹 페이지에 포함된 글꼴로 사용하기 위해 Microsoft에서 설계한 OpenType 글꼴의 압축된 형태|
+  
 - 글꼴 형식에 대한 브라우저 지원
 <img src="https://armadillo-dev.github.io/assets/images/browser-support-webfont-type.png" alt="브라우저별폰트"><br>
