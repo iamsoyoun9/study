@@ -16,6 +16,7 @@
 　　　　　▫ [Qrrow function](#자바스크립트의-arrow-function은-무엇일까요)<br>
 </details>
 
+****
 ### **1. 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?**
 > #### **자바스크립트의 버전들을 가리키는 ES5, ES6, ES2016, ES2017 등은 무엇을 이야기할까요?**
 > - ES = Ecma Script
@@ -33,8 +34,8 @@
 > |2009.12|**ECMAScript 5 (ES5)**|
 > |2011.06|ECMAScript 5.1 (ES5.1)|
 > |2015.06|**ECMAScript 2015 (ES2015, ES6)**|
-> |2016.06|**ECMAScript 2016 (ES2016, ES7)**|
-> |2017.06|**ECMAScript 2017 (ES2017, ES8)**|
+> |2016.06|ECMAScript 2016 (ES2016, ES7)|
+> |2017.06|ECMAScript 2017 (ES2017, ES8)|
 > |2018.06|ECMAScript 2018 (ES2018, ES9)|
 > |2019.06|ECMAScript 2019 (ES2019, ES10)|
 > |2020.06|ECMAScript 2020 (ES2020, ES11)|
@@ -86,7 +87,7 @@ for (let key in obj){
   console.log('${key} : ${obj[key]}');
 }
 ```
-▸ 결과 : `name : 밤이`<br>`type : 말티푸`
+▸ 결과 : `name : 밤이 , type : 말티푸`
 
 ---
 
@@ -104,7 +105,7 @@ for (let item of arr){
 - **forEach()** : 배열 순회 전용 메서드
 ```js
 [10,20,30].forEach((value, index, array)=>{
-  console.log(`${index} : ${value}`)
+  console.log(${'index} : ${value}')
 })
 ```
 ▸ 결과 : `0 : 10, 1 : 20, 2 : 30`
