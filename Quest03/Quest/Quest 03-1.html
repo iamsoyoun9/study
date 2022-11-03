@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>별찍기 프로그램</title>
 </head>
+
 <body>
     <script>
         var num = Number(prompt("숫자를 입력하세요")); // prompt로 입력받으면 문자데이터 => Number로 형변화 : 정수형데이터
-        console.log("입력받은 숫자 >> ",num)
+        console.log("입력받은 숫자 >> ", num)
         // num = 3
         //   *   공백 2 / 출력 1 
         //  ***  공백 1 / 출력 3
         // ***** 공백 0 / 출력 5
         // 공백 = 입력받은 숫자 - 층수 / 출력 = 층수*2-1
-            for(var i = 1; i <= num ; i++){ // i = 층수
-                console.log(" ".repeat(num-i) + "*".repeat(i*2-1)) // repeat : 문자열 일정하게 반복
+
+        // ES5
+        var star = "";
+        for (var i = 1; i <= num; i++) { // 층
+            for (var b = 0; b < num - i; b++) { // 공백
+                star += " ";
             }
+            for (var s = 0; s < (i * 2 - 1); s++) { // 별
+                star += "*";
+            }
+            star += "\n"
+        }
+        console.log(star);
+
+        // ES6 => repeat : 문자열 일정하게 반복
+        // for (var i = 1; i <= num; i++) { // i = 층수
+        //     console.log(" ".repeat(num-i) + "*".repeat(i*2-1))
+            
+        // }
     </script>
 </body>
+
 </html>

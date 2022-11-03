@@ -1,109 +1,155 @@
 <!DOCTYPE html>
 <html>
-	<head>    
-		<meta charset="UTF-8">
-		<style>
-			.square {
-				width: 100px;
-				height: 100px;
-				border: 1px dashed black;
-				display: inline-block;
-				margin: 20px;
+
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.square {
+			width: 100px;
+			height: 100px;
+			border: 1px dashed black;
+			display: inline-block;
+			margin: 20px;
+		}
+
+		.enabled {
+			background-color: limegreen;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="row1">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+	</section>
+
+	<section class="row2">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+	</section>
+
+	<script>
+		//////* ES5 *//////
+		// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
+		var row = document.getElementsByClassName('square');
+		var r1 = [];
+
+		// r1 안에 데이터 넣기
+		for (var i = 0; i < 4; i++) {
+			r1.push(row[i])
+		}
+		console.log(r1); // 확인
+
+		// 클릭시 상자 배경 흰색 ↔ 노랑색
+		r1.forEach(function (el, index) {
+			el.onclick = function () {
+				if (r1[index].style.backgroundColor != 'yellow') {
+					r1[index].style.backgroundColor = 'yellow';
+				} else {
+					r1[index].style.backgroundColor = 'white';
+				}
 			}
+		});
 
-			.enabled {
-				background-color: limegreen;
-				border: 1px solid black;
+
+		// Quest 2 - 클릭 시 클래스 추가 or 제거
+		var r2 = [];
+
+		// r2 안에 데이터 넣기
+		for (var i = 4 ; i < row.length; i++){
+			r2.push(row[i])
+		}
+		console.log(r2); // 확인
+
+		// 클릭시 클래스 추가 or 제거 - 방법 1 (조건문)
+		r2.forEach(function(el, index){
+			el.onclick = function(){
+				if (r2[index].className == 'square') {
+					r2[index].classList.add('enabled');
+				} else if (r2[index].className == 'square enabled') {
+					r2[index].classList.remove('enabled')
+				}
 			}
+		})
 
-		</style>
-	</head>
-	<body>
-		<section class="row1">
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</section>
-
-		<section class="row2">
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</section>
-
-		<script>
-			// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
-			// 풀이방법 1. 클릭할 때, 클릭한 박스의 배경 색이 노란색 ↔ 흰색
-			let row1Squares = document.querySelectorAll('.row1 .square'); // CSS선택자를 사용하여 요소들을 변수에 담아주기 위해 querySelectorAll
-			for(let node of row1Squares) { // 클릭할 때마다 바뀌는 것이기 때문에 반복문 사용(for of 반복문은 ES6에 추가된 반복 구문)
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-                node.addEventListener('click',function(){ // 'Click'이벤트를 할 때, 함수 실행
-					if(node.style.backgroundColor != 'yellow'){
-                        node.style.backgroundColor = 'yellow';
-                    }else{
-                        node.style.backgroundColor = 'white';
-                    }
-                })
-			}
-
-			// 풀이방법 2. 클릭할 때, 박스들의 색이 노란 ↔ 흰색 일괄 바뀌기
-			// let row1Squares = document.querySelectorAll('.row1 .square');
-			// for(let node of row1Squares) { 
-            //     node.addEventListener('click',function(){
-			// 		if(node.style.backgroundColor != 'yellow'){
-			// 			for(let i = 0; i < row1Squares.length; i++){
-			// 				row1Squares[i].style.backgroundColor = 'yellow';
-			// 			}
-            //         }else{
-			// 			for(let i = 0; i < row1Squares.length; i++){
-			// 				row1Squares[i].style.backgroundColor = 'white';
-			// 			}
-            //         }
-            //     })
-			// }
-			
-			// 풀이방법 3. 클릭할 때, 배경 색이 노란색 ↔ 흰색
-			// let row1Squares = document.querySelectorAll('.row1 .square');
-			// for(let node of row1Squares) {
-			// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
-			// 	let body = document.querySelector('body');
-            //     node.addEventListener('click',function(){
-            //         if(body.style.backgroundColor != 'yellow'){
-			// 			for(let i = 0; i < row1Squares.length; i++){
-			// 				row1Squares[i].style.backgroundColor = 'white';
-			// 			}
-            //             body.style.backgroundColor = 'yellow';
-            //         }else{
-            //             body.style.backgroundColor = 'white';
-            //         }
-            //     })
-			// }
+		// 클릭시 클래스 추가 or 제거 - 방법 2 (토글메서드)
+		// r2.forEach(function(el, index){
+		// 	el.onclick = function(){
+		// 		r2[index].classList.toggle('enabled');
+		// 	}
+		// })
 
 
 
 
-			// 풀이방법 1. 조건문
-			let row2Squares = document.querySelectorAll('.row2 .square');
-			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-                node.addEventListener('click',function(){
-                    if(node.className == 'square'){
-                        node.classList.add('enabled');
-                    }else if(node.className == 'square enabled'){
-                        node.classList.remove('enabled')
-                    }
-                })
-			}
 
-			// 풀이방법 2. 토글메서드
-			// let row2Squares = document.querySelectorAll('.row2 .square');
-			// for(let node of row2Squares) {
-			// 	node.addEventListener('click',function(){ // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
-			// 		node.classList.toggle('enabled');
-			// 	})
-			// }
-		</script>
-	</body>
+		//////* ES6 *//////
+		// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
+		// let row1Squares = document.querySelectorAll('.row1 .square'); // CSS선택자를 사용하여 요소들을 변수에 담아주기 위해 querySelectorAll
+		// for(let node of row1Squares) {
+		//     node.addEventListener('click',function(){ // 'Click'이벤트를 할 때, 함수 실행
+		// 		if(node.style.backgroundColor != 'yellow'){
+		//             node.style.backgroundColor = 'yellow';
+		//         }else{
+		//             node.style.backgroundColor = 'white';
+		//         }
+		//     })
+		// }
+
+
+		// 2. 클릭할 때, 박스들의 색이 노란 ↔ 흰색 일괄 바뀌기
+		// let row1Squares = document.querySelectorAll('.row1 .square');
+		// for(let node of row1Squares) {
+		//     node.addEventListener('click',function(){
+		// 		if(node.style.backgroundColor != 'yellow'){
+		// 			for(let i = 0; i < row1Squares.length; i++){
+		// 				row1Squares[i].style.backgroundColor = 'yellow';
+		// 			}
+		//         }else{
+		// 			for(let i = 0; i < row1Squares.length; i++){
+		// 				row1Squares[i].style.backgroundColor = 'white';
+		// 			}
+		//         }
+		//     })
+		// }
+		
+		// Quest 2 - 클릭 시 클래스 추가 or 제거
+		// - 조건문
+		// let row2Squares = document.querySelectorAll('.row2 .square');
+		// for (let node of row2Squares) {
+		// 	/* TODO: node 변수를 어떻게 조작해야 할까요? */
+		// 	node.addEventListener('click', function () {
+		// 		if (node.className == 'square') {
+		// 			node
+		// 				.classList
+		// 				.add('enabled');
+		// 		} else if (node.className == 'square enabled') {
+		// 			node
+		// 				.classList
+		// 				.remove('enabled')
+		// 		}
+		// 	})
+		// }
+
+		// - 토글메서드
+		// let row2Squares = document.querySelectorAll('.row2 .square');
+		// for (let node of row2Squares) {
+		// 	node.addEventListener(
+		// 		'click',
+		// 		function () { // 클릭한 요소에 class가 존재하면 제거, 존재하지 않으면 추가
+		// 			node
+		// 				.classList
+		// 				.toggle('enabled');
+		// 		}
+		// 	)
+		// }
+	</script>
+</body>
+
 </html>
