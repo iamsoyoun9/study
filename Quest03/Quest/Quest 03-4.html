@@ -38,61 +38,82 @@
     </div>
 
     <script>
-        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-        var set = document.querySelector('.setDigitSubmit');
-        var check = document.querySelector('.guessSubmit');
-        var result = document.querySelector('.resultArea > span');
+        //* 버튼 *//
+        var set = document.getElementsByClassName('setDigitSubmit')[0]; // 게임시작
+        var guess = document.getElementsByClassName('guessSubmit')[0]; // 정답확인
 
-        var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        var choose = [];
-        var count = 0;
-        var strike = 0;
-        var ball = 0;
-        /* 게임시작 버튼 클릭 */
-        check.disabled = true;
-        set.addEventListener('click', function () {
-            /* 랜덤 숫자 뽑기 */
-            count = 0;
-            for (var i = 0; i < 3; i++) {
-                var rd = Math.floor(Math.random() * list.length);
-                choose[i] = list.splice(rd, 1)[0];
+        //* 입력 *//
+        var input_arr; // 값 입력
+
+        //* 출력*// 
+        var result = document.getElementsByClassName('resultArea')[0]; // 정답여부
+
+        //* 변수 *//
+        var list; // 전체 숫자 범위 (1~9)
+        var choose = []; // 랜덤 숫자 3개
+        var count; // 횟수
+        var strike; // 숫자 위치 일치
+        var ball; // 숫자 일치
+
+
+        guess.disabled = true; // 정답 확인 비활성화
+        set.addEventListener('click', function () { // 게임시작 클릭
+            count = 0; // 초기화
+            list = []; // 초기화
+            for(var i = 1; i<10;i++){ // 숫자 범위 (1~9)
+                list.push(i);
             }
-            console.log('choose >> ', choose);
-            check.disabled = false;
-            result.innerHTML = "";
-            check.addEventListener('click', function () {
-                var input = document.querySelector('.guessField').value;
-                var input_arr = input.split('');
-                console.log(input_arr)
-                strike = 0;
-                ball = 0;
+            for (var i = 0; i < 3; i++) { // 숫자 3개 랜덤추출
+                var rd = Math.floor(Math.random() * list.length); // 0 ~ 8 중 숫자 하나 뽑기
+                console.log("list : " + list) // list 보유 숫자 확인
+                console.log((i+1)+"번째 숫자 index >> "+rd)
+                choose[i] = list.splice(rd, 1)[0]; // list[rd] 값을 choose에 넣고 list에서는 제거 = splice() // array이기 때문에 [0]로 숫자만 확인가능
+                console.log("choose : " + choose[i] ) // 추출된 숫자 확인
+            }
+            console.log('choose >> ', choose); // 추출된 전체 숫자 확인
+            guess.disabled = false; // 정답 확인 활성화
+            guess.addEventListener('click', function () { // 정답확인 클릭
+                strike = 0; // 초기화
+                ball = 0; // 초기화
                 count++;
-                for (var r = 0; r < 3; r++) {
-                    for (var a = 0; a < 3; a++) {
-                        if (choose[r] == input_arr[a]) {
-                            if (r === a) {
+                if(input_arr == undefined){ // 정답확인 버튼 클릭시 input 값이 있으면 출력문 없애는 html
+                    result.innerHTML = ""
+                }
+                var input = document.getElementsByClassName('guessField')[0].value; // 정답입력
+                input_arr = input.split(''); // 문자열 분할
+                console.log(input_arr) // 분할 확인
+                for (var r = 0; r < 3; r++) { // 랜덤 숫자 3개의 인덱스값
+                    for (var a = 0; a < 3; a++) { // 입력한 숫자 3개의 인덱스값
+                        if (choose[r] == input_arr[a]) { // 숫자 일치
+                            if (r === a) { // 위치 일치 O
                                 strike++;
-                            } else {
+                            } else { // 위치 일치 X
                                 ball++;
                             }
                         }
                     }
                 }
-                console.log("strike >> ", strike)
-                console.log("ball >> ", ball)
-                if(count<10){
+                console.log("strike >> ", strike) // 확인
+                console.log("ball >> ", ball) // 확인
+                
+                if(count < 10){
                     if (strike == 3) {
+                        if(count == 1){
+                            result.innerHTML += ("<h3>⭐ 홈런 ⭐</h3>");
+                            guess.disabled = true; // 정답 확인 비활성화
+                        }
                         result.innerHTML += ("<h3>⭕ " + count + "번 만에 맞추셨습니다 ⭕</h3>");
+                        guess.disabled = true; // 정답 확인 비활성화
                     } else {
                         result.innerHTML += ("<h3>" + count + "회 : " + strike + "S " + ball + "B ➡ "+input_arr +"</h3>");
                     }
-                } else{
+                }else{
                     result.innerHTML += ("<h2>❌ 실패 ❌</h2>");
-                    check.disabled = true;
+                    guess.disabled = true; // 정답 확인 비활성화
                 }
             })
         })
-    </script>
+        </script>
 </body>
 
 </html>
