@@ -1,94 +1,115 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <title>구구단 게임</title>
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <style>
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
+  <title>구구단 게임</title>
 
-    </style>
-  </head>
+  <style>
+    body {
+      width: 50%;
+      max-width: 800px;
+      min-width: 480px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
 
-  <body>
-    <h1>구구단 게임</h1>
+<body>
+  <h1>구구단 게임</h1>
 
-    <li style="margin-bottom:5px;">랜덤값으로 지정할 수 있는 최대 자릿수는 3입니다.</li>
-    <li style="margin-bottom:5px;">자릿수를 등록하면 해당 자릿수 크기의 숫자 2개가 랜덤으로 표시 됩니다.</li>
-    <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li>
-    <div class="setDigitForm">
-      <label for="setDigitNum">자릿수를 설정해주세요: </label>
-      <input type="text" id="setDigitNum" class="setDigitNum">
-      <input type="submit" value="등록" class="setDigitSubmit">
-    </div>
-	
-    <div class="form" style="margin-top:40px;">
-      <span id="randA">랜덤값A</span> X <span id="randB">랜덤값B</span> =  <input type="text" id="guessField" class="guessField">
-      <input type="submit" value="정답확인" class="guessSubmit">
-    </div>
+  <li style="margin-bottom:5px;">랜덤값으로 지정할 수 있는 최대 자릿수는 3입니다.</li>
+  <li style="margin-bottom:5px;">자릿수를 등록하면 해당 자릿수 크기의 숫자 2개가 랜덤으로 표시 됩니다.</li>
+  <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li>
+  <div class="setDigitForm">
+    <label for="setDigitNum">자릿수를 설정해주세요: </label>
+    <input type="text" id="setDigitNum" class="setDigitNum">
+    <input type="submit" value="등록" class="setDigitSubmit">
+  </div>
 
-    <div class="resultArea" style="margin-top:40px;">
-      <span>정답여부는 여기에!!</span>
-    </div>
+  <div class="form" style="margin-top:40px;">
+    <span id="randA">랜덤값A</span> X <span id="randB">랜덤값B</span> = <input type="text" id="guessField" class="guessField">
+    <input type="submit" value="정답확인" class="guessSubmit">
+  </div>
 
-    <script>
-        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-        var n1 = 0 ;
-        var n2 = 0 ;
-        var set = document.querySelector('.setDigitSubmit');
-        var form = document.querySelector('.setDigitForm');
-        var get = document.querySelector('.guessSubmit');
-        var result = document.querySelector('.resultArea > span');
-        var randA = document.querySelector('#randA')
-        var randB = document.querySelector('#randB')
+  <div class="resultArea" style="margin-top:40px;">
+    <span>정답여부는 여기에!!</span>
+  </div>
 
-        
-        get.disabled = true;
-        
-        set.addEventListener('click',function(){
-          result.innerHTML = ("<span>정답여부는 여기에!!</span>");
-          get.disabled = false;
-          var num = Number(document.querySelector('#setDigitNum').value);
-          console.log("입력한 자릿수 >> ",num)
-          function rd(min, max) {
-            // Math.random() * 100 => 0~99 / Math.random() * 최댓값;
-            // 최솟값 ~ 최댓값 : Math.random() * (최댓값 - 최솟값 +1 ) + 최솟값;
-            // 50 ~ 100 : Math.random() * (100-50+1)+50;
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-          }
-          if (num == 1) {
-              n1 = rd(1, 9);
-              n2 = rd(1, 9);
-            } else if (num == 2) {
-              n1 = rd(10, 99);
-              n2 = rd(10, 99);
-            }else if (num == 3) {
-              n1 = rd(100, 999);
-              n2 = rd(100, 999);
-            }
-            console.log("랜덤숫자 1 >> ",n1)
-            console.log("랜덤숫자 2 >> ",n2)
-            randA.innerHTML = ("<b>"+n1+"</b>");
-            randB.innerHTML = ("<b>"+n2+"</b>");
-          })
-          get.addEventListener('click',function(){
-          var quest = Number(document.querySelector('#guessField').value);
-          var mul = n1 * n2;
-          console.log("입력 받은 정답 >> ", quest)
-          if(quest == mul){
-              result.innerHTML = ("<h3>⭕ 정답입니다 ⭕</h3>");
-              get.disabled = true;
-          }else if (quest != mul){
-              result.innerHTML = ("<h3>❌ 틀렸습니다 ❌</h3>");
+  <script>
+    ////* 변수 *////
+    var n1; // 랜덤숫자 1
+    var n2; // 랜덤숫자 2
+    var res; // 정답
+
+    //* input *//
+    var num; // 입력한 자릿수(1~3);
+    var mul; // 입력한 정답값
+
+    //* 버튼 *//
+    var set = document.getElementsByClassName('setDigitSubmit')[0]; // 자릿수등록
+    var guess = document.getElementsByClassName('guessSubmit')[0]; // 정답확인
+
+    //* 출력 *//
+    var randA = document.getElementById('randA');
+    var randB = document.getElementById('randB');
+    var result = document.getElementsByClassName('resultArea')[0];
+
+
+    guess.disabled = true; // 정답확인 비활성화
+    // 1. 숫자 입력
+    // 2. 버튼 클릭
+    // 3. 입력된 숫자 조건
+    // 3-1. 1~3일때 버튼활성화(랜덤값 추출)
+    // 3-1. 1~3아닐때 버튼 비활성화 & alert
+
+    // Math.random() * 10 => 0~9;
+    // Math.random() * 10 + 1 => 1~10 / Math.random() * 최댓값+1;
+    // Math.random() * (10-5+1) => 5~10 / Math.random() * 최댓값+1;
+    // 최솟값 ~ 최댓값 : Math.random() * (최댓값 - 최솟값 +1 ) + 최솟값;
+    // 50 ~ 100 : Math.random() * (100-50+1)+50;
+
+
+    set.addEventListener('click', function () { // 자릿수 등록
+      num = Number(document.getElementById("setDigitNum").value); // 자릿수
+      console.log("입력한 자릿수 >> ", num) // 입력한 자릿수 확인
+      if (num == 0 || num > 3) {
+        alert("== 1부터 3까지 ==\n숫자를 입력해주세요")
+        guess.disabled = true; // 정답확인 비활성화
+      } else {
+        guess.disabled = false; // (1~3) 정답확인 활성화
+        function rd(min, max) { // 랜덤값
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        if (num == 1) {
+          n1 = rd(1, 9);
+          n2 = rd(1, 9);
+        } else if (num == 2) {
+          n1 = rd(10, 99);
+          n2 = rd(10, 99);
+        } else if (num == 3) {
+          n1 = rd(100, 999);
+          n2 = rd(100, 999);
+        }
+        console.log("랜덤숫자 1 >> ", n1) // n1 확인
+        console.log("랜덤숫자 2 >> ", n2) // n2 확인
+        randA.innerHTML = ("<strong>" + n1 + "</strong>");
+        randB.innerHTML = ("<strong>" + n2 + "</strong>");
+        guess.addEventListener('click', function () { // 입력한 값과 정답 비교
+          mul = Number(document.getElementById('guessField').value); // 입력한 값
+          res = n1 * n2; // 문제정답
+          console.log("입력 받은 정답 >> ", mul)
+          if (res == mul) { // 정답일 때
+            result.innerHTML = ("<h3>⭕ 정답입니다 ⭕</h3>");
+            guess.disabled = true;
+          } else if (res != mul) { // 오답일 때
+            result.innerHTML = ("<h3>❌ 틀렸습니다 ❌</h3>");
           }
         })
-    </script>
-  </body>
+      }
+    })
+  </script>
+</body>
 </html>
