@@ -43,55 +43,63 @@
         var user_icon;
 
         /* pc */
-        var start = document.querySelector('.setPrsSubmit');
-        var rock = document.querySelector('#btnRock');
-        var scissors = document.querySelector('#btnScissors');
-        var paper = document.querySelector('#btnPaper');
-        var result = document.querySelector('.resultArea > span');
-        var form = document.querySelector('.form');
-
-        start.addEventListener('click',function(){
-            var list = ['바위','가위','보'];
+        var start = document.getElementsByClassName('setPrsSubmit')[0];
+        var rock = document.getElementById('btnRock');
+        var scissors = document.getElementById('btnScissors');
+        var paper = document.getElementById('btnPaper');
+        var result = document.getElementsByClassName('resultArea')[0];
+        var form = document.getElementsByClassName('form')[0];
+        
+        // 게임시작 전 버튼 비활성화
+        scissors.disabled = true;
+        rock.disabled = true;
+        paper.disabled = true;
+        start.addEventListener('click',function(){ // 게임시작 클릭
+          // 버튼 활성화
+          scissors.disabled = false;
+          rock.disabled = false;
+          paper.disabled = false;
+          
+          var list = [rock.value,scissors.value,paper.value];
             pc = list[Math.floor(Math.random() * list.length)];
             switch (pc){
-              case "바위":
+              case rock.value:
                 pc_icon = "✊";
                 break;
-              case "가위":
+              case scissors.value:
                 pc_icon = "✌";
                 break;
-              case "보" :
+              case paper.value :
                 pc_icon = "✋";
                 break;
             }
-            console.log(pc)
+            console.log("pc >> ",pc)
         })
 
         /* user */
-        /* 1 단순한 방법 */
         rock.addEventListener('click',function(){
-          user = "바위"
+          user = rock.value;
           user_icon = "✊";
         });
         scissors.addEventListener('click',function(){
-          user = '가위';
+          user = scissors.value;
           user_icon = "✌";
         });
         paper.addEventListener('click',function(){
-          user = '보';
+          user = paper.value;
           user_icon = "✋";
         });
 
         /* game */
-
         form.addEventListener('click',function(){
+          result.innerHTML = ("<h3> PC >> "+ pc_icon + "</h3><h3>USER >> "+ user_icon + "</h3>");
             if( user == pc){
-              result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>비겼습니다</h3>")
+              result.innerHTML += ("<h2>비겼습니다</h2>")
             }else{
               if(user == "보" && pc == "바위" || user == "바위" && pc =="가위"|| user == "가위" && pc == "보"){
-                    result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>이겼습니다</h3>")
+                    result.innerHTML += ("<h2>이겼습니다</h2>")
                   }else{
-                      result.innerHTML = ("<h1> PC >> "+ pc_icon + "</h1><h1>USER >> "+ user_icon + "</h1><h3>졌습니다</h3>")
+                      result.innerHTML += ("<h2>졌습니다</h2>")
                     }
                 }
             console.log('user >> ', user)

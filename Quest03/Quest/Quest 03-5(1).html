@@ -39,64 +39,54 @@
         /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
         var pc;
         var user;
-        var pc_ko;
-        var user_ko;
 
         /* pc */
-        /* 주먹 : 1 / 가위 : 2 / 보 : 3*/
-        var start = document.querySelector('.setPrsSubmit');
-        var rock = document.querySelector('#btnRock');
-        var scissors = document.querySelector('#btnScissors');
-        var paper = document.querySelector('#btnPaper');
-        var result = document.querySelector('.resultArea > span');
-        var form = document.querySelector('.form');
+        var start = document.getElementsByClassName('setPrsSubmit')[0];
+        var rock = document.getElementById('btnRock');
+        var scissors = document.getElementById('btnScissors');
+        var paper = document.getElementById('btnPaper');
+        var result = document.getElementsByClassName('resultArea')[0];
+        var form = document.getElementsByClassName('form')[0];
+        
+        // 게임시작 전 버튼 비활성화
+        scissors.disabled = true;
+        rock.disabled = true;
+        paper.disabled = true;
 
-        start.addEventListener('click',function(){
-          pc = Math.floor((Math.random() * (4 - 1) + 1));
-          switch (pc) {
-              case 1:
-                  pc_ko = '바위';
-                  break;
-              case 2:
-                  pc_ko = '가위';
-                  break;
-              case 3:
-                  pc_ko = '보';
-                  break;
-          }
-          console.log('pc >> ',pc_ko)
+        start.addEventListener('click',function(){ // 게임시작 클릭
+          // 버튼 활성화
+          scissors.disabled = false;
+          rock.disabled = false;
+          paper.disabled = false;
+          
+          var list = [rock.value,scissors.value,paper.value];
+          pc = list[Math.floor(Math.random() * list.length)];
+          console.log("pc >> ",pc)
         })
 
         /* user */
-        /* 1 단순한 방법 */
         rock.addEventListener('click',function(){
-          user = 1
-          user_ko = '바위';
+          user = rock.value;
         });
         scissors.addEventListener('click',function(){
-          user = 2
-          user_ko = '가위';
+          user = scissors.value;
         });
         paper.addEventListener('click',function(){
-          user = 3
-          user_ko = '보';
+          user = paper.value;
         });
 
         /* game */
-
         form.addEventListener('click',function(){
             if( user == pc){
-              result.innerHTML = ("<h3>비겼습니다</h3>");
+              result.innerHTML = ("<h2>비겼습니다</h2>")
             }else{
-                if(user >= 1 && pc <= 3 ){
-                    if((user == 1 && pc == 2) || user == 2 && pc == 3 || user == 3 && pc == 1){
-                      result.innerHTML = ("<h3>이겼습니다</h3>");
-                    }else{
-                      result.innerHTML = ("<h3>졌습니다</h3>");
+              if(user == "보" && pc == "바위" || user == "바위" && pc =="가위"|| user == "가위" && pc == "보"){
+                    result.innerHTML = ("<h2>이겼습니다</h2>")
+                  }else{
+                      result.innerHTML = ("<h2>졌습니다</h2>")
                     }
                 }
-            }
-            console.log('user >> ', user_ko)
+            console.log('user >> ', user)
         })
 
     </script>
