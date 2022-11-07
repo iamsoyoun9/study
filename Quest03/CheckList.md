@@ -25,18 +25,18 @@
 > 
 > ---
 > 
-> |공개일|버전명|
-> |:-:|:-:|
+> |공개일|버전명|특징|
+> |:-:|:-:|:--|
 > |1997.06|ECMAScript 1 (ES1)|
 > |1998.06|ECMAScript 2 (ES2)|
-> |1999.12|ECMAScript 3 (ES3)|
-> |0000.00|ECMAScript 4 (ES4)<br>▸ 버려짐|
-> |2009.12|**ECMAScript 5 (ES5)**|
+> |1999.12|ECMAScript 3 (ES3)|- 우리가 흔히 말하는 자바스크립트
+> |0000.00|ECMAScript 4 (ES4)|- 버려짐
+> |2009.12|**ECMAScript 5 (ES5)**|- 배열에 forEach, map, filter, reduce, some, every 메소드 지원<br>- Object에 대한 getter / setter 지원<br>- 자바스크립트 strict 모드 지원<br>- JSON 지원 
 > |2011.06|ECMAScript 5.1 (ES5.1)|
-> |2015.06|**ECMAScript 2015 (ES2015, ES6)**|
-> |2016.06|ECMAScript 2016 (ES2016, ES7)|
-> |2017.06|ECMAScript 2017 (ES2017, ES8)|
-> |2018.06|ECMAScript 2018 (ES2018, ES9)|
+> |2015.06|**ECMAScript 2015 (ES2015, ES6)**|- Default Parameters<br>- Template Literals (문자열을 합칠 때, + 사용하지 않아도 됨)<br>- Multi-line Strings<br>- Destructuring Assignment<br>- Enhanced Object Literals<br>- Arrow Functions<br>- Promises<br>- Block-Scoped Constructs (Let,Const)<br>- Classes<br>- Modules(import / export)
+> |2016.06|ECMAScript 2016 (ES2016, ES7)|- Array.protorype.includes()<br>- Exponentiation oprator|
+> |2017.06|ECMAScript 2017 (ES2017, ES8)|- String padding<br>- Object.values and Object.entries<br>- Object.getOwnPropertyDescriptors<br>- Trailing commas in function parameter lists and calls<br>- Async functions
+> |2018.06|ECMAScript 2018 (ES2018, ES9)|- Object Rest/Spread<br>- Promise finally<br>- Async iteration<br>- 정규표현식
 > |2019.06|ECMAScript 2019 (ES2019, ES10)|
 > |2020.06|ECMAScript 2020 (ES2020, ES11)|
 > |2021.06|ECMAScript 2021 (ES2021, ES12)|
@@ -180,7 +180,7 @@ do{
     ```js
     let filter_result = [1,2,3,4].filter((value, index, array)=>{
       console.log(value);
-      return value% == 0;
+      return value%2 == 0;
     })
     console.log(filter_result);
     ```
@@ -191,7 +191,7 @@ do{
     let reduce_result = [1,2,3,4].reduce((pv, cv, idx, arr)=>{
       return pv + cv;
     }, 100)
-    console.log(reduce_result); // 100 + 1 + 2+ 3 + 4
+    console.log(reduce_result); // 100 + 1 + 2 + 3 + 4
     ```
     ▸ 결과 : `110` 
 ---
@@ -201,7 +201,6 @@ do{
 - **객체**인 경우 : **Object.keys(객체)**
 
 ---
-
 
 
 ### **3. 자바스크립트를 통해 DOM 객체에 CSS Class를 주거나 없애려면 어떻게 해야 하나요?**
