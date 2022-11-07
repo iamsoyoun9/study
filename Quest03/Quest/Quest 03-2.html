@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<title>상자 색 바꾸기</title>
 	<style>
 		.square {
 			width: 100px;
@@ -37,18 +38,27 @@
 	<script>
 		//////* ES5 *//////
 		// Quest 1 - 클릭 시 배경색이 노란색 ↔ 흰색 토글
-		var row = document.getElementsByClassName('square');
-		var r1 = [];
+		// 1. 필요한 객체 정리(1)
+		// 2. 상자를 클릭 시 해당 상자(4)
+		// 3. 조건에 따른 배경색 변경(5)
+		// 4. 배열 순회 -> 반복문(3)
+		// 5. 배열확인(2)
+
+		// 객체
+		var row1 = document.getElementsByClassName('row1')[0]; // 4개
+		var r1_square = row1.getElementsByClassName('square'); // ES6 :  document.querySelectorAll('.row1 .square');
+		console.log(r1_square) // HTMLCollection : 리턴결과가 복수인 경우 사용하게 되는 객체, 유사배열이지만 배열은 X
+		var r1 = []; // array = 
 
 		// r1 안에 데이터 넣기
-		for (var i = 0; i < 4; i++) {
-			r1.push(row[i])
+		for (var i = 0; i < r1_square.length; i++) {
+			r1.push(r1_square[i])
 		}
-		console.log(r1); // 확인
+		console.log(r1); // 확인 -> array
 
 		// 클릭시 상자 배경 흰색 ↔ 노랑색
-		r1.forEach(function (el, index) {
-			el.onclick = function () {
+		r1.forEach(function (c, index) {
+			c.onclick = function () {
 				if (r1[index].style.backgroundColor != 'yellow') {
 					r1[index].style.backgroundColor = 'yellow';
 				} else {
@@ -59,17 +69,15 @@
 
 
 		// Quest 2 - 클릭 시 클래스 추가 or 제거
-		var r2 = [];
+		var row2 = document.getElementsByClassName('row2')[0]; // 4개
+		var r2_square = row2.getElementsByClassName('square'); // ES6 : document.querySelectorAll('.row2 .square');
+		var r2 = Array.prototype.slice.call(r2_square); // HTMLCollection을 array로 변환
 
-		// r2 안에 데이터 넣기
-		for (var i = 4 ; i < row.length; i++){
-			r2.push(row[i])
-		}
 		console.log(r2); // 확인
 
 		// 클릭시 클래스 추가 or 제거 - 방법 1 (조건문)
-		r2.forEach(function(el, index){
-			el.onclick = function(){
+		r2.forEach(function(c, index){
+			c.onclick = function(){
 				if (r2[index].className == 'square') {
 					r2[index].classList.add('enabled');
 				} else if (r2[index].className == 'square enabled') {
@@ -79,8 +87,8 @@
 		})
 
 		// 클릭시 클래스 추가 or 제거 - 방법 2 (토글메서드)
-		// r2.forEach(function(el, index){
-		// 	el.onclick = function(){
+		// r2.forEach(function(c, index){
+		// 	c.onclick = function(){
 		// 		r2[index].classList.toggle('enabled');
 		// 	}
 		// })

@@ -1,9 +1,8 @@
 // 객체
-var full_img = document.getElementsByClassName('full-img')[0]
 var displayed_img = document.getElementsByClassName('displayed-img')[0]; // 큰이미지
-var thumb_bar = document.getElementsByClassName('thumb-bar')[0]; // 작은 이미지를 감싸는 div
-var btn = document.getElementsByClassName('dark')[0];
 var overlay = document.getElementsByClassName('overlay')[0];
+var btn = document.getElementsByClassName('dark')[0];
+var thumb_bar = document.getElementsByClassName('thumb-bar')[0]; // 작은 이미지를 감싸는 div
 
 /* Declaring the array of image filenames 이미지 파일 이름 배열 선언 */
 var img_arr = [];
@@ -12,13 +11,14 @@ var img_arr = [];
 // 배열에 이미지 담기
 for(var i = 0; i < 5; i++){
     img_arr[i] = new Image();
-    img_arr[i].src = 'images/pic'+(i+1)+'.jpg';
-    img_arr[i].alt = 'pic'+(i+1);
-    thumb_bar.appendChild(img_arr[i]) /* Declaring the alternative text for each image file 각 이미지 파일의 대체 텍스트 선언 */
+    img_arr[i].src = 'images/pic'+(i+1)+'.jpg'; // images/pic1.jpg
+    img_arr[i].alt = 'pic'+(i+1); /* Declaring the alternative text for each image file 각 이미지 파일의 대체 텍스트 선언 */
+    thumb_bar.appendChild(img_arr[i]) // 부모의 자식 중 마지막 자식으로 붙임
+    console.log("이미지 추가 확인 >> "+img_arr[i].alt)
 }
 
-// 이미지 클릭시 display_img src 교체
-img_arr.forEach(function(pick,index){
+// 이미지 클릭시 display_img src 교체  => 배열순회 작업 -> 반복문
+img_arr.forEach(function(pick,index){ // 처리할 현재 요소 = 명명된 매개변수(pick)
     pick.onclick = function(){
         displayed_img.src = pick.src;
     }
