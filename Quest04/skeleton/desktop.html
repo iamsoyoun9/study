@@ -1,18 +1,156 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./desktop.css">
-		<script src="./desktop.js"></script>
-	</head>
-	<body>
-		<section class="desktop">
-		</section>
 
-		<script>
-			let myDesktop = new Desktop(
-				/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-			);
-		</script>
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./desktop.css">
+	<script src="./desktop.js"></script>
+</head>
+
+<body>
+	<section class="desktop">
+	</section>
+
+	<script>
+		// 변수
+		var body = document.getElementsByTagName('body')[0];
+		var desktop = document.querySelector('.desktop');
+
+		desktop.draggable = true;
+
+		var c_btn = document.createElement('button');
+		var space = document.createElement('div');
+
+		var modal = document.createElement('div')
+		var modal_body = document.createElement('div');
+		var close_btn = document.createElement('button');
+
+		var folder = [];
+
+
+		// 웹 화면
+		var t = document.createElement('div')
+		t.className = 'top';
+		desktop.appendChild(t)
+
+		c_btn.className = 'create_btn';
+		c_btn.textContent = '폴더 생성';
+		t.appendChild(c_btn);
+
+		space.className = 'space';
+		desktop.appendChild(space);
+
+		
+
+
+
+		let myDesktop = new Desktop(
+			/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
+		);
+
+		// 폴더 아이콘
+		var f_name = 0;
+		console.log(f_name);
+		c_btn.addEventListener('click', (f_name) => { // 폴더 생성 버튼 클릭시 폴더 생성
+			
+			console.log(f_name); // 배열에 들어왔는지 확인
+			
+			// 폴더 생성
+			folder[f_name] = new Image();
+			folder[f_name].src = './icon/folder.png';
+			folder[f_name].alt = 'pic'+([f_name+1]);
+			space.append(folder[f_name])
+			folder[f_name].className = 'folder'
+			console.log(folder.length)
+		})
+		
+
+
+
+
+
+
+
+
+
+		desktop.addEventListener('dragstart', (e) => {
+			console.log('드래그 시작')
+		})
+
+
+
+
+
+
+
+		// 모달
+		modal.className = 'modal';
+		modal_body.className = 'modal_body';
+		close_btn.className = 'close_btn';
+		close_btn.textContent = "X"
+
+
+		body.appendChild(modal);
+		modal.appendChild(modal_body);
+		modal_body.appendChild(close_btn);
+
+
+
+
+
+		space.addEventListener('dblclick', () => { // 더블클릭
+			console.log('더블클릭')
+			modal.classList.toggle('show');
+
+			if (modal.classList.contains('show')) {
+				body.style.overflow = 'hidden';
+			}
+		});
+
+		close_btn.addEventListener('click', () =>{ // 닫기 버튼 누르면 화면 사라짐
+			modal.classList.toggle('show');
+		})
+
+		// modal.addEventListener('click', (event) => {
+		// 	if (event.target === modal) {
+		// 		modal.classList.toggle('show');
+
+		// 		if (!modal.classList.contains('show')) {
+		// 			body.style.overflow = 'auto';
+		// 		}
+		// 	}
+		// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		desktop.addEventListener('mousedown', () => {
+			console.log('마우스 클릭 O');
+		});
+
+		desktop.addEventListener('mouseup', () => {
+			console.log('마우스 클릭 X');
+		});
+
+
+
+
+
+
+
+	</script>
+</body>
+
 </html>
