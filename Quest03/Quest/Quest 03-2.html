@@ -48,7 +48,7 @@
 		var row1 = document.getElementsByClassName('row1')[0]; // 4개
 		var r1_square = row1.getElementsByClassName('square'); // ES6 :  document.querySelectorAll('.row1 .square');
 		console.log(r1_square) // HTMLCollection : 리턴결과가 복수인 경우 사용하게 되는 객체, 유사배열이지만 배열은 X
-		var r1 = []; // array = 
+		var r1 = []; // 
 
 		// r1 안에 데이터 넣기
 		for (var i = 0; i < r1_square.length; i++) {
@@ -67,6 +67,15 @@
 			}
 		});
 
+		// for(var i = 0; i < r1.length ; i++){
+		// 	r1[i].addEventListener('click',function(){
+		// 		if(this.style.backgroundColor != 'yellow'){
+		// 			this.style.backgroundColor = 'yellow';
+		// 		} else {
+		// 			this.style.backgroundColor = 'white';
+		// 		}
+		// 	})
+		// }
 
 		// Quest 2 - 클릭 시 클래스 추가 or 제거
 		var row2 = document.getElementsByClassName('row2')[0]; // 4개
