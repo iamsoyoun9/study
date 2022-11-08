@@ -20,6 +20,7 @@
 
 		var c_btn = document.createElement('button');
 		var space = document.createElement('div');
+		var icon = space.getElementsByTagName('img');
 
 		var modal = document.createElement('div')
 		var modal_body = document.createElement('div');
@@ -40,6 +41,20 @@
 		space.className = 'space';
 		desktop.appendChild(space);
 
+
+		// 모달
+		modal.className = 'modal';
+		modal_body.className = 'modal_body';
+		modal_body.textContent ='hello :D'
+		close_btn.className = 'close_btn';
+		close_btn.textContent = "X"
+
+		body.appendChild(modal);
+		modal.appendChild(modal_body);
+		modal_body.appendChild(close_btn);
+
+
+		
 		
 
 
@@ -48,20 +63,32 @@
 			/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
 		);
 
+
+
+		/* 폴더 */
+
 		// 폴더 아이콘
 		var f_name = 0;
-		console.log(f_name);
-		c_btn.addEventListener('click', (f_name) => { // 폴더 생성 버튼 클릭시 폴더 생성
+		c_btn.addEventListener('click', () => { // 폴더 생성 버튼 클릭시 폴더 생성
+			console.log('this',this.f_name); // 배열에 들어왔는지 확인
+			function create (){// 폴더 생성
+				folder[this.f_name] = new Image();
+				folder[this.f_name].src = './icon/folder.png';
+				folder[this.f_name].alt = 'folder'+([this.f_name+1]);
+				space.append(folder[this.f_name])
+				folder[this.f_name].className = 'folder'
+				console.log('folder 개수 >> ',folder.length)
+				console.log('folder alt >> ',folder[this.f_name].alt)
+			}
+			create() // 함수호출
+			this.f_name++;
 			
-			console.log(f_name); // 배열에 들어왔는지 확인
-			
-			// 폴더 생성
-			folder[f_name] = new Image();
-			folder[f_name].src = './icon/folder.png';
-			folder[f_name].alt = 'pic'+([f_name+1]);
-			space.append(folder[f_name])
-			folder[f_name].className = 'folder'
-			console.log(folder.length)
+			folder.forEach(function(el,index){
+				el.addEventListener('dragstart', () => {
+					console.log(folder[index],'드래그 시작')
+				})
+			})
+
 		})
 		
 
@@ -73,31 +100,8 @@
 
 
 
-		desktop.addEventListener('dragstart', (e) => {
-			console.log('드래그 시작')
-		})
 
-
-
-
-
-
-
-		// 모달
-		modal.className = 'modal';
-		modal_body.className = 'modal_body';
-		close_btn.className = 'close_btn';
-		close_btn.textContent = "X"
-
-
-		body.appendChild(modal);
-		modal.appendChild(modal_body);
-		modal_body.appendChild(close_btn);
-
-
-
-
-
+		// 폴더 더블클릭 시 모달 작동 !!!
 		space.addEventListener('dblclick', () => { // 더블클릭
 			console.log('더블클릭')
 			modal.classList.toggle('show');
@@ -106,10 +110,39 @@
 				body.style.overflow = 'hidden';
 			}
 		});
-
+		
 		close_btn.addEventListener('click', () =>{ // 닫기 버튼 누르면 화면 사라짐
 			modal.classList.toggle('show');
+			console.log('모달창 닫음')
 		})
+		
+
+
+
+
+
+
+
+
+		// desktop.addEventListener('dragstart', (e) => {
+		// 	console.log('드래그 시작')
+		// })
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+		
 
 		// modal.addEventListener('click', (event) => {
 		// 	if (event.target === modal) {
@@ -124,25 +157,13 @@
 
 
 
+		// desktop.addEventListener('mousedown', () => {
+		// 	console.log('마우스 클릭 O');
+		// });
 
-
-
-
-
-
-
-
-
-
-
-
-		desktop.addEventListener('mousedown', () => {
-			console.log('마우스 클릭 O');
-		});
-
-		desktop.addEventListener('mouseup', () => {
-			console.log('마우스 클릭 X');
-		});
+		// desktop.addEventListener('mouseup', () => {
+		// 	console.log('마우스 클릭 X');
+		// });
 
 
 
