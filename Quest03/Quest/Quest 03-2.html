@@ -80,7 +80,7 @@
 		// Quest 2 - 클릭 시 클래스 추가 or 제거
 		var row2 = document.getElementsByClassName('row2')[0]; // 4개
 		var r2_square = row2.getElementsByClassName('square'); // ES6 : document.querySelectorAll('.row2 .square');
-		var r2 = Array.prototype.slice.call(r2_square); // HTMLCollection을 array로 변환
+		var r2 = Array.prototype.slice.call(r2_square); // HTMLCollection을 array로 변환 // ES6 : Array.from() 메서드
 
 		console.log(r2); // 확인
 

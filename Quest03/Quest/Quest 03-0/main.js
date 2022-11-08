@@ -10,7 +10,7 @@ var img_arr = [];
 /* Looping through images 이미지 반복 */
 // 배열에 이미지 담기
 for(var i = 0; i < 5; i++){
-    img_arr[i] = new Image();
+    img_arr[i] = new Image(); // Image메서드
     img_arr[i].src = 'images/pic'+(i+1)+'.jpg'; // images/pic1.jpg
     img_arr[i].alt = 'pic'+(i+1); /* Declaring the alternative text for each image file 각 이미지 파일의 대체 텍스트 선언 */
     thumb_bar.appendChild(img_arr[i]) // 부모의 자식 중 마지막 자식으로 붙임
@@ -18,7 +18,7 @@ for(var i = 0; i < 5; i++){
 }
 
 // 이미지 클릭시 display_img src 교체  => 배열순회 작업 -> 반복문
-img_arr.forEach(function(pick,index){ // 처리할 현재 요소 = 명명된 매개변수(pick)
+img_arr.forEach(function(pick){ // 처리할 현재 요소 = 명명된 매개변수(pick)
     pick.onclick = function(){
         displayed_img.src = pick.src;
     }
@@ -27,7 +27,7 @@ img_arr.forEach(function(pick,index){ // 처리할 현재 요소 = 명명된 매
 /* Wiring up the Darken/Lighten button 다크&라이트 토글 버튼*/
 // 버튼 클릭시 어두어지는 효과
 btn.addEventListener('click',function(){
-    if(btn.className == 'dark'){
+    if(btn.className == 'dark'){ // setAttribute : 속성값 추가 or 수정
         btn.setAttribute('class','light'); // btn.className = 'light'
         btn.textContent = 'Lighten';
         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
