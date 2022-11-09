@@ -4,6 +4,11 @@ var overlay = document.getElementsByClassName('overlay')[0];
 var btn = document.getElementsByClassName('dark')[0];
 var thumb_bar = document.getElementsByClassName('thumb-bar')[0]; // 작은 이미지를 감싸는 div
 
+// 1. thumb-bar 안에 이미지 추가
+// 2. 작은 이미지 클릭시 큰이미지 영역 사진 교체
+// 3. 어두워지는 효과
+
+
 /* Declaring the array of image filenames 이미지 파일 이름 배열 선언 */
 var img_arr = [];
 
@@ -17,7 +22,7 @@ for(var i = 0; i < 5; i++){
     console.log("이미지 추가 확인 >> "+img_arr[i].alt)
 }
 
-// 이미지 클릭시 display_img src 교체  => 배열순회 작업 -> 반복문
+// 이미지 클릭시 display_img src 교체  => 배열순회 작업 -> 반복문(forEach)
 img_arr.forEach(function(pick){ // 처리할 현재 요소 = 명명된 매개변수(pick)
     pick.onclick = function(){
         displayed_img.src = pick.src;
@@ -25,7 +30,7 @@ img_arr.forEach(function(pick){ // 처리할 현재 요소 = 명명된 매개변
 })
 
 /* Wiring up the Darken/Lighten button 다크&라이트 토글 버튼*/
-// 버튼 클릭시 어두어지는 효과
+// 버튼 클릭시 어두워지는 효과
 btn.addEventListener('click',function(){
     if(btn.className == 'dark'){ // setAttribute : 속성값 추가 or 수정
         btn.setAttribute('class','light'); // btn.className = 'light'
