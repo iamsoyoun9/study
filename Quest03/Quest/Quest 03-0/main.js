@@ -26,6 +26,7 @@ for(var i = 0; i < 5; i++){
 img_arr.forEach(function(pick){ // 처리할 현재 요소 = 명명된 매개변수(pick)
     pick.onclick = function(){
         displayed_img.src = pick.src;
+        displayed_img.art = pick.art;
     }
 })
 
