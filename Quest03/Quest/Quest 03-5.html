@@ -51,7 +51,7 @@
     var list = []; // 버튼 값
     var icon = [];
 
-    btn= [document.getElementById('btnScissors'), document.getElementById('btnRock'), document.getElementById('btnPaper')];
+    btn= [document.getElementById('btnScissors'), document.getElementById('btnRock'), document.getElementById('btnPaper')]; // 가위,바위,보
     list = [btn[0].value,btn[1].value,btn[2].value] // 가위,바위,보
     icon = ['✌','✊','✋'];
     
@@ -78,10 +78,14 @@
     }
     
     btnOff(); // 버튼 비활성화
-    start.addEventListener('click', function () { // 게임시작 클릭
+    
+    // 게임시작 클릭
+    start.addEventListener('click', function () {
+      result.innerHTML = ('<span>승패여부는 여기에!!</span>');
       btnOn(); // 버튼 활성화
+      /** pc **/
       pc = list[Math.floor(Math.random() * list.length)];
-      console.log("pc >> ", pc)
+      console.log('pc >> ', pc)
     })
     
     
@@ -95,18 +99,18 @@
     
     /** game **/
     form.addEventListener('click', function () {
-      console.log(list.indexOf(pc))
-      result.innerHTML = ("<h1>PC >> "+ icon[list.indexOf(pc)]+"</h1>")
+      result.innerHTML = ('<h1>PC >> '+ icon[list.indexOf(pc)]+'</h1>')
       if (user == pc) {
-        result.innerHTML += ("<h2>비겼습니다</h2>")
+        result.innerHTML += ('<h2>비겼습니다</h2>')
       } else {
-        if (user == "보" && pc == "바위" || user == "바위" && pc == "가위" || user == "가위" && pc == "보") {
-          result.innerHTML += ("<h2>이겼습니다</h2>")
+        if (user == '보' && pc == '바위' || user == '바위' && pc == '가위' || user == '가위' && pc == '보') {
+          result.innerHTML += ('<h2>이겼습니다</h2>')
         } else {
-          result.innerHTML += ("<h2>졌습니다</h2>")
+          result.innerHTML += ('<h2>졌습니다</h2>')
         }
       }
       console.log('user >> ', user)
+      btnOff();
     })
     
     // scissors.disabled = true;
