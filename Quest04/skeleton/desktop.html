@@ -16,42 +16,115 @@
 		var body = document.getElementsByTagName('body')[0];
 		var desktop = document.querySelector('.desktop');
 
-		desktop.draggable = true;
+		desktop.draggable = true; // 드래그 허용
 
-		var c_btn = document.createElement('button');
+		/** 추가 생성 변수 **/
+		var cIconBtn = document.createElement('button'); // 아이콘 생성
+		var cFolderBtn = document.createElement('button'); // 폴더 생성
+		var folder = [];
+		var icon = [];
+
 		var space = document.createElement('div');
 		var icon = space.getElementsByTagName('img');
 
+		/** 모달 **/
 		var modal = document.createElement('div')
-		var modal_body = document.createElement('div');
-		var close_btn = document.createElement('button');
+		var modalBody = document.createElement('div');
+		var closeBtn = document.createElement('button');
 
-		var folder = [];
+		/** 웹 화면 **/
+		var bodyTop = document.createElement('div');
 
 
-		// 웹 화면
-		var t = document.createElement('div')
-		t.className = 'top';
-		desktop.appendChild(t)
-
-		c_btn.className = 'create_btn';
-		c_btn.textContent = '폴더 생성';
-		t.appendChild(c_btn);
-
+		/** 추가 생성**/
+		// 영역
+		bodyTop.className = 'top';
+		desktop.appendChild(bodyTop);
 		space.className = 'space';
 		desktop.appendChild(space);
 
+		/** 버튼 **/
+		// 아이콘 생성
+		cIconBtn.className = 'create_btn';
+		cIconBtn.textContent = '아이콘 생성';
+		bodyTop.appendChild(cIconBtn);
+		// 폴더생성
+		cFolderBtn.className = 'create_btn';
+		cFolderBtn.textContent = '폴더 생성';
+		bodyTop.appendChild(cFolderBtn);
 
-		// 모달
-		modal.className = 'modal';
-		modal_body.className = 'modal_body';
-		modal_body.textContent ='hello :D'
-		close_btn.className = 'close_btn';
-		close_btn.textContent = "X"
+		var icon = []
+		var iconNum = 0;
+		cIconBtn.addEventListener('click',function(){
+			console.log('아이콘 생성 클릭확인')
+			// var icon = new Icon('Icon'+iconNum+'','icon');
+			// icon.create();
+			icon[iconNum] = new Image();
+			icon[iconNum].src = './icon/hattu.png';
+			icon[iconNum].alt = 'icon'+(icon[(iconNum+1)]);
+			space.append(icon[iconNum]);
+			icon[iconNum].className = 'icon';
+			console.log('icon 개수 >> ',icon.length);
+			console.log('icon alt >> ',icon[iconNum].alt);
 
-		body.appendChild(modal);
-		modal.appendChild(modal_body);
-		modal_body.appendChild(close_btn);
+			iconNum++;
+		})
+
+		var folder = [];
+		var folderNum = 0;
+		cFolderBtn.addEventListener('click',function(){
+			console.log('폴더 생성 클릭확인')
+			folder[folderNum] = new Image();
+			folder[folderNum].src = './icon/folder.png';
+			folder[folderNum].alt = 'folder'+([this.folderNum+1]);
+			space.append(folder[folderNum])
+			folder[folderNum].className = 'folder';
+			console.log('folder 개수 >> ',folder.length)
+			console.log('folder alt >> ',folder[folderNum].alt)
+			folderNum++;
+		})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// // 모달
+		// modal.className = 'modal';
+		// modal_body.className = 'modal_body';
+		// modal_body.textContent ='hello :D'
+		// close_btn.className = 'close_btn';
+		// close_btn.textContent = "X"
+
+
+
+		// body.appendChild(modal);
+		// modal.appendChild(modal_body);
+		// modal_body.appendChild(close_btn);
 
 
 		
@@ -68,28 +141,51 @@
 		/* 폴더 */
 
 		// 폴더 아이콘
-		var f_name = 0;
-		c_btn.addEventListener('click', () => { // 폴더 생성 버튼 클릭시 폴더 생성
-			console.log('this',this.f_name); // 배열에 들어왔는지 확인
-			function create (){// 폴더 생성
-				folder[this.f_name] = new Image();
-				folder[this.f_name].src = './icon/folder.png';
-				folder[this.f_name].alt = 'folder'+([this.f_name+1]);
-				space.append(folder[this.f_name])
-				folder[this.f_name].className = 'folder'
-				console.log('folder 개수 >> ',folder.length)
-				console.log('folder alt >> ',folder[this.f_name].alt)
-			}
-			create() // 함수호출
-			this.f_name++;
+		// var f_name = 0;
+		// c_btn.addEventListener('click', () => { // 폴더 생성 버튼 클릭시 폴더 생성
+		// 	console.log('this',this.f_name); // 배열에 들어왔는지 확인
+		// 	function create (){// 폴더 생성
+		// 		folder[this.f_name] = new Image();
+		// 		folder[this.f_name].src = './icon/folder.png';
+		// 		folder[this.f_name].alt = 'folder'+([this.f_name+1]);
+		// 		space.append(folder[this.f_name])
+		// 		folder[this.f_name].className = 'folder'
+		// 		console.log('folder 개수 >> ',folder.length)
+		// 		console.log('folder alt >> ',folder[this.f_name].alt)
+		// 	}
 			
-			folder.forEach(function(el,index){
-				el.addEventListener('dragstart', () => {
-					console.log(folder[index],'드래그 시작')
-				})
-			})
+		// 	var test1 = new Icon('icon1','icon');
+		// 	test1.create('icon')
+		// 	console.log(test1)
+		// 	create() // 함수호출
+		// 	f_name++;
+		// })
 
-		})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+			// space.addEventListener('dragstart', () => {	
+			// 		console.log('드래그 시작')
+					
+			// 	})
+			// })
+
+
 		
 
 
@@ -102,47 +198,25 @@
 
 
 		// 폴더 더블클릭 시 모달 작동 !!!
-		space.addEventListener('dblclick', () => { // 더블클릭
-			console.log('더블클릭')
-			modal.classList.toggle('show');
+		// space.addEventListener('dblclick', () => { // 더블클릭
+		// 	console.log('더블클릭')
+		// 	modal.classList.toggle('show');
 
-			if (modal.classList.contains('show')) {
-				body.style.overflow = 'hidden';
-			}
-		});
+		// 	if (modal.classList.contains('show')) {
+		// 		body.style.overflow = 'hidden';
+		// 	}
+		// });
 		
-		close_btn.addEventListener('click', () =>{ // 닫기 버튼 누르면 화면 사라짐
-			modal.classList.toggle('show');
-			console.log('모달창 닫음')
-		})
+		// close_btn.addEventListener('click', () =>{ // 닫기 버튼 누르면 화면 사라짐
+		// 	modal.classList.toggle('show');
+		// 	console.log('모달창 닫음')
+		// })
 		
-
-
-
-
-
-
 
 
 		// desktop.addEventListener('dragstart', (e) => {
 		// 	console.log('드래그 시작')
 		// })
-
-
-
-
-
-
-
-		
-
-
-
-
-
-
-
-		
 
 		// modal.addEventListener('click', (event) => {
 		// 	if (event.target === modal) {

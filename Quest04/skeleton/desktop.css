@@ -17,6 +17,7 @@ button{
     padding: 7px 14px;
 }
 
+/* 영역 */
 .space{
     padding: 10px;
     position: absolute;
@@ -30,17 +31,26 @@ button{
     background-color: #fff;
     position: fixed;
     z-index: 2;
+    display: flex;
+    justify-content: flex-end;
 }
 
+
+/* 버튼 */
 .create_btn{
-    position: absolute;
-    right: 0;
     color: #fff;
     background-color: #F0BB62;
-    border: 0.5em solid ;
+    border: 0.5em solid;
     border-radius: 30px;
 }
 
+
+/* 아이콘 */
+.icon{
+  cursor: pointer;
+    width: 100px;
+    margin: 0px;
+}
 .folder{
     cursor: pointer;
     width: 100px;
@@ -89,7 +99,7 @@ button{
   .close_btn{
     background-color: #E97777;
     color: #fff;
-    border: none;
+    border: 0.1em solid #E97777;
     padding: 7px 14px;
     display: inline;
     float: right;
