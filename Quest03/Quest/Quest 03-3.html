@@ -48,6 +48,7 @@
   </div>
 
   <script>
+
     // 1. 숫자 입력(자릿수)
     // 2. 버튼 클릭
     // 3. 입력된 숫자 조건
@@ -62,8 +63,8 @@
     var result; // 실제 정답
 
     //* input *//
-    var inputNum = document.getElementById('setDigitNum'); // 입력한 자릿수(1~3);
-    var inputResult = document.getElementById('guessField'); // 입력한 정답값
+    var inputNum = document.getElementById('setDigitNum'); // 자릿수 입력(1~3);
+    var inputResult = document.getElementById('guessField'); // 정답을 입력
 
     //* 버튼 *//
     var setBtn = document.getElementsByClassName('setDigitSubmit')[0]; // 자릿수등록
@@ -75,32 +76,46 @@
     var show = document.getElementsByClassName('resultArea')[0]; // 정답여부
 
     /** 함수 **/
-    function btnOff(btnName) { // 비활성화
-      btnName.disabled = true;
+    // 버튼 활성화 or 비활성화
+    function btnOnOff(btnName, state) {
+      state === 'on' ? btnName.disabled = false : btnName.disabled = true;
     }
-    function btnOn(btnName) { // 활성화
-      btnName.disabled = false;
-    }
+    // 버튼 활성화 or 비활성화
+    // function btnOnOff(btnName, state) {
+    //   if (state === 'on') { // 활성화
+    //     btnName.disabled = false;
+    //   } else { // 비활성화
+    //     btnName.disabled = true;
+    //   }
+    // }
+    // function btnOff(btnName) { // 비활성화
+    //   btnName.disabled = true;
+    // }
+    // function btnOn(btnName) { // 활성화
+    //   btnName.disabled = false;
+    // }
+
 
     // Math.random() * 10 => 0~9;
     // Math.random() * 10 + 1 => 1~10 / Math.random() * 최댓값+1;
     // Math.random() * (10-5+1) +5 => 5~10 / Math.random() * 최댓값+1;
     // 최솟값 ~ 최댓값 : Math.random() * (최댓값 - 최솟값 +1 ) + 최솟값;
     // 50 ~ 100 : Math.random() * (100-50+1)+50;
-
     function rd(start, end) { // 랜덤값
       return Math.floor(Math.random() * (end - start + 1)) + start;
     }
 
-    btnOff(guessBtn); // 정답확인 비활성화
+    // btnOff(guessBtn); // 정답확인 비활성화
+    btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
 
     setBtn.addEventListener('click', function () { // 자릿수 등록 버튼 클릭시 실행되는 함수
       show.innerHTML = ('<span>정답여부는 여기에!!</span>'); // 초기화
-      inputResult.value = ''; // 초기화
+      inputResult.value = ''; // 입력한 정답값 초기화
       num = Number(inputNum.value); // 자릿수 = 입력한 자릿수 값을 숫자로 형변환
       console.log('입력한 자릿수 >> ', num); // 입력한 자릿수 확인
       if (num > 0 && num < 4) { // 1 ~ 3
-        btnOn(guessBtn); // (1~3) 정답확인 활성화
+        // btnOn(guessBtn); // (1~3) 정답확인 활성화
+        btnOnOff(guessBtn, 'on'); // 정답확인 버튼 활성화
         switch (num) {
           case 1:
             n1 = rd(1, 9);
@@ -129,9 +144,10 @@
           answer = Number(inputResult.value); // 입력한 값
           result = n1 * n2; // 문제정답
           console.log('입력 받은 정답 >> ', answer);
-          if (result == answer) { // 정답일 때
+          if (result === answer) { // 정답일 때
             show.innerHTML = ('<h3>⭕ 정답입니다 ⭕</h3>');
-            btnOff(guessBtn); // 정답확인 버튼 비활성화
+            // btnOff(guessBtn); // 정답확인 버튼 비활성화
+            btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
           } else { // 오답일 때
             show.innerHTML = ('<h3>❌ 틀렸습니다 ❌</h3>');
           }
@@ -142,7 +158,8 @@
           text: '숫자를 입력해주세요'
         })
         // alert('== 1부터 3까지 ==\n숫자를 입력해주세요')
-        btnOff(guessBtn); // 정답확인 비활성화
+        // btnOff(guessBtn); // 정답확인 비활성화
+        btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
       }
     })
   </script>

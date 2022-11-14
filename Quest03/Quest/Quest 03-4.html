@@ -58,27 +58,28 @@
         var show = document.getElementsByClassName('resultArea')[0]; // 정답여부
 
         /** 함수 **/
-        function btnOff(btnName) { // 버튼 비활성화
-            btnName.disabled = true;
+        // 버튼 활성화 or 비활성화
+        function btnOnOff(btnName, state) {
+        state === 'on' ? btnName.disabled = false : btnName.disabled = true;
         }
-        function btnOn(btnName) { // 버튼 활성화
-            btnName.disabled = false;
-        }
+        
         function random(array, newArr) { // 랜덤 추출
             for (var i = 0; i < 3; i++) {
                 console.log("array >> " + array);
                 var rd = Math.floor(Math.random() * array.length); // 0 ~ 8까지 중 하나 뽑기
                 console.log((i + 1) + '번째 숫자 index >> ' + rd);
-                newArr[i] = array.splice(rd, 1)[0];
+                newArr[i] = array.splice(rd, 1);
                 console.log('newArr >> ' + newArr[i])
             }
         }
 
-        btnOff(checkBtn); // 정답 확인 버튼 비활성화
+        // btnOff(checkBtn); // 정답 확인 버튼 비활성화
+        btnOnOff(checkBtn,'off');
 
         // 게임시작 버튼 클릭
         startBtn.addEventListener('click', function () {
-            btnOn(checkBtn); // 정답 확인 버튼 활성화
+            // btnOn(checkBtn); // 정답 확인 버튼 활성화
+            btnOnOff(checkBtn,'on');
             /** 초기화 **/
             show.innerHTML = ('<span>정답여부는 여기에!!</span>');
             inputNum.value = ''; // input value 초기화
@@ -96,11 +97,9 @@
             ball = 0;
             strike = 0;
             console.log(answer); // undefined;
-            if(answer == undefined){
+            if(answer === undefined){
                 show.innerHTML = '';
             }
-            
-            /****/
             answer = inputNum.value;
             console.log('입력한 값 >> ' + answer);
             var result = []; // 입력한 값을 배열로
@@ -122,11 +121,13 @@
             /** 출력문 **/
             if (count > 10) {
                 show.innerHTML += ('<h2>❌ 실패 ❌</h2>');
-                btnOff(checkBtn);
+                // btnOff(checkBtn);
+                btnOnOff(checkBtn,'off');
             } else { // count 1 ~ 9
                 if (strike == 3) { // 정답 O
                     show.innerHTML += count == 1 ? ('<h3>⭐ 홈런 ⭐</h3>') : ('<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>');
-                    btnOff(checkBtn);
+                    // btnOff(checkBtn);
+                    btnOnOff(checkBtn,'off');
                 } else { // 정답 X
                     show.innerHTML += ('<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>');
                 }
