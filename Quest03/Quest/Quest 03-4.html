@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
-
     <title>⚾ 숫자야구 게임 ⚾</title>
-
     <style>
         body {
             width: 50%;
@@ -15,10 +12,8 @@
         }
     </style>
 </head>
-
 <body>
     <h1>숫자야구 게임</h1>
-
     <li style='margin-bottom:5px;'>게임시작을 누르면 랜덤값으로 세자리의 숫자가 지정됩니다.</li>
     <li style='margin-bottom:5px;'>랜덤값 세자리에 표시되는 각각의 숫자는 0이 나올 수 없으며 서로 중복값이 있어서는 안됩니다.</li>
     <li style='margin-bottom:5px;'>유저는 임의 세자리를 기록해서 맞는지 결과를 확인합니다.</li>
@@ -27,17 +22,14 @@
     <div class='setDigitForm'>
         <input type='submit' value='게임시작' class='setDigitSubmit'><!-- 게임시작 버튼 -->
     </div>
-
     <div class='form' style='margin-top:40px;'>
         <input type='text' id='guessField' class='guessField'><!-- 정답 입력 -->
         <input type='submit' value='정답확인' class='guessSubmit'><!-- 정답확인 버튼 -->
     </div>
-
     <div class='resultArea' style='margin-top:40px;'>
         <!-- 정답 결과 확인 -->
         <span>정답여부는 여기에!!</span>
     </div>
-
     <script>
         /** 변수 **/
         var numList; // 전체 숫자 범위 (1~9)
@@ -46,50 +38,40 @@
         var strike; // 숫자 위치 일치
         var ball; // 숫자 일치
         var answer; // 입력한 값
-
         /** 버튼 **/
         var startBtn = document.getElementsByClassName('setDigitSubmit')[0]; // 게임시작
         var checkBtn = document.getElementsByClassName('guessSubmit')[0]; // 정답확인
-
         /** 입력 **/
         var inputNum = document.getElementsByClassName('guessField')[0]; // 정답입력
-
         /** 출력**/
         var show = document.getElementsByClassName('resultArea')[0]; // 정답여부
-
         /** 함수 **/
         // 버튼 활성화 or 비활성화
         function btnOnOff(btnName, state) {
-        state === 'on' ? btnName.disabled = false : btnName.disabled = true;
+            btnName.disabled = (state === 'on') ? false : true;
         }
-        
         function random(array, newArr) { // 랜덤 추출
             for (var i = 0; i < 3; i++) {
                 console.log("array >> " + array);
                 var rd = Math.floor(Math.random() * array.length); // 0 ~ 8까지 중 하나 뽑기
                 console.log((i + 1) + '번째 숫자 index >> ' + rd);
                 newArr[i] = array.splice(rd, 1);
-                console.log('newArr >> ' + newArr[i])
+                console.log('newArr >> ' + newArr[i]);
             }
         }
-
         // btnOff(checkBtn); // 정답 확인 버튼 비활성화
         btnOnOff(checkBtn,'off');
-
         // 게임시작 버튼 클릭
         startBtn.addEventListener('click', function () {
-            // btnOn(checkBtn); // 정답 확인 버튼 활성화
-            btnOnOff(checkBtn,'on');
+            btnOnOff(checkBtn,'on'); // 버튼 활성화
             /** 초기화 **/
             show.innerHTML = ('<span>정답여부는 여기에!!</span>');
             inputNum.value = ''; // input value 초기화
-
             count = 0; // 횟수 초기화
             numList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             random(numList, rdNum);
             console.log('추출된 랜덤 숫자 : ' + rdNum)
         })
-
         // 정답확인 버튼 클릭
         checkBtn.addEventListener('click', function () {
             count++;
@@ -117,24 +99,19 @@
                     }
                 }
             }
-
             /** 출력문 **/
-            if (count > 10) {
+            console.log('횟수 >>',count)
+            show.innerHTML += ('<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>');
+            if (count === 9) { // 기회에 대한 조건
                 show.innerHTML += ('<h2>❌ 실패 ❌</h2>');
-                // btnOff(checkBtn);
                 btnOnOff(checkBtn,'off');
-            } else { // count 1 ~ 9
-                if (strike == 3) { // 정답 O
-                    show.innerHTML += count == 1 ? ('<h3>⭐ 홈런 ⭐</h3>') : ('<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>');
-                    // btnOff(checkBtn);
-                    btnOnOff(checkBtn,'off');
-                } else { // 정답 X
-                    show.innerHTML += ('<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>');
-                }
+            }
+            if (strike === 3) { // 정답에 대한 조건
+                show.innerHTML += count == 1 ? ('<h3>⭐ 홈런 ⭐</h3>') : ('<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>');
+                btnOnOff(checkBtn,'off');
             }
             inputNum.value = ''; // 다시 입력하기 편하게 초기화
         })
     </script>
 </body>
-
 </html>

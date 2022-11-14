@@ -1,98 +1,96 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>가위바위보 게임</title>
-
-  <style>
-    body {
-      width: 50%;
-      max-width: 800px;
-      min-width: 480px;
-      margin: 0 auto;
-    }
-
-    /* div{
-      text-align: center;
-    } */
-  </style>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>가위바위보 게임</title>
+    <style>
+        body {
+            width: 50%;
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>가위바위보 게임</h1>
-
-  <li style="margin-bottom:5px;">게임시작을 누르면 랜덤값으로 가위,바위,보중 하나가 지정됩니다.</li>
-  <li style="margin-bottom:15px;">유저도 가위,바위,보중에 하나를 선택하고 결과를 확인합니다.</li>
-  <div class="setDigitForm">
-    <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
-  </div>
-
-  <div class="form" style="margin-top:40px;">
-    <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
-    <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
-    <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
-  </div>
-
-  <div class="resultArea" style="margin-top:40px;">
-    <span>승패여부는 여기에!!</span>
-  </div>
-
-  <script>
-    /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-    var pc;
-    var user;
-
-    /* pc */
-    var start = document.getElementsByClassName('setPrsSubmit')[0]; // 게임시작 버튼
-    var form = document.getElementsByClassName('form')[0]; // 가위바위보 버튼있는 영역
-    var show = document.getElementsByClassName('resultArea')[0]; // 출력창
-    var btn = []; // 가위바위보 버튼 요소
-    var list = []; // 가위바위보 버튼 값
-    var icon = []; // 가위바위보 아이콘
-
-    btn = [document.getElementById('btnScissors'), document.getElementById('btnRock'), document.getElementById('btnPaper')]; // 가위,바위,보
-    list = [btn[0].value, btn[1].value, btn[2].value] // 가위,바위,보
-    icon = ['✌', '✊', '✋'];
-
-    /** 버튼 비활성화 **/
-    function btnOnOff(state) {
-      for (var i = 0; i < btn.length; i++) {
-        btn[i].disabled = (state === 'on') ? false : true;
-      }
-    }
-
-    btnOnOff('off'); // 버튼 비활성화
-    start.addEventListener('click', function () { // 게임시작 클릭
-      show.innerHTML = ('<span>승패여부는 여기에!!</span>'); // 출력문 초기화
-      btnOnOff('on'); // 버튼 활성화
-      /** pc **/
-      pc = list[Math.floor(Math.random() * list.length)];
-      console.log('pc >> ', pc)
-    })
-
-    /** user **/
-    btn.forEach(function (el) { // 가위, 바위, 보 클릭
-      el.addEventListener('click', function () {
-        user = el.value;
-      })
-    })
-
-    /** game **/
-    form.addEventListener('click', function () {
-      show.innerHTML = ('<h1>PC >> ' + icon[list.indexOf(pc)] + '</h1>')
-      if (user === pc) {
-        show.innerHTML += ('<h2>비겼습니다</h2>')
-      } else if (user == '가위' && pc == '보' || user == '바위' && pc == '가위' || user == '보' && pc == '바위') {
-        show.innerHTML += ('<h2>이겼습니다</h2>')
-      } else {
-        show.innerHTML += ('<h2>졌습니다</h2>')
-      }
-      console.log('user >> ', user)
-      btnOnOff('off');
-    })
-  </script>
+    <h1>가위바위보 게임</h1>
+    <li style="margin-bottom:5px;">게임시작을 누르면 랜덤값으로 가위,바위,보중 하나가 지정됩니다.</li>
+    <li style="margin-bottom:15px;">유저도 가위,바위,보중에 하나를 선택하고 결과를 확인합니다.</li>
+    <div class="setDigitForm">
+        <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
+    </div>
+    <div class="form" style="margin-top:40px;">
+        <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
+        <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
+        <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
+    </div>
+    <div class="resultArea" style="margin-top:40px;">
+        <span>승패여부는 여기에!!</span>
+    </div>
+    <script>
+        var pc;
+        var user;
+        var pcIcon;
+        var userIcon;
+        /* pc */
+        var start = document.getElementsByClassName('setPrsSubmit')[0]; // 게임시작 버튼
+        var formBtn = document.getElementsByClassName('form')[0].getElementsByTagName('input'); // 가위바위보 버튼있는 영역
+        var arrBtn = [];
+        var show = document.getElementsByClassName('resultArea')[0]; // 출력창
+        var btn = []; // 가위바위보 버튼 요소
+        // var list = []; // 가위바위보 버튼 값
+        // var icon = []; // 가위바위보 아이콘
+        // 자식 요소에 접근하는 방법 .children
+        // 부모 요소에 접근하는 방법 .parentElement
+        // btn = [form.children[0], form.children[1], form.children[2]]; // 가위,바위,보
+        // list = [btn[0].value, btn[1].value, btn[2].value]; // 가위,바위,보
+        // icon = ['✌', '✊', '✋'];
+        arrBtn = [].slice.call(formBtn);
+        btn = [
+            { name: arrBtn[0], value: arrBtn[0].value, icon: '✌' },// 가위
+            { name: arrBtn[1], value: arrBtn[1].value, icon: '✊' },// 바위
+            { name: arrBtn[2], value: arrBtn[2].value, icon: '✋' },// 보
+        ]
+        /** 버튼 비활성화 **/
+        function btnOnOff(state) {
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].name.disabled = (state === 'on') ? false : true;
+            }
+        }
+        /** 아이콘 **/
+        function icon(name, iconName) {
+            for (var i = 0; i < btn.length; i++) {
+                if (name == btn[i].value) {
+                    iconName = btn[i].icon;
+                }
+            }
+            return iconName;
+        }
+        btnOnOff('off'); // 버튼 비활성화
+        start.addEventListener('click', function () { // 게임시작 클릭
+            show.innerHTML = ('<span>승패여부는 여기에!!</span>'); // 출력문 초기화
+            btnOnOff('on'); // 버튼 활성화
+            /** pc **/
+            pc = btn[Math.floor(Math.random() * btn.length)].value;
+            console.log('pc >> ', pc);
+        })
+        /** user **/
+        arrBtn.forEach(function (c) {
+            c.addEventListener('click', function () {
+                user = c.value;
+                console.log('user >>', user)
+                userIcon = icon(user, userIcon);
+                pcIcon = icon(pc, pcIcon);
+                show.innerHTML = ('<h1>💻 ▸ ' + pcIcon + ' vs 👤 ▸ ' + userIcon + '</h1>');
+                if (user == '가위' && pc == '보' || user == '바위' && pc == '가위' || user == '보' && pc == '바위') {
+                    show.innerHTML += ('<h2>😁 이겼습니다 😁</h2>');
+                } else {
+                    user === pc ? show.innerHTML += ('<h2>😮 비겼습니다 😮</h2>') : show.innerHTML += ('<h2>😥 졌습니다 😥</h2>');
+                }
+                btnOnOff('off');
+            })
+        })
+    </script>
 </body>
-
 </html>
