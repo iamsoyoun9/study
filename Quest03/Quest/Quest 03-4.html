@@ -59,7 +59,6 @@
                 console.log('newArr >> ' + newArr[i]);
             }
         }
-        // btnOff(checkBtn); // 정답 확인 버튼 비활성화
         btnOnOff(checkBtn,'off');
         // 게임시작 버튼 클릭
         startBtn.addEventListener('click', function () {
@@ -83,7 +82,6 @@
                 show.innerHTML = '';
             }
             answer = inputNum.value;
-            console.log('입력한 값 >> ' + answer);
             var result = []; // 입력한 값을 배열로
             result = answer.split('');
             console.log('배열로 바꾸기 >> ' + result);
