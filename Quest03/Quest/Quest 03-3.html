@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--sweetalert2-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <!--sweetalert2-->
   <title>구구단 게임</title>
   <style>
     body {
@@ -12,7 +13,9 @@
       min-width: 480px;
       margin: 0 auto;
     }
-    .swal2-popup, .swal2-modal, .swal2-show {
+    .swal2-popup,
+    .swal2-modal,
+    .swal2-show {
       display: flex;
       position: absolute;
       top: 100px;
@@ -76,18 +79,18 @@
     setBtn.addEventListener('click', function () { // 자릿수 등록 버튼 클릭시 실행되는 함수
       show.innerHTML = ('<span>정답여부는 여기에!!</span>'); // 초기화
       inputResult.value = ''; // 입력한 정답값 초기화
-      num = Number(inputNum.value); // 자릿수 = 입력한 자릿수 값을 숫자로 형변환
+      num = inputNum.value; // 자릿수 = 입력한 자릿수 값을 숫자로 형변환
       console.log('입력한 자릿수 >> ', num); // 입력한 자릿수 확인
-      if (num < 0 && num > 4) { // 1 ~ 3이 아닐때
+      if (num < 1 || num > 3 || num.includes(' ') || isNaN(num)) { // 1 ~ 3이 아닐 때, null 일 때, 문자열 포함할 때
         Swal.fire({
           title: '== 1부터 3까지 ==',
           text: '숫자를 입력해주세요'
         })
-        // alert('== 1부터 3까지 ==\n숫자를 입력해주세요');
         btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
+        // alert('== 1부터 3까지 ==\n숫자를 입력해주세요');
       } else {
         btnOnOff(guessBtn, 'on'); // 정답확인 버튼 활성화
-        switch (num) {
+        switch (Number(num)) {
           case 1:
             rd(1, 9);
             break;
@@ -104,15 +107,23 @@
         randB.innerHTML = ('<strong>' + n2 + '</strong>');
         guessBtn.addEventListener('click', function () { // 입력한 값과 정답 비교
           inputNum.value = ''; // 초기화
-          answer = Number(inputResult.value); // 입력한 값
-          result = n1 * n2; // 문제정답
-          console.log('입력 받은 정답 >> ', answer);
-          if (result === answer) { // 정답일 때
-            show.innerHTML = ('<h3>⭕ 정답입니다 ⭕</h3>');
-            btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
-          } else { // 오답일 때
-            show.innerHTML = ('<h3>❌ 틀렸습니다 ❌</h3>');
-          } // if (result === answer)
+          answer = inputResult.value; // 입력한 값
+          if (answer.includes(' ') || answer == '' || isNaN(answer)) { // 공백일 때, null일 때, 문자열을 포함할 때
+            Swal.fire({
+              title: '== 다시 입력해주세요 ==',
+              text: '공백 ❌'
+            })
+            // alert('== 다시 입력해주세요 ==\n공백 ❌')
+          } else {
+            result = n1 * n2; // 문제정답
+            console.log('입력 받은 정답 >> ', Number(answer));
+            if (result == answer) { // 정답일 때
+              show.innerHTML = ('<h3>⭕ 정답입니다 ⭕</h3>');
+              btnOnOff(guessBtn, 'off'); // 정답확인 버튼 비활성화
+            } else { // 오답일 때
+              show.innerHTML = ('<h3>❌ 틀렸습니다 ❌</h3>');
+            } // if (result === answer)    
+          } // if (answer.indexOf(' ') !== -1)
         }) // guessBtn.addEventListener
       } // if (num < 0 && num > 4)
     }) // setBtn.addEventListener

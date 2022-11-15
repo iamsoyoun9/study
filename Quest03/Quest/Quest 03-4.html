@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <title>⚾ 숫자야구 게임 ⚾</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!--sweetalert2-->
     <style>
         body {
             width: 50%;
@@ -10,8 +13,17 @@
             min-width: 480px;
             margin: 0 auto;
         }
+
+        .swal2-popup,
+        .swal2-modal,
+        .swal2-show {
+            display: flex;
+            position: absolute;
+            top: 100px;
+        }
     </style>
 </head>
+
 <body>
     <h1>숫자야구 게임</h1>
     <li style='margin-bottom:5px;'>게임시작을 누르면 랜덤값으로 세자리의 숫자가 지정됩니다.</li>
@@ -37,6 +49,7 @@
         var count; // 횟수
         var strike; // 숫자 위치 일치
         var ball; // 숫자 일치
+        var stop; // 오류
         var answer; // 입력한 값
         /** 버튼 **/
         var startBtn = document.getElementsByClassName('setDigitSubmit')[0]; // 게임시작
@@ -59,10 +72,21 @@
                 console.log('newArr >> ' + newArr[i]);
             }
         }
-        btnOnOff(checkBtn,'off');
+        // 중복확인
+        function copy(arr) {
+            var check = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (check.indexOf(arr[i]) == -1) { // 포함 X
+                    check.push(arr[i])
+                } else { // 포함 O
+                    return true;
+                }
+            }
+        }
+        btnOnOff(checkBtn, 'off');
         // 게임시작 버튼 클릭
         startBtn.addEventListener('click', function () {
-            btnOnOff(checkBtn,'on'); // 버튼 활성화
+            btnOnOff(checkBtn, 'on'); // 버튼 활성화
             /** 초기화 **/
             show.innerHTML = ('<span>정답여부는 여기에!!</span>');
             inputNum.value = ''; // input value 초기화
@@ -73,43 +97,59 @@
         })
         // 정답확인 버튼 클릭
         checkBtn.addEventListener('click', function () {
-            count++;
             /** 초기화 **/
             ball = 0;
             strike = 0;
+            stop = 0;
             console.log(answer); // undefined;
-            if(answer === undefined){
+            if (answer === undefined) {
                 show.innerHTML = '';
             }
             answer = inputNum.value;
             var result = []; // 입력한 값을 배열로
             result = answer.split('');
             console.log('배열로 바꾸기 >> ' + result);
+            if (result.includes('0') || result.includes(' ') || result.length !== 3 || copy(result)|| result.map(Number).includes(NaN)) { // 0이 있을 때, 공백이 있을 때, 3자리 숫자가 아닐 때, 중복으로 입력할 때, 문자열 포함할 때
+                Swal.fire({
+                    title: '== 다시입력해주세요 ==',
+                    text: '숫자 3개 입력 / 중복 ❌ / 공백 ❌ / 0 ❌'
+                })
+                // alert('다시입력해주세요\n[ 숫자 3개 입력, 중복 X , 공백 X, 숫자0 X ]')
+                stop++;
+            }
             /** 조건문 **/
             for (var r = 0; r < 3; r++) { // 랜덤 숫자 3개의 인덱스값
                 for (var a = 0; a < 3; a++) { // 입력한 숫자 3개의 인덱스값
                     if (rdNum[r] == result[a]) { // 숫자 일치
-                        if (r == a) { // 위치 일치 O
-                            strike++;
-                        } else { // 위치 일치 X
-                            ball++;
-                        }
+                        (r === a) ? strike++ : ball ; // 참 : 위치 일치 O , 거짓 : 위치 일치 X
                     }
                 }
             }
-            /** 출력문 **/
-            console.log('횟수 >>',count)
-            show.innerHTML += ('<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>');
-            if (count === 9) { // 기회에 대한 조건
-                show.innerHTML += ('<h2>❌ 실패 ❌</h2>');
-                btnOnOff(checkBtn,'off');
-            }
-            if (strike === 3) { // 정답에 대한 조건
-                show.innerHTML += count == 1 ? ('<h3>⭐ 홈런 ⭐</h3>') : ('<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>');
-                btnOnOff(checkBtn,'off');
+            if (stop == 0) {
+                count++;
+                /** 출력문 **/
+                console.log('횟수 >>', count)
+                if (strike === 0 && ball === 0) {
+                    show.innerHTML += '<h3>' + count + '회 : 👊🏻 OUT 👊🏻</h3>';
+                } else {
+                    if (strike > 0 && ball > 0) {
+                        show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>';
+                    } else {
+                        show.innerHTML += (strike > 0) ? '<h3>' + count + '회 : ' + strike + 'S ➡ ' + result + '</h3>' : '<h3>' + count + '회 : ' + ball + 'B ➡ ' + result + '</h3>';
+                    }
+                }
+                if (count === 9) { // 기회에 대한 조건
+                    show.innerHTML += '<h3> 😥 정답은 👉🏻 ' + rdNum + '😥</h3>';
+                    btnOnOff(checkBtn, 'off');
+                }
+                if (strike === 3) { // 정답에 대한 조건
+                    show.innerHTML += count == 1 ? '<h3>⭐ 홈런 ⭐</h3>' : '<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>';
+                    btnOnOff(checkBtn, 'off');
+                }
             }
             inputNum.value = ''; // 다시 입력하기 편하게 초기화
         })
     </script>
 </body>
+
 </html>
