@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class User {
+        //     constructor(firstName, lastName, age) {
+        //         this.firstName = firstName;
+        //         this.lastName = lastName;
+        //         this.age = age;
+        //     }
+        //     get age() {
+        //         return this._age;
+        //     }
+        //     set age(value) {
+        //         this._age = value < 0 ? 0 : value;
+        //     }
+        // }
+        // const user1 = new User('na', 'soyoung', -1);
+        // console.log(user1.age);
+
+        // class Student {
+        //     constructor(name, id) {
+        //         this._name = name;
+        //         this._id = id;
+        //     } // 생성자
+        //     getName() {
+        //         return this._name;
+        //     } // public 메소드
+        //     _setName(name) {
+        //         this._name = name;
+        //     } // protected 메소드
+        // }
+        // let s1 = new Student('소영','iamsoyoun9');
+        // console.log(s1.getName()); // 소영
+        // console.log(s1._name); // 소영
+        // s1._setName('나소영');
+        // console.log(s1.getName()); // 나소영
+        // console.log(s1._name); // 나소영
+        // console.log(s1._id); // iamsoyoun9
+        
+        // class Student1 {
+        //     #name;
+        //     #id;
+        //     constructor(name, id) {
+        //         //private 프로퍼티들
+        //         this.#name = name;
+        //         this.#id = id;
+        //     }
+        //     //public 메소드
+        //     getName() {
+        //         return this.#name;
+        //     }
+
+        //     //private 메소드
+        //     #setName(name) {
+        //         this.#name = name;
+        //     }
+        //     changeName(name){
+        //         this.#name = name;
+        //     }
+        // }
+        // let s1 = new Student1('소영', 'iamsoyoun9');
+        // console.log(s1.getName()); // 소영
+        // // console.log(s1.#name); // error
+        // // s1.#setName('나소영'); // error
+        // // console.log(s1.#id); //error
+        // s1.changeName('나소영');
+        // console.log(s1.getName())
+        // class User{
+        //     constructor(id, birthday){
+        //         this.id = id;
+        //         this.birthday = birthday;
+        //     }
+        //     buy(item){
+        //         console.log(`${this.id} buys ${item.name} ▸ price = ${item.price}`);
+        //     }
+
+        // }
+
+        // class PremiumUser extends User{
+        //     constructor(id,birthday,level){
+        //         super(id,birthday);
+        //         this.level = level;
+        //     }
+        //     buy(item){
+        //         console.log(`${this.id} buys ${item.name} with a 5% discount ▸ price = ${item.price*0.95}`);
+        //     }
+        // }
+        // let item = {name:'MacBook',price:'1790000'};
+        // let user1 = new User('hssuu', '0824');
+        // let user2 = new PremiumUser('iamsoyoun9','0915',3);
+        // let user3 = new PremiumUser('hellosoyoun9','0725',5);
+        // let users = [user1,user2,user3];
+        // users.forEach(function(user){
+        //     user.buy(item);
+        // })
+        // let val = 'happy :D';
+        // function view(){
+        //     console.log(val);
+        // }
+        // function view(v){
+        //     console.log(v);
+        // }
+        // view();
+        // view('hello 🖐🏻');
+
+        // class Animal{
+        //     constructor(name){
+        //         this.speed = 0;
+        //         this.name = name;
+        //     }
+        //     run(speed){
+        //         this.speed += speed;
+        //         console.log(`${this.name}는 속도 ${this.speed}로 달립니다.`);
+        //     }
+        //     stop(){
+        //         this.speed = 0;
+        //         console.log(`${this.name}가 멈췄습니다.`);
+        //     }
+        // }
+
+        // class Rabbit extends Animal{
+        //     hide(){
+        //         console.log(`${this.name}가 숨었습니다.`);
+        //     }
+        //     stop(){
+        //         super.stop(); // 부모의 stop 호출
+        //         this.hide();
+        //     }
+        // }
+
+        // let rabbit = new Rabbit('🐇흰토끼🐇');
+        // rabbit.run(5); // 🐇흰토끼🐇는 속도 5로 달립니다.
+        // rabbit.stop(); // 🐇흰토끼🐇가 멈췄습니다. 🐇흰토끼🐇가 숨었습니다.
+
+        // class Animal{
+        //     constructor(name){
+        //         this.speed = 0;
+        //         this.name = name;
+        //     }
+        // }
+        // class Rabbit extends Animal{
+        //     constructor(name,earLength){
+        //         super(name);
+        //         this.earLength = earLength;
+        //     }
+        // }
+        // let rabbit = new Rabbit('🐇흰토끼🐇',10);
+        // console.log(rabbit.name);
+        // console.log(rabbit.earLength);
+
+        interface numberOperation{
+            (1: number,n2:number):number;
+        }
+    </script>
+</body>
+
+</html>

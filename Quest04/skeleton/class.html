@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./test2.css">
+    <script src="./desktop.js"></script>
+    <title>💻</title>
+</head>
+
+<body>
+    <section class="desktop">
+    </section>
+    <script>
+        // 레이아웃
+        let body = document.getElementsByTagName('body')[0]; // body 영역
+        let desktop = document.querySelector('.desktop'); // desktop 영역
+        
+        var cName;
+
+        let iconNum = 0; // 입력받은 아이콘 개수
+        let folderNum = 0; // 입력받은 폴더 개수
+
+        let icons = []
+        let folders = [];
+
+        let desktop1 = new Desktop();
+        let footer = desktop1.footer(cName, body);
+        let nav = desktop1.div(cName,'nav',footer);
+        let plus = desktop1.img(cName,'plus',nav);
+        let bubble = desktop1.div(cName, 'bubble', footer);
+        bubble.style.display = 'none';
+        let iconDiv = desktop1.div(cName, 'inputArea', bubble); // 1번째 input icon div 영역
+        let folderDiv = desktop1.div(cName, 'inputArea', bubble); // 2번째 input , folder div 영역
+        
+        let box = desktop1.div(cName,'box',desktop);
+
+        let icon = desktop1.create(icons, iconNum, 'icon');
+        let folder = desktop1.create(folders, folderNum, 'folder');
+
+
+
+
+
+        plus.addEventListener('click', function () {
+            if (bubble.style.display == 'none') {
+                bubble.style.display = 'block';
+            } else {
+                bubble.style.display = 'none';
+            }
+        })
+
+        // /** input **/
+        /** create **/
+        var cDiv;
+        var cInput;
+        var cSubmit;
+
+        
+
+
+
+        function inputText(divName, inputName, name) {
+            inputName = document.createElement('input');
+            inputName.type = 'number';
+            inputName.placeholder = '생성할 ' + name + '의 개수를 입력하세요';
+            inputName.className = 'input';
+            divName.appendChild(inputName);
+            return inputName;
+        }
+        // let iconInput = inputText(iconDiv, cInput, '아이콘');
+        // let folderInput = inputText(folderDiv, cInput, '폴더');
+
+        function inputSubmit(divName, submitName, cName, name) {
+            submitName = document.createElement('input');
+            submitName.type = 'submit';
+            submitName.className = cName + 'Submit';
+            submitName.value = name + '생성';
+            divName.appendChild(submitName);
+            return submitName;
+        }
+        // let iconSubmit = inputSubmit(iconDiv, cSubmit, 'icon', '아이콘');
+        // let folderSubmit = inputSubmit(folderDiv, cSubmit, 'folder', '폴더');
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
