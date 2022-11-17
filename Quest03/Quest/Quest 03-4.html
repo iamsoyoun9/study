@@ -127,10 +127,8 @@
 			count++;
 			/** 출력문 **/
 			console.log('횟수 >>', count);
-
 			// 정답일때 or 아닐때
 			// 횟수
-			//
 			clear();
 			if (strike === 0 && ball === 0) {
 				show.innerHTML += '<h3>' + count + '회 : 👊🏻 OUT 👊🏻 ➡ ' + result + '</h3>';
@@ -141,13 +139,12 @@
 				btnOnOff(checkBtn, 'off');
 				return;
 			}
-			if(count == 9){
-				show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3><h3> 😥 정답은 👉🏻 ' + rdNum + '😥</h3>';
-				btnOnOff(checkBtn, 'off');
-				return;
-			}
 			if (strike > 0 || ball > 0) {
 				show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>';
+			}
+			if(count == 9){
+				show.innerHTML += '<h3> 😥 정답은 👉🏻 ' + rdNum + '😥</h3>';
+				btnOnOff(checkBtn, 'off');
 				return;
 			}
 		})
