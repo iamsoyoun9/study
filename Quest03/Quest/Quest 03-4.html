@@ -1,155 +1,156 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset='utf-8'>
-    <title>⚾ 숫자야구 게임 ⚾</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!--sweetalert2-->
-    <style>
-        body {
-            width: 50%;
-            max-width: 800px;
-            min-width: 480px;
-            margin: 0 auto;
-        }
-
-        .swal2-popup,
-        .swal2-modal,
-        .swal2-show {
-            display: flex;
-            position: absolute;
-            top: 100px;
-        }
-    </style>
+	<meta charset='utf-8'>
+	<title>⚾ 숫자야구 게임 ⚾</title>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<!--sweetalert2-->
+	<style>
+		body {
+			width: 50%;
+			max-width: 800px;
+			min-width: 480px;
+			margin: 0 auto;
+		}
+		.swal2-popup,
+		.swal2-modal,
+		.swal2-show {
+			display: flex;
+			position: absolute;
+			top: 100px;
+		}
+	</style>
 </head>
 
 <body>
-    <h1>숫자야구 게임</h1>
-    <li style='margin-bottom:5px;'>게임시작을 누르면 랜덤값으로 세자리의 숫자가 지정됩니다.</li>
-    <li style='margin-bottom:5px;'>랜덤값 세자리에 표시되는 각각의 숫자는 0이 나올 수 없으며 서로 중복값이 있어서는 안됩니다.</li>
-    <li style='margin-bottom:5px;'>유저는 임의 세자리를 기록해서 맞는지 결과를 확인합니다.</li>
-    <li style='margin-bottom:5px;'>회별로 기록한 숫자와 설정된숫자를 비교해서 상황을 표현해 줍니다.</li>
-    <li style='margin-bottom:5px;'>야구게임이니 9회안에 맞추고 실패시 패배입니다.</li>
-    <div class='setDigitForm'>
-        <input type='submit' value='게임시작' class='setDigitSubmit'><!-- 게임시작 버튼 -->
-    </div>
-    <div class='form' style='margin-top:40px;'>
-        <input type='text' id='guessField' class='guessField'><!-- 정답 입력 -->
-        <input type='submit' value='정답확인' class='guessSubmit'><!-- 정답확인 버튼 -->
-    </div>
-    <div class='resultArea' style='margin-top:40px;'>
-        <!-- 정답 결과 확인 -->
-        <span>정답여부는 여기에!!</span>
-    </div>
-    <script>
-        /** 변수 **/
-        var numList; // 전체 숫자 범위 (1~9)
-        var rdNum = []; // 랜덤 숫자 3개
-        var count; // 횟수
-        var strike; // 숫자 위치 일치
-        var ball; // 숫자 일치
-        var stop; // 오류
-        var answer; // 입력한 값
-        /** 버튼 **/
-        var startBtn = document.getElementsByClassName('setDigitSubmit')[0]; // 게임시작
-        var checkBtn = document.getElementsByClassName('guessSubmit')[0]; // 정답확인
-        /** 입력 **/
-        var inputNum = document.getElementsByClassName('guessField')[0]; // 정답입력
-        /** 출력**/
-        var show = document.getElementsByClassName('resultArea')[0]; // 정답여부
-        /** 함수 **/
-        // 버튼 활성화 or 비활성화
-        function btnOnOff(btnName, state) {
-            btnName.disabled = (state === 'on') ? false : true;
-        }
-        function random(array, newArr) { // 랜덤 추출
-            for (var i = 0; i < 3; i++) {
-                console.log("array >> " + array);
-                var rd = Math.floor(Math.random() * array.length); // 0 ~ 8까지 중 하나 뽑기
-                console.log((i + 1) + '번째 숫자 index >> ' + rd);
-                newArr[i] = array.splice(rd, 1);
-                console.log('newArr >> ' + newArr[i]);
-            }
-        }
-        // 중복확인
-        function copy(arr) {
-            var check = [];
-            for (var i = 0; i < arr.length; i++) {
-                if (check.indexOf(arr[i]) == -1) { // 포함 X
-                    check.push(arr[i])
-                } else { // 포함 O
-                    return true;
-                }
-            }
-        }
-        btnOnOff(checkBtn, 'off');
-        // 게임시작 버튼 클릭
-        startBtn.addEventListener('click', function () {
-            btnOnOff(checkBtn, 'on'); // 버튼 활성화
-            /** 초기화 **/
-            show.innerHTML = ('<span>정답여부는 여기에!!</span>');
-            inputNum.value = ''; // input value 초기화
-            count = 0; // 횟수 초기화
-            numList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            random(numList, rdNum);
-            console.log('추출된 랜덤 숫자 : ' + rdNum)
-        })
-        // 정답확인 버튼 클릭
-        checkBtn.addEventListener('click', function () {
-            /** 초기화 **/
-            ball = 0;
-            strike = 0;
-            stop = 0;
-            console.log(answer); // undefined;
-            if (answer === undefined) {
-                show.innerHTML = '';
-            }
-            answer = inputNum.value;
-            var result = []; // 입력한 값을 배열로
-            result = answer.split('');
-            console.log('배열로 바꾸기 >> ' + result);
-            if (result.includes('0') || result.includes(' ') || result.length !== 3 || copy(result)|| result.map(Number).includes(NaN)) { // 0이 있을 때, 공백이 있을 때, 3자리 숫자가 아닐 때, 중복으로 입력할 때, 문자열 포함할 때
-                Swal.fire({
-                    title: '== 다시입력해주세요 ==',
-                    text: '숫자 3개 입력 / 중복 ❌ / 공백 ❌ / 0 ❌'
-                })
-                // alert('다시입력해주세요\n[ 숫자 3개 입력, 중복 X , 공백 X, 숫자0 X ]')
-                stop++;
-            }
-            /** 조건문 **/
-            for (var r = 0; r < 3; r++) { // 랜덤 숫자 3개의 인덱스값
-                for (var a = 0; a < 3; a++) { // 입력한 숫자 3개의 인덱스값
-                    if (rdNum[r] == result[a]) { // 숫자 일치
-                        (r === a) ? strike++ : ball ; // 참 : 위치 일치 O , 거짓 : 위치 일치 X
-                    }
-                }
-            }
-            if (stop == 0) {
-                count++;
-                /** 출력문 **/
-                console.log('횟수 >>', count)
-                if (strike === 0 && ball === 0) {
-                    show.innerHTML += '<h3>' + count + '회 : 👊🏻 OUT 👊🏻</h3>';
-                } else {
-                    if (strike > 0 && ball > 0) {
-                        show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>';
-                    } else {
-                        show.innerHTML += (strike > 0) ? '<h3>' + count + '회 : ' + strike + 'S ➡ ' + result + '</h3>' : '<h3>' + count + '회 : ' + ball + 'B ➡ ' + result + '</h3>';
-                    }
-                }
-                if (count === 9) { // 기회에 대한 조건
-                    show.innerHTML += '<h3> 😥 정답은 👉🏻 ' + rdNum + '😥</h3>';
-                    btnOnOff(checkBtn, 'off');
-                }
-                if (strike === 3) { // 정답에 대한 조건
-                    show.innerHTML += count == 1 ? '<h3>⭐ 홈런 ⭐</h3>' : '<h3>⭕ ' + count + '번 만에 맞추셨습니다 ⭕</h3>';
-                    btnOnOff(checkBtn, 'off');
-                }
-            }
-            inputNum.value = ''; // 다시 입력하기 편하게 초기화
-        })
-    </script>
-</body>
+	<h1>숫자야구 게임</h1>
+	<li style='margin-bottom:5px;'>게임시작을 누르면 랜덤값으로 세자리의 숫자가 지정됩니다.</li>
+	<li style='margin-bottom:5px;'>랜덤값 세자리에 표시되는 각각의 숫자는 0이 나올 수 없으며 서로 중복값이 있어서는 안됩니다.</li>
+	<li style='margin-bottom:5px;'>유저는 임의 세자리를 기록해서 맞는지 결과를 확인합니다.</li>
+	<li style='margin-bottom:5px;'>회별로 기록한 숫자와 설정된숫자를 비교해서 상황을 표현해 줍니다.</li>
+	<li style='margin-bottom:5px;'>야구게임이니 9회안에 맞추고 실패시 패배입니다.</li>
+	<div class='setDigitForm'>
+		<input type='submit' value='게임시작' class='setDigitSubmit'><!-- 게임시작 버튼 -->
+	</div>
+	<div class='form' style='margin-top:40px;'>
+		<input type='text' id='guessField' class='guessField'><!-- 정답 입력 -->
+		<input type='submit' value='정답확인' class='guessSubmit'><!-- 정답확인 버튼 -->
+	</div>
+	<div class='resultArea' style='margin-top:40px;'>
+		<!-- 정답 결과 확인 -->
+		<span>정답여부는 여기에!!</span>
+	</div>
+	<script>
+		/** 변수 **/
+		var numList = []; // 전체 숫자 범위 (1~9)
+		var rdNum = []; // 랜덤 숫자 3개
+		var count = 0; // 횟수
+		var strike = 0;
+		var ball = 0;
+		/** 버튼 **/
+		var startBtn = document.getElementsByClassName('setDigitSubmit')[0]; // 게임시작
+		var checkBtn = document.getElementsByClassName('guessSubmit')[0]; // 정답확인
+		/** 입력 **/
+		var inputNum = document.getElementsByClassName('guessField')[0]; // 정답입력
+		/** 출력**/
+		var show = document.getElementsByClassName('resultArea')[0]; // 정답여부
+		/** 함수 **/
+		// 버튼 활성화 or 비활성화
+		function btnOnOff(btnName, state) {
+			btnName.disabled = (state === 'on') ? false : true;
+		}
+		function random(array, newArr) { // 랜덤 추출
+			for (var i = 0; i < 3; i++) {
+				console.log("array >> " + array);
+				var rd = Math.floor(Math.random() * array.length); // 0 ~ 8까지 중 하나 뽑기
+				console.log((i + 1) + '번째 숫자 index >> ' + rd);
+				newArr[i] = array.splice(rd, 1); // 기존 요소를 삭제
+				console.log('newArr >> ' + newArr[i]);
+			}
+		}
+		// 중복확인
+		function copy(arr) {
+			var check = [];
+			for (var i = 0; i < arr.length; i++) {
+				if (check.indexOf(arr[i]) != -1) { // 포함 될 때
+					return true;
+				}
+				check.push(arr[i]);
+			}
+		}
+		// 초기화
+		function clear(){
+			inputNum.value = '';
+		}
 
+		btnOnOff(checkBtn, 'off'); // 정답확인 버튼 비활성화
+		// 게임시작 버튼 클릭
+		startBtn.addEventListener('click', function () {
+			btnOnOff(checkBtn, 'on'); // 정답확인 버튼 활성화
+			this.value = '새게임';
+			/** 초기화 **/
+			show.innerHTML = ('<span>정답여부는 여기에!!</span>');
+			clear();
+			count = 0; // 횟수 초기화
+			numList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+			random(numList, rdNum);
+			console.log('추출된 랜덤 숫자 : ' + rdNum);
+		})
+
+		// 정답확인 버튼 클릭
+		checkBtn.addEventListener('click', function () {
+			/** 초기화 **/
+			ball = 0;
+			strike = 0;
+			if (count == 0) show.innerHTML = '';
+			var result = []; // 입력한 값을 배열로
+			console.log('입력한 값 >> ', inputNum.value); // 입력한 값 확인
+			result = inputNum.value.split(''); // 문자열 배열로 바꾸기
+			console.log('배열로 바꾼거 확인 >> ' + result);
+			if (result.includes('0') || result.includes(' ') || result.length !== 3 || copy(result) || result.map(Number).includes(NaN)) { // 0이 있을 때, 공백이 있을 때, 3자리 숫자가 아닐 때, 중복으로 입력할 때, 문자열 포함할 때
+				Swal.fire({
+					title: '== 다시입력해주세요 ==',
+					text: '숫자 3개 입력 / 중복 ❌ / 공백 ❌ / 0 ❌'
+				})
+				// alert('다시입력해주세요\n[ 숫자 3개 입력, 중복 X , 공백 X, 숫자0 X ]')
+				clear();
+				return;
+			}
+			/** 조건문 **/
+			for (var r = 0; r < 3; r++) { // 랜덤 숫자 3개의 인덱스값
+				for (var a = 0; a < 3; a++) { // 입력한 숫자 3개의 인덱스값
+					if (rdNum[r] == result[a]) { // 숫자 일치
+						(r === a) ? strike++ : ball++; // 참 : 위치 일치 O , 거짓 : 위치 일치 X
+					}
+				}
+			}
+			count++;
+			/** 출력문 **/
+			console.log('횟수 >>', count);
+
+			// 정답일때 or 아닐때
+			// 횟수
+			//
+			clear();
+			if (strike === 0 && ball === 0) {
+				show.innerHTML += '<h3>' + count + '회 : 👊🏻 OUT 👊🏻 ➡ ' + result + '</h3>';
+				return;
+			}
+			if(strike == 3){
+				show.innerHTML += '<h3>' + count + '회 : ⭐ 홈런 ⭐ ➡ ' + result + '</h3>';
+				btnOnOff(checkBtn, 'off');
+				return;
+			}
+			if(count == 9){
+				show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3><h3> 😥 정답은 👉🏻 ' + rdNum + '😥</h3>';
+				btnOnOff(checkBtn, 'off');
+				return;
+			}
+			if (strike > 0 || ball > 0) {
+				show.innerHTML += '<h3>' + count + '회 : ' + strike + 'S ' + ball + 'B ➡ ' + result + '</h3>';
+				return;
+			}
+		})
+	</script>
+</body>
 </html>
