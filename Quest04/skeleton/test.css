@@ -1,56 +1,32 @@
-/* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
-/* 전체 */
 @font-face {
     font-family: 'LeeSeoyun';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
-* {
-    font-family: 'LeeSeoyun';
-    font-size: 17px;
+*{
     margin: 0;
+    font-family: 'LeeSeoyun';
 }
-
-body {
+body{
     display: flex;
     flex-direction: column;
-    /* padding-top: 50px; */
-    overflow-y:hidden;
 }
-
 a {
     text-decoration: none;
     color: #000;
 }
-header{
-    z-index: 5;
-}
-section{
-    background-image: url('img/Autumn.jpg');
+#tap1 {
+    background-image: url('BackgroundImg/bg4.JPG');
     height: 100vh;
     background-size: cover;
-    /* margin-top: 50px; */
-}
-
-
-.box{
-    margin-top: 50px;
 }
 footer {
     display: flex;
     justify-content: center;
 }
-button {
-    cursor: pointer;
-    background-color: #fff;
-    border: none;
-    color: #000;
-
-}
-.tab {
-    background-color: rgba(164, 190, 123, 1);
+.tap {
+    background-color: rgba(164, 190, 123, 0.4);
     padding-top: 10px;
     height: 40px;
     display: flex;
@@ -60,8 +36,8 @@ button {
     width: 100%;
     padding-left: 5px;
 }
-.tab > div, .plusBtn{
-    height: 40%;
+.tap > div{
+    height: 30%;
     background-color: #fff;
     padding: 10px;
     border-top-left-radius: 10px;
@@ -69,52 +45,35 @@ button {
     display: flex;
     align-items: center;
 }
-.plusBtn{
-    height: 36px;
-    padding: 10px;
-}
 .closeBtn {
     margin: 5px;
     border: none;
     border-radius: 50%;
     background-color: #fff;
     font-weight: bold;
-    width: 30px;
-    height: 30px;
-    padding: 5px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
 }
-.closeBtn:hover,
-.plusBtn:hover{
+.closeBtn:hover{
     background-color: rgba(213, 213, 213, 0.5);
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 
 
-
-/* 영역 */
-
-/* create 영역 */
-.create {
+footer > div {
     width: 70%;
-    height: 90%;
+    height: 100px;
     background-color: rgba(178, 178, 178, 0.4);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    position: fixed;
+    bottom: 0;
     z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .bubble {
     position: absolute;
     bottom: 90px;
@@ -179,6 +138,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type='submit'] {
     margin-left: 3px;
+    padding: 3px;
     cursor: pointer;
     background-color: #9BA17B;
     color: #395144;
@@ -186,84 +146,4 @@ input[type='submit'] {
     border-radius: 10px;
     padding: 5px 10px;
     width: 88px;
-    padding: 7px 14px;
 }
-
-
-
-/* 아이콘 영역 */
-.box {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin-top:50px;
-}
-.box > img:hover{
-    border: 1px solid rgba(178, 235, 244, 0.3) ;
-}
-.icon,.folder {
-    cursor: pointer;
-    width: 50px;
-    border: 1px solid rgba(178, 235, 244, 0);
-    /* opacity: 0.5; * 현재 드래그 하고 있는 요소 */
-    padding: 10px;
-}
-.dragging{
-    opacity: 0.5; /** 현재 드래그 하고 있는 요소 */
-    position: absolute;
-}
-
-
-/* 모달창 */
-.modal {
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: none;
-
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modal.show {
-    display: block;
-  }
-
-  .modal_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 50%;
-    height: 50%;
-
-    padding: 35px;
-
-    text-align: center;
-
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-    transform: translateX(-50%) translateY(-50%);
-  }
-
-  .close_btn{
-    background-color: #E97777;
-    color: #fff;
-    border: 0.1em solid #E97777;
-    padding: 7px 14px;
-    display: inline;
-    float: right;
-    border-radius: 15px;
-  }
-  .close_btn:hover{
-    color: #E97777;
-    background-color: #fff;
-    border: 0.1em solid #E97777;
-  }
-  

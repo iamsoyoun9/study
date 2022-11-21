@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="./test2.css"> -->
+    <!-- <script src="./test4.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>💻</title>
+</head>
+
+<body>
+    <section class="desktop">
+    </section>
+    <script>
+        
+        let body = document.getElementsByTagName('body')[0]; // body 영역
+        body.innerHTML += '<header class = "tab"></header>';
+        
+        let desktop = document.getElementsByClassName('.desktop');
+        console.log(desktop)
+        
+
+        let tabNum = 1;
+        let tab = document.querySelector('.tab');
+        tab.innerHTML += `<div><button class ="tabBtn" data-box='box${tabNum}'>${tabNum}. 쏘 💻</button><button class = "closeBtn">X</button></div>`;
+        tab.innerHTML += `<button class="plusBtn">+</button>`;
+        let tabPlusBtn = document.querySelector('.plusBtn');
+        console.log(tabPlusBtn.parentElement)
+        tabPlusBtn.addEventListener('click',function(){
+            tabNum++;
+            $('.plusBtn').before(`<div><button>${tabNum}. 쏘 💻</button><button class = "closeBtn">X</button></div>`);
+        })
+        tab.addEventListener('click',function(e){
+            console.log(e.path[0].innerHTML,'클릭')
+        })
+        
+        
+
+    </script>
+</body>
+
+</html>

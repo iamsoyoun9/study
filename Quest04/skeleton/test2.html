@@ -2,129 +2,106 @@
 <html>
 
 <head>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./test2.css">
-    <script src="./desktop.js"></script>
+    <script src="./test.js"></script>
     <title>💻</title>
 </head>
 
 <body>
-    <section class="desktop">
-    </section>
+    <section class="desktop"></section>
     <script>
         // 레이아웃
         let body = document.getElementsByTagName('body')[0]; // body 영역
-        let desktop = document.querySelector('.desktop'); // desktop 영역
-        /** 아이콘을 담을 영역 **/
-        let box = document.createElement('div');
-        box.className = 'box';
-        desktop.appendChild(box);
-        /** 초기 메인 화면 **/
-        let footer = document.createElement('footer');
-        footer.className = 'footer';
-        body.append(footer);
-        let nav = document.createElement('div'); // 하단 nav 생성
-        // nav 생성
-        nav.className = 'nav';
-        footer.appendChild(nav);
-        /** nav 기본 세팅 **/
-        let plus = document.createElement('img');
-        plus.className = 'plus';
-        plus.src = 'icon/plus.png';
-        nav.appendChild(plus);
-        /** 말풍선 보이기 **/
-        let bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        footer.appendChild(bubble);
-        bubble.style.display = 'none';
-        plus.addEventListener('click', function () {
-            if (bubble.style.display == 'none') {
-                bubble.style.display = 'block';
-            } else {
-                bubble.style.display = 'none';
-            }
+        body.innerHTML += '<header class = "tab"></header>';
+        let tab = document.querySelector('.tab');
+        console.log(tab)
+        let tabNum = 1;
+        tab.innerHTML += `<div><a href = "#box${tabNum}">${tabNum}. 쏘 💻</a><button class = "closeBtn">X</button></div>`;
+        tab.innerHTML += `<div><a href = "#box${tabNum + 1}"></a><button class="plusBtn">+</button></div>`;
+        let tabPlusBtn = document.querySelector('.plusBtn');
+        console.log(tabPlusBtn)
+        tabPlusBtn.addEventListener('click',function(){
+            console.log('클릭')
+        })
+        tabPlusBtn.addEventListener('click', function() {
+            tabNum++
+            console.log(`${tabNum}클릭중`);
+            console.log(this.parentElement);
+            
+            this.parentElement.innerHTML = `<a href = "#box${tabNum}">${tabNum}. 쏘 💻</a><button class = "closeBtn">X</button>`;
+            tab.innerHTML += `<div><a href = "#box${tabNum + 1}" </a><button class="plusBtn">+</button></div>`;
+
+            // let desktop2 = new Desktop(tabNum,icons,folders);
+            // desktop2.tag();
+            // this.parentElement.children.before('<a href = "#desktop'+tabNum+'">'+tabNum+'. 쏘 💻</a><button class = "closeBtn">X</button>');
+            // this.parentElement.innerHTML = `<a href = "#desktop${tabNum}">${tabNum}. 쏘 💻</a><button class = "closeBtn">X</button>`;
+            console.log(tabNum)
         })
 
-        // /** input **/
-        /** create **/
-        var cDiv;
-        var cInput;
-        var cSubmit;
 
-        function div(divName, cName, eName) {
-            divName = document.createElement('div');
-            divName.className = cName;
-            eName.appendChild(divName);
-            return divName;
-        }
+        // let plus = document.querySelector('.plus');
+        // let bubble = document.querySelector('.bubble');
 
-        let iconDiv = div(cDiv, 'inputArea', bubble); // 1번째 input icon div 영역
-        let folderDiv = div(cDiv, 'inputArea', bubble); // 2번째 input , folder div 영역
-
-        function inputText(divName, inputName, name) {
-            inputName = document.createElement('input');
-            inputName.type = 'number';
-            inputName.placeholder = '생성할 ' + name + '의 개수를 입력하세요';
-            inputName.className = 'input';
-            divName.appendChild(inputName);
-            return inputName;
-        }
-        let iconInput = inputText(iconDiv, cInput, '아이콘');
-        let folderInput = inputText(folderDiv, cInput, '폴더');
-
-        function inputSubmit(divName, submitName, cName, name) {
-            submitName = document.createElement('input');
-            submitName.type = 'submit';
-            submitName.className = cName + 'Submit';
-            submitName.value = name + '생성';
-            divName.appendChild(submitName);
-            return submitName;
-        }
-        let iconSubmit = inputSubmit(iconDiv, cSubmit, 'icon', '아이콘');
-        let folderSubmit = inputSubmit(folderDiv, cSubmit, 'folder', '폴더');
-
-        let iconNum = 0; // 입력받은 아이콘 개수
-        let folderNum = 0; // 입력받은 폴더 개수
-
-        let icons = []
+        
+        let icons = [];
         let folders = [];
 
-        function create(arr,num,type){
-            for(var i = arr.length; i < num; i++){
-                arr[i] = new Image();
-                arr[i].src = './icon/'+ type +'.png';
-                arr[i].alt = type + arr.length;
-                arr[i].className = type;
-                box.append(arr[i]);
-            }
-        }
+        let desktop1 = new Desktop();
+        desktop1.tag(tabNum);
 
+        // plus.addEventListener('click', function () { // 플러스 아이콘 클릭
+        //     if (bubble.style.display == 'none') {
+        //         bubble.style.display = 'block';
+        //     } else {
+        //         bubble.style.display = 'none';
+        //     }
+        // })
         
-        let start = document.querySelectorAll('.inputArea > input[type="submit"]');
-        start.forEach(function (e) {
-            e.addEventListener('click', function () {
-                e.value == '아이콘생성' ? iconNum += Number(iconInput.value) : folderNum += Number(folderInput.value);
-                e.value == '아이콘생성' ? create(icons,iconNum,'icon') : create(folders,folderNum,'folder');
-                e.parentElement.children[0].value = '';
-                // e.parentElement.innerHTML = (e.value == '아이콘생성') ? '<h5 class = "success">✔ 아이콘 생성완료</h5>':'<h5 class ="success">✔ 폴더 생성완료</h5>';
-                
-            })
-        })
+        // function right(arr) {
+        //     arr.addEventListener('auxclick', function () {
+        //         console.log('우클릭 테스트')
+        //         confirm('삭제하시겠습니까?')
+        //     })
+        // }
         
-        desktop.draggable = true; // 드래그 허용
+        // submitBtn.forEach(function (e) { // 생성 버튼 클릭
+        //     e.addEventListener('click', function () {
+        //         this.value == '아이콘생성' ? iconNum += Number(iconInput.value) : folderNum += Number(folderInput.value);
+        //         this.value == '아이콘생성' ? icon1.create(icons, iconNum, 'icon') : folder1.create(folders, folderNum, 'folder');
+        //         this.parentElement.children[0].value = ''; // input 초기화  
+        //         console.log(icons)
+        //         console.log(folders)
 
+        //         let folderDbclick = new Window();
+        //         let folderName = folderDbclick.dblclick(folders);
+        //         let dragIcon = desktop1.drag(box);
 
+        //         console.log(folderName)
 
-        // /** 모달 **/
-        // let modal = document.createElement('div')
-        // let modalBody = document.createElement('div');
-        // let closeBtn = document.createElement('button');
-        // let myDesktop = new Desktop(
-        //     /* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-        // );
+        //         modal.className = 'modal';
+        //         modalBody.className = 'modal_body';
+        //         modalBody.textContent = `${folderName}`
+        //         closeBtn.className = 'close_btn';
+        //         closeBtn.textContent = "X";
 
+        //         desktop.appendChild(modal);
+        //         modal.appendChild(modalBody);
+        //         modalBody.appendChild(closeBtn);
+        //         // 더블클릭
+        //         folderDbclick.close();
 
+        //     })
+        //     console.log(box)
+        // })
 
+        // right(box)
+        // // // 모달
+        // document.addEventListener('contextmenu', function (e) {
+        //     e.preventDefault()
+        // })
+        
     </script>
 </body>
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>11.21</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>탭 메뉴 연습하기</h1>
+        <nav id="tab-button-nav">
+            <button class="tab-button" data-tab-section="tab-section-1">탭 1</button>
+            <button class="tab-button" data-tab-section="tab-section-2">탭 2</button>
+            <button class="tab-button" data-tab-section="tab-section-3">탭 3</button>
+        </nav>
+    </header>
+    <main>
+        <br>
+        <section id="tab-section-1" class="tab-section">
+            <div>탭 1 페이지</div>
+        </section>
+        <section id="tab-section-2" class="tab-section" hidden>
+            <div>탭 2 페이지</div>
+        </section>
+        <section id="tab-section-3" class="tab-section" hidden>
+            <div>탭 3 페이지</div>
+        </section>
+    </main>
+    <script>
+        const $nav = document.querySelector('#tab-button-nav')
+        const $sections = document.querySelectorAll('.tab-section');
+
+        $nav.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('tab-button')) {
+                return;
+            }
+
+            const focusedTabId = e.target.dataset.tabSection;
+
+            $sections.forEach(($section) => {
+                if ($section.id === focusedTabId) {
+                    $section.removeAttribute('hidden');
+                } else {
+                    $section.setAttribute('hidden', true);
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

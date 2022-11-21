@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./test2.css">
+    <script src="./test4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>💻</title>
+    <style>
+        .boxArea{
+            /* background-color: red; */
+        }
+    </style>
+</head>
+
+<body>
+    <section class="desktop">
+    </section>
+    <script>
+        
+        let body = document.getElementsByTagName('body')[0]; // body 영역
+        body.innerHTML += '<header class = "tab"></header>';
+        
+        let tabNum = 1;
+        let tab = document.querySelector('.tab');
+
+
+        tab.innerHTML += `<div><button class ="tabBtn" data-box='box${tabNum}'>${tabNum}. 쏘 💻</button><button class = "closeBtn">X</button></div>`;
+        tab.innerHTML += `<button class="plusBtn">+</button>`;
+        let tabPlusBtn = document.querySelector('.plusBtn');
+        tabPlusBtn.addEventListener('click',function(){
+            tabNum++;
+            $('.plusBtn').before(`<div><button>${tabNum}. 쏘 💻</button><button class = "closeBtn">X</button></div>`);
+        })
+        tab.addEventListener('click',function(e){
+            console.log(e.path[0].innerHTML,'클릭')
+        })
+
+        let icons = [];
+        let folders = [];
+        let desktop = new Desktop();
+        let iconNum = 0;
+        let folderNum = 0;
+        let inputArray = [document.querySelectorAll('.input')[0].value,document.querySelectorAll('.input')[1].value]
+        let submitBtn = [document.querySelectorAll('.submit')[0], document.querySelectorAll('.submit')[1]];
+        let boxArea = document.getElementsByClassName('boxArea')[0];
+        submitBtn.forEach(function(c){
+            c.addEventListener('click',function(){
+                if(c.value == '아이콘생성'){
+                    console.log('아이콘생성 클릭')
+                    iconNum += Number(document.querySelectorAll('.input')[0].value);
+                    for(var i = icons.length ; i < iconNum ; i++){
+                        icons[i] = new Image();
+                        icons[i].src = './icon/icon.png';
+                        icons[i].alt = 'icon'+icons.length;
+                        icons[i].className = 'icon';
+                        boxArea.append(icons[i])
+                    }
+                    c.parentElement.children[0].value = '';
+                }else{
+                    folderNum += Number(document.querySelectorAll('.input')[1].value);
+                    for(var i = folders.length ; i < folderNum ; i++){
+                        folders[i] = new Image();
+                        folders[i].src = './icon/folder.png';
+                        folders[i].alt = 'folder'+folders.length;
+                        folders[i].className = 'folder';
+                        boxArea.append(folders[i])
+                    }
+                    c.parentElement.children[0].value = '';
+                }
+            })
+        })
+
+        let box = document.getElementsByClassName('boxArea')[0].getElementsByTagName('img');
+        console.log(box)
+        let boxIcon = [].slice.call(box);
+        console.log(boxIcon)
+        boxIcon.forEach(function(c){
+            console.log(c)
+            c.addEventListener('click', function () {// 더블클릭
+				console.log('더블클릭');
+				// if (this.className == 'folder') {
+				// 	modal.classList.add('show');
+				// 	body.style.overflow = 'hidden';
+				// }
+			})
+        })
+    </script>
+</body>
+
+</html>

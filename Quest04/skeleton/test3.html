@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./test.js"></script>
+    <link rel="stylesheet" href="test.css">
+
+<body>
+    <section class="desktop"></section>
+    <script>
+        /** 기본 요소 */
+        let body = document.querySelector('body');
+        body.innerHTML += '<header class = "tap"></header>';
+        let tap = document.querySelector('.tap');
+        tap.innerHTML += '<div><a href = "url" target = "tap">💻</a><button class = "closeBtn">X</button></div>';
+        tap.innerHTML += '<div><a href = "#tap2" target = "tap">🛫</a><button class = "closeBtn">X</button></div>';
+        
+        let desktop = document.querySelector('.desktop');
+        desktop.setAttribute('id','tap1');
+        desktop.innerHTML += '<footer class = "footer"></footer>';
+        let footer = document.querySelector('footer');
+        footer.innerHTML += '<div><img class = "plus" src="icon/plus.png"></div>';
+        footer.innerHTML += '<div class = "bubble"></div>';
+        let bubble = document.querySelector('.bubble');
+        bubble.innerHTML += '<div class = "inputArea">' +
+            '<input type = "number" placeholder= "생성할 아이콘의 개수를 입력하세요" class = "input">'
+            + '<input type = "submit" class="iconSubmit" value = "아이콘생성">'
+            + '</div>';
+        bubble.innerHTML += '<div class = "inputArea">' +
+            '<input type = "number" placeholder= "생성할 폴더의 개수를 입력하세요" class = "input">'
+            + '<input type = "submit" class="folerSubmit" value = "폴더생성">'
+            + '</div>';
+        bubble.style.display = 'none';
+
+        let plus = document.querySelector('.plus');
+        plus.addEventListener('click', function () {
+            if (bubble.style.display == 'none') {
+                bubble.style.display = 'block';
+            } else {
+                bubble.style.display = 'none';
+            }
+        })
+
+
+        // let iconNum = 0; // 입력받은 아이콘 개수
+        // let folderNum = 0; // 입력받은 폴더 개수
+
+        let iconInput = document.querySelector('.input')[0];
+        let folderInput = document.querySelector('.input')[1];
+        let icons = []
+        let folders = [];
+
+        function create(arr,num,type){
+            for(var i = arr.length; i < num; i++){
+                arr[i] = new Image();
+                arr[i].src = './icon/'+ type +'.png';
+                arr[i].alt = type + arr.length;
+                arr[i].className = type;
+                box.append(arr[i]);
+            }
+        }
+
+        let test;
+        let start = document.querySelectorAll('.inputArea > input[type="submit"]');
+        start.forEach(function (e) {
+            e.addEventListener('click', function () {
+                e.value == '아이콘생성' ? iconNum += Number(iconInput.value) : folderNum += Number(folderInput.value);
+                e.value == '아이콘생성' ? create(icons,iconNum,'icon') : create(folders,folderNum,'folder');
+                e.parentElement.children[0].value = '';
+                // e.parentElement.innerHTML = (e.value == '아이콘생성') ? '<h5 class = "success">✔ 아이콘 생성완료</h5>':'<h5 class ="success">✔ 폴더 생성완료</h5>';
+                
+                test = document.querySelectorAll('.box > img');
+                return test;
+            })
+            console.log(test)
+        })
+    </script>
+</body>
+
+</html>

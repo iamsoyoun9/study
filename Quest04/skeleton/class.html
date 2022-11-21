@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./test2.css">
     <script src="./desktop.js"></script>
@@ -9,40 +10,53 @@
 </head>
 
 <body>
-    <section class="desktop">
-    </section>
+    <section class="desktop"></section>
     <script>
         // 레이아웃
         let body = document.getElementsByTagName('body')[0]; // body 영역
-        let desktop = document.querySelector('.desktop'); // desktop 영역
+        body.innerHTML += '<header class = "tab"></header>';
         
-        var cName;
+        let tab = document.querySelector('.tab');
+        let tabNum = 1;
+        
+       
+
+        /** 초기화면 */
+        let desktop = document.querySelector('.desktop'); // desktop 영역
 
         let iconNum = 0; // 입력받은 아이콘 개수
         let folderNum = 0; // 입력받은 폴더 개수
-
+        
         let icons = []
         let folders = [];
-
+        
         let desktop1 = new Desktop();
-        let footer = desktop1.footer(cName, body);
-        let nav = desktop1.div(cName,'nav',footer);
-        let plus = desktop1.img(cName,'plus',nav);
+        
+        var cName;
+        let footer = desktop1.footer(cName, desktop); // footer
+        let nav = desktop1.div(cName, 'nav', footer); // nav
+        let plus = desktop1.img(cName, 'plus', nav);
+        
         let bubble = desktop1.div(cName, 'bubble', footer);
         bubble.style.display = 'none';
         let iconDiv = desktop1.div(cName, 'inputArea', bubble); // 1번째 input icon div 영역
         let folderDiv = desktop1.div(cName, 'inputArea', bubble); // 2번째 input , folder div 영역
         
-        let box = desktop1.div(cName,'box',desktop);
+        let iconInput = desktop1.inputText(iconDiv, cName, '아이콘');
+        let folderInput = desktop1.inputText(folderDiv, cName, '폴더');
+        
+        let box = desktop1.box(cName, `box${tabNum}`, desktop);
+        
+        let iconSubmit = desktop1.inputSubmit(iconDiv, cName, 'icon', '아이콘');
+        let folderSubmit = desktop1.inputSubmit(folderDiv, cName, 'folder', '폴더');
 
-        let icon = desktop1.create(icons, iconNum, 'icon');
-        let folder = desktop1.create(folders, folderNum, 'folder');
+        let submitBtn = [iconSubmit, folderSubmit];
 
 
+        let icon1 = new Icon();
+        let folder1 = new Folder();
 
-
-
-        plus.addEventListener('click', function () {
+        plus.addEventListener('click', function () { // 플러스 아이콘 클릭
             if (bubble.style.display == 'none') {
                 bubble.style.display = 'block';
             } else {
@@ -50,47 +64,66 @@
             }
         })
 
-        // /** input **/
-        /** create **/
-        var cDiv;
-        var cInput;
-        var cSubmit;
+        let modal = document.createElement('div')
+        let modalBody = document.createElement('div');
+        let closeBtn = document.createElement('button');
 
-        
+        let pick = null;
+        let pickIndex = null;
 
-
-
-        function inputText(divName, inputName, name) {
-            inputName = document.createElement('input');
-            inputName.type = 'number';
-            inputName.placeholder = '생성할 ' + name + '의 개수를 입력하세요';
-            inputName.className = 'input';
-            divName.appendChild(inputName);
-            return inputName;
+        function right(arr) {
+            arr.addEventListener('auxclick', function () {
+                console.log('우클릭 테스트')
+                confirm('삭제하시겠습니까?')
+            })
         }
-        // let iconInput = inputText(iconDiv, cInput, '아이콘');
-        // let folderInput = inputText(folderDiv, cInput, '폴더');
+        submitBtn.forEach(function (e) { // 생성 버튼 클릭
+            e.addEventListener('click', function () {
+                this.value == '아이콘생성' ? iconNum += Number(iconInput.value) : folderNum += Number(folderInput.value);
+                this.value == '아이콘생성' ? icon1.create(icons, iconNum, 'icon') : folder1.create(folders, folderNum, 'folder');
+                this.parentElement.children[0].value = ''; // input 초기화  
+                console.log(icons)
+                console.log(folders)
 
-        function inputSubmit(divName, submitName, cName, name) {
-            submitName = document.createElement('input');
-            submitName.type = 'submit';
-            submitName.className = cName + 'Submit';
-            submitName.value = name + '생성';
-            divName.appendChild(submitName);
-            return submitName;
-        }
-        // let iconSubmit = inputSubmit(iconDiv, cSubmit, 'icon', '아이콘');
-        // let folderSubmit = inputSubmit(folderDiv, cSubmit, 'folder', '폴더');
+                let folderDbclick = new Window();
+                let folderName = folderDbclick.dblclick(folders);
+                let dragIcon = desktop1.drag(box);
 
 
+                modal.className = 'modal';
+                modalBody.className = 'modal_body';
+                modalBody.textContent = `${folderName}`
+                closeBtn.className = 'close_btn';
+                closeBtn.textContent = "X";
 
+                desktop.appendChild(modal);
+                modal.appendChild(modalBody);
+                modalBody.appendChild(closeBtn);
+                // 더블클릭
+                folderDbclick.close();
 
+            })
+        })
 
+        right(box)
+        // // 모달
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault()
+        })
 
-
-
-
-
+        tab.innerHTML += `<div><button class ="tabBtn" data-box='box${tabNum}'>${tabNum}. 쏘 💻</button><button class = "closeBtn">X</button></div>`;
+        tab.innerHTML += `<div><button class="plusBtn">+</button></div>`;
+        let tabPlusBtn = document.querySelector('.plusBtn');
+        tabPlusBtn.addEventListener('click',function(){
+            tabNum++;
+            $('.tab').append(`<div><buu>${tabNum}. 쏘 💻</buu><button class = "closeBtn">X</button></div>`);
+            let box = desktop1.box(cName, `box${tabNum}`, desktop);
+        })
+        console.log(tab)
+        box.style.display = 'none';
+        tab.addEventListener('click',function(e){
+            console.log(e.path[0].innerHTML,'클릭')
+        })
     </script>
 </body>
 
