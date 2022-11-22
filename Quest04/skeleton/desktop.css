@@ -1,116 +1,284 @@
-/* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
-/* 전체 */
 @font-face {
-    font-family: 'LeeSeoyun';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'LeeSeoyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-*{
-    font-family: 'LeeSeoyun';
-    font-size: 17px;
-    margin: 0;
+/** 태그 */
+* {
+  font-family: 'LeeSeoyun';
+  font-size: 17px;
+  margin: 0;
 }
-button{
-    cursor: pointer;
-    padding: 7px 14px;
+a{
+text-decoration: none;
+color: #000;;
 }
 
-/* 영역 */
-.space{
-    padding: 10px;
+header {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+
+}
+
+section {
+  /* padding: 10px;
     position: absolute;
     top: 50px;
     z-index: 1;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+  background-image: url('img/green.jpg');
+  height: 100vh;
+  background-size: cover;
+
 }
 
-.top{
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
-    position: fixed;
-    z-index: 2;
-    display: flex;
-    justify-content: flex-end;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  /* background-color: rgba(178, 178, 178, 0.4);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 5; */
 }
 
-
-/* 버튼 */
-.create_btn{
-    color: #fff;
-    background-color: #F0BB62;
-    border: 0.5em solid;
-    border-radius: 30px;
+/** 클래스 */
+/** header */
+.tab {
+  background-color: rgba(164, 190, 123, 1);
+  padding-top: 10px;
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-left: 5px;
 }
 
+.tab>a,
+.plusBtn {
+  height: 40%;
+  background-color: #fff;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
 
-/* 아이콘 */
-.icon{
+.plusBtn {
+  height: 36px;
+  padding: 10px;
+}
+
+.closeBtn {
+  margin: 5px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+.closeBtn:hover,
+.plusBtn:hover {
+  background-color: rgba(213, 213, 213, 0.5);
+}
+
+/** main */
+.icon,.folder {
   cursor: pointer;
-    width: 100px;
-    margin: 10px;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border: 1px solid rgba(178, 235, 244, 0);
+  /* opacity: 0.5; * 현재 드래그 하고 있는 요소 */
+  padding: 10px;
 }
-.folder{
+.dragging{
+  opacity: 0.5; /** 현재 드래그 하고 있는 요소 */
+  position: absolute;
+}
+.box{
+    /* display: none; */
+/* }
+.view{ */
+  height: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-top: 70px;
+    /* margin-top:50px; */
+    position: relative;
+    align-content: flex-start;
+}
+.box > img:hover{
+  border: 1px solid rgba(178, 235, 244, 0.3) ;
+  background-color: rgba(188, 239, 246, 0.2) ;
+  border-radius: 30%;
+
+}
+/** footer */
+.plus {
+  width: 50px;
+  padding:20px 300px;
+  background-color: rgba(178, 178, 178, 0.4);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 5;
+}
+
+.plus:hover {
+  cursor: pointer;
+}
+
+.inputArea {
+  margin: 20px auto;
+  padding: 7px;
+  border-bottom: 1px solid #9BA17B;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.inputArea > h5 {
+  padding: 3px;
+}
+
+.iconInput,.folderInput {
+  width: 220px;
+  padding: 3px;
+  text-align: center;
+  border: none;
+  margin: 10px;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 90px;
+  width: 350px;
+  height: 100px;
+  padding: 50px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  z-index: 5;
+  text-align: center;
+  padding: 10px;
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -15px;
+  left: 170px;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.iconInput:focus,
+.folderInput:focus{
+    outline: none;
+}
+.success{
+    border: none;
+}
+input[type='submit'] {
+    margin-left: 3px;
     cursor: pointer;
-    width: 100px;
-    margin: 10px;
-    /* display: inline; */
+    background-color: #9BA17B;
+    color: #395144;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 88px;
+    padding: 7px 14px;
 }
+
+/** 모달 */
 
 /* 모달창 */
 .modal {
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    left: 0;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    display: none;
+  display: none;
 
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
-  .modal.show {
-    display: block;
-  }
+.modal.show {
+  display: block;
+}
 
-  .modal_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.modalBody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-    width: 50%;
-    height: 50%;
+  width: 50%;
+  height: 50%;
 
-    padding: 35px;
+  padding: 35px;
 
-    text-align: center;
+  text-align: center;
 
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
-    transform: translateX(-50%) translateY(-50%);
-  }
+  transform: translateX(-50%) translateY(-50%);
+}
 
-  .close_btn{
-    background-color: #E97777;
-    color: #fff;
-    border: 0.1em solid #E97777;
-    padding: 7px 14px;
-    display: inline;
-    float: right;
-    border-radius: 15px;
-  }
-  .close_btn:hover{
-    color: #E97777;
-    background-color: #fff;
-    border: 0.1em solid #E97777;
-  }
-  
+.modalClose{
+  background-color: #E97777;
+  color: #fff;
+  border: 0.1em solid #E97777;
+  padding: 7px 14px;
+  display: inline;
+  float: right;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.modalClose:hover{
+  color: #E97777;
+  background-color: #fff;
+  border: 0.1em solid #E97777;
+}
+.modalBody h3 {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: 2px solid #E97777;;
+}
+.modalBody h2 {
+  margin-top: 99px;
+  font-size: 30px;
+}

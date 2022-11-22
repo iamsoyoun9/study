@@ -5,302 +5,71 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./desktop.css">
 	<script src="./desktop.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<!--sweetalert2-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<title>💻</title>
 </head>
 
 <body>
 	<section class="desktop"></section>
-
 	<script>
-		/** 변수 **/
-		let body = document.getElementsByTagName('body')[0];
-		let desktop = document.querySelector('.desktop');
+		/** section */
+		let desktop = document.getElementsByClassName('desktop')[0];
 
-		desktop.draggable = true; // 드래그 허용
+		/** header */
+		let header = document.createElement('header');
+		header.className = 'header';
+		desktop.before(header);
 
-		/** 모달 **/
-		let modal = document.createElement('div')
-		let modalBody = document.createElement('div');
-		let closeBtn = document.createElement('button');
+		/** tab */
+		let tab = document.createElement('div');
+		tab.className = 'tab';
+		header.append(tab);
 
+		let tabNum = 1;
 
-
-		let iconCheck;
-		let folderCheck;
-		let iconNum; // 입력받은 icon 개수
-		let folderNum; // 입력받은 folder 개수
-
-		/** 초기 화면 **/
-		function checkPrompt(typeNum, name) {
-			typeNum = Number(prompt('생성할 ' + name + '의 개수를 입력하시오'));
-			return typeNum;
-		}
-
-		function checkFolder() {
-			folderCheck = confirm('폴더를 생성하시겠습니까?');
-			if (folderCheck) {
-				folderNum = checkPrompt(folderNum, '폴더');
-				if (folderNum < 1) {
-					folderNum = checkPrompt(folderNum, '폴더');
-				}
-			}
-		}
-
-		/** 실행 **/
-		iconCheck = confirm('아이콘을 생성하시겠습니까?');
-		if (iconCheck) {
-			iconNum = checkPrompt(iconNum, '아이콘');
-			if (iconNum < 1) {
-				iconNum = checkPrompt(iconNum, '아이콘');
-			} else {
-				checkFolder();
-			}
-		} else {
-			checkFolder();
-		}
-
-		console.log('아이콘 개수>>', iconNum);
-		console.log('폴더 개수 >>', folderNum);
+		let myDesktop = new Desktop(tabNum); // 기본 초기 세팅
+		// 기본 레이아웃 1차 완성
 
 
-		icon = [];
-		folder = [];
+		let iconSubmit = document.querySelectorAll('input[type=submit]')[0];
+		let folderSubmit = document.querySelectorAll('input[type=submit]')[1];
 
-		// /** 아이콘 생성**/
-		// for(var i = 0; i < iconNum;i++){
-		// 	icon[i] = new Image();
-		// 	icon[i].src = '.icon/icon.png';
-		// 	icon[i].alt = 'icon'+ (i+1);
-		// 	desktop.appendChild(icon[i]);
-		// 	icon[i].className = 'icon';
-		// }
-		// /** 폴더 생성 **/
-		// for(var i = 0; i < folderNum;i++){
-		// 	folder[i] = new Image();
-		// 	folder[i].src = '.icon/folder.png';
-		// 	folder[i].alt = 'folder'+ (i+1);
-		// 	desktop.appendChild(folder[i]);
-		// 	folder[i].className = 'folder';
-		// }
-
-
-		function create(type, num, name) {
-			for (var i = 0; i < num; i++) {
-				type[i] = new Image();
-				type[i].src = './icon/' + name + '.png';
-				type[i].alt = name + (i + 1);
-				desktop.appendChild(type[i]);
-				type[i].className = name;
-			}
-		}
-
-		create(icon, iconNum, 'icon');
-		create(folder, folderNum, 'folder');
-
-
-
-
-		/** 추가 생성 변수 **/
-		let img = desktop.getElementsByTagName('img');
-		let folders = document.getElementsByClassName('folder');
-		console.log(img); // HTMLCollection
-		console.log(folders); // HTMLCollection
-
-		let imgArr = [];
-		let folderArr = [];
-
-		imgArr = [].slice.call(img); // HTMLCollection -> array
-		folderArr = [].slice.call(folders); // HTMLCollection -> array
-		console.log(imgArr);
-		console.log(folderArr);
-
-		// // 모달
-		modal.className = 'modal';
-		modalBody.className = 'modal_body';
-		modalBody.textContent = 'hello :D'
-		closeBtn.className = 'close_btn';
-		closeBtn.textContent = "X";
-		body.appendChild(modal);
-		modal.appendChild(modalBody);
-		modalBody.appendChild(closeBtn);
-
-		// 더블클릭
-		function dblclick(array) {
-			array.forEach(function (c) {
-				//폴더 더블클릭 시 모달 작동!!!
-				c.addEventListener('dblclick', function () {// 더블클릭
-					console.log('더블클릭');
-					modal.classList.toggle('show');
-					if (modal.classList.contains('show')) {
-						body.style.overflow = 'hidden';
-					}
-				})
-			})
-		}
-		closeBtn.addEventListener('click', function(){ // 닫기 버튼 누르면 화면 사라짐
-			modal.classList.toggle('show');
-			console.log('모달창 닫음')
-		})
-
-		dblclick(folderArr);
-
-		// function drag(array) {
-		// 	array.forEach(function (d) {
-		// 		d.addEventListener('dragstart', function () {
-		// 			console.log('드래그')
-		// 		})
-		// 	})
-		// }
-		// 드래그
-		var active = false;
-		var currentX;
-		var currentY;
-		var initialX;
-		var initialY;
-		var xOffset = 0;
-		var yOffset = 0;
-
-		// drag(imgArr);
-		imgArr.forEach(function (d) {
-			d.addEventListener("touchstart", dragStart, false);
-			d.addEventListener("touchend", dragEnd, false);
-			d.addEventListener("touchmove", drag, false);
-
-			d.addEventListener("mousedown", dragStart, false);
-			d.addEventListener("mouseup", dragEnd, false);
-			d.addEventListener("mousemove", drag, false);
-
-			function dragStart(e) {
-				if (e.type === "touchstart") {
-					initialX = e.touches[0].clientX - xOffset;
-					initialY = e.touches[0].clientY - yOffset;
+		// icon 생성 클릭
+		let submit = [iconSubmit, folderSubmit];
+		submit.forEach(function (c) {
+			c.addEventListener('click', function () {
+				if (c.value == '아이콘생성') {
+					iconNum += Number(document.querySelectorAll('input[type=number]')[0].value);
+					document.querySelectorAll('input[type=number]')[0].value = ''; // 초기화
+					let myIcon = new Icon(iconNum, tabNum);
 				} else {
-					initialX = e.clientX - xOffset;
-					initialY = e.clientY - yOffset;
+					folderNum += Number(document.querySelectorAll('input[type=number]')[1].value);
+					document.querySelectorAll('input[type=number]')[1].value = ''; // 초기화
+					let myFolder = new Folder(folderNum, tabNum);
+					new Window();
 				}
-
-				if (e.target === d) {
-					active = true;
-				}
-			}
-
-			function dragEnd(e) {
-				initialX = currentX;
-				initialY = currentY;
-
-				active = false;
-			}
-
-			function drag(e) {
-				if (active) {
-
-					e.preventDefault();
-
-					if (e.type === "touchmove") {
-						currentX = e.touches[0].clientX - initialX;
-						currentY = e.touches[0].clientY - initialY;
-					} else {
-						currentX = e.clientX - initialX;
-						currentY = e.clientY - initialY;
-					}
-
-					xOffset = currentX;
-					yOffset = currentY;
-
-					setTranslate(currentX, currentY, d);
-				}
-			}
-
-			function setTranslate(xPos, yPos, el) {
-				el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-			}
+			})
 		})
+		// iconSubmit.addEventListener('click', function () {
+		// 	iconNum += Number(document.querySelectorAll('input[type=number]')[0].value);
+		// 	document.querySelectorAll('input[type=number]')[0].value = ''; // 초기화
+		// 	let myIcon = new Icon(iconNum, tabNum);
+		// 	// let container = document.querySelector('.iconDiv');
+		// 	// let item = container.querySelector('img');
+		// 	// myIcon.move(container,item);
+		// });
+		// folder 생성 클릭
+		// folderSubmit.addEventListener('click', function () {
+		// 	folderNum += Number(document.querySelectorAll('input[type=number]')[1].value);
+		// 	document.querySelectorAll('input[type=number]')[1].value = ''; // 초기화
+		// 	let myFolder = new Folder(folderNum, tabNum);
+		// 	new Window();
+		// });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// let conIcon = confirm('아이콘을 생성하시겠습니까?');
-
-		/** 추가 생성**/
-		// 영역
-		// bodyTop.className = 'top';
-		// desktop.appendChild(bodyTop);
-		// space.className = 'space';
-		// desktop.appendChild(space);
-
-		/** 버튼 **/
-		// 아이콘 생성
-		// cIconBtn.className = 'create_btn';
-		// cIconBtn.textContent = '아이콘 생성';
-		// bodyTop.appendChild(cIconBtn);
-
-		// 폴더생성
-		// cFolderBtn.className = 'create_btn';
-		// cFolderBtn.textContent = '폴더 생성';
-		// bodyTop.appendChild(cFolderBtn);
-
-		// let icon = []
-		// let iconNum = 0;
-		// let folder = [];
-		// let folderNum = 0;
-
-		// function creat(btnName, typeName, type, typeNum) {
-		// 	btnName.addEventListener('click', function () {
-		// 		console.log(typeName, '생성 확인');
-		// 		type[typeNum] = new Image();
-		// 		type[typeNum].src = './icon/' + typeName + '.png';
-		// 		type[typeNum].alt = typeName + (type.length);
-		// 		space.append(type[typeNum]);
-		// 		type[typeNum].className = typeName;
-		// 		console.log(typeName, '개수 >> ', type.length);
-		// 		console.log(typeName, 'alt >> ', type[typeNum].alt);
-		// 		typeNum++;
-		// 	})
-		// }
-
-		// creat(cIconBtn, 'icon', icon, iconNum);
-		// creat(cFolderBtn, 'folder', folder, folderNum);
-
-		// console.log(icons);
-
-		// let arrIcon = [];
-		// for (var i = 0; i < icons.length; i++) {
-		// 	arrIcon.push(icons[i]);
-		// }
-
-		// arrIcon.forEach(function (c) {
-		// 	c.addEventListener('click', function () {
-		// 		console.log('클릭 확인')
-		// 	})
-		// })
-
-		// 모달 modal.className = 'modal'; modal_body.className = 'modal_body';
-		// modal_body.textContent ='hello :D' close_btn.className = 'close_btn';
-		// close_btn.textContent = "X" body.appendChild(modal);
-		// modal.appendChild(modal_body); modal_body.appendChild(close_btn);
-
-		// let myDesktop = new Desktop(
-		// 	/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-		// );
 
 	</script>
+
 </body>
 
 </html>
