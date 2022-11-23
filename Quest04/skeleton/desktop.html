@@ -30,21 +30,23 @@
 		let myDesktop = new Desktop(tabNum); // 기본 초기 세팅
 		// 기본 레이아웃 1차 완성
 
-
 		let iconSubmit = document.querySelectorAll('input[type=submit]')[0];
 		let folderSubmit = document.querySelectorAll('input[type=submit]')[1];
+
+		let iconInput = document.querySelectorAll('input[type=number]')[0];
+		let folderInput = document.querySelectorAll('input[type=number]')[1];
 
 		// icon 생성 클릭
 		let submit = [iconSubmit, folderSubmit];
 		submit.forEach(function (c) {
 			c.addEventListener('click', function () {
 				if (c.value == '아이콘생성') {
-					iconNum += Number(document.querySelectorAll('input[type=number]')[0].value);
-					document.querySelectorAll('input[type=number]')[0].value = ''; // 초기화
+					iconNum += Number(iconInput.value);
+					iconInput.value = ''; // 초기화
 					let myIcon = new Icon(iconNum, tabNum);
 				} else {
-					folderNum += Number(document.querySelectorAll('input[type=number]')[1].value);
-					document.querySelectorAll('input[type=number]')[1].value = ''; // 초기화
+					folderNum += Number(folderInput.value);
+					folderInput.value = ''; // 초기화
 					let myFolder = new Folder(folderNum, tabNum);
 					new Window();
 				}

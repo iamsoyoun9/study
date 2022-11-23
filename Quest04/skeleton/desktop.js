@@ -3,6 +3,7 @@ let tabA;
 let closeBtn;
 let plusBtn;
 let boxArea;
+let iconArea;
 let footer;
 let inputArea;
 let submitBtn;
@@ -41,12 +42,10 @@ class Desktop {
 	}
 	/** 탭 영역 */
 	tab() {
-		tabA = document.createElement('a');
-		tabA.href = "#tab1";
-		tabA.className = 'tabA';
+		tabA = document.createElement('div');
+		tabA.className = `tabA tab${tabNum}`;
 		/*tabBtn.id = 'tab' + this.tabNum;*/
 		tabA.innerText = `${this.tabNum}. 쏘 💻`;
-		tabA.onclick = `location.href = "#tab${this.tabNum}"`;
 		$('.tab').append(tabA);
 		closeBtn = document.createElement('button');
 		closeBtn.className = 'closeBtn';
@@ -65,20 +64,21 @@ class Desktop {
 			tabNum++;
 			console.log(`#tab${tabNum}`)
 			$('.plusBtn').before(
-				`<a href ="#tab${tabNum}" class="tabA">${tabNum}. 쏘 💻<button class = "closeBtn">X</button></a>`
+				`<div class="tabA tab${tabNum}">${tabNum}. 쏘 💻<button class = "closeBtn">X</button></div>`
 			);
 			myDesktop.box();
 			console.log('클릭');
 
 			let tabList = document.querySelectorAll('.tabA');
 			console.log(tabList)
-			tabList.forEach(function (c) {
-				c.addEventListener('click', function (e) {
-					e.preventDefault();
-
-				})
-			})
+			// tabList.forEach(function (c) {
+			// 	c.addEventListener('click', function () {
+			// 		console.log(c.className)[1]
+					
+			// 	})
+			// })
 		});
+
 	}
 
 	/** 아이콘 영역 */
@@ -87,6 +87,9 @@ class Desktop {
 		boxArea.id = `tab${tabNum}`;
 		boxArea.className = 'box';
 		$('.desktop').append(boxArea);
+		iconArea = document.createElement('div');
+		iconArea.className = 'iconArea';
+		$('.box').append(iconArea)
 	}
 	footer() {
 		footer = document.createElement('footer');
@@ -114,8 +117,6 @@ class Desktop {
 		submitBtn.className = `${type}Submit`;
 		$('.bubble').append(inputArea);
 		$('.bubble').append(submitBtn);
-		// iconDiv = document.createElement('div');
-		// iconDiv.className = 'iconDiv';
 
 	}
 	start() {
@@ -177,9 +178,9 @@ class Icon {
 	}
 	create() {
 		// $(`#tab${this.tabNum}`).append(iconDiv);
-		
+
 		for (let i = icons.length; i < this.iconNum; i++) {
-			let num = Math.floor(Math.random() * 5 +1)
+			let num = Math.floor(Math.random() * 5 + 1)
 			icons[i] = document.createElement('img');
 			icons[i].src = `./icon/icon${num}.png`;
 			icons[i].alt = `icon${icons.length}`;
@@ -187,7 +188,7 @@ class Icon {
 			icons[i].draggable = 'true';
 
 			// iconDiv.append(icons[i]);
-			$(`#tab${tabNum}`).append(icons[i])
+			$(`#tab${tabNum} > .iconArea`).append(icons[i])
 		}
 		for (let i = 0; i < icons.length; i++) {
 			iconAlt.push(icons[i].alt);
@@ -205,14 +206,36 @@ class Folder {
 	}
 	create() {
 		// $(`#tab${this.tabNum}`).append(iconDiv);
+		// for (let i = folders.length; i < this.folderNum; i++) {
+		// 	let num = Math.floor(Math.random() * 3 +1)
+		// 	folders[i] = document.createElement('img');
+		// 	folders[i].src = `./icon/folder${num}.png`;
+		// 	folders[i].alt = `folder${folders.length}`;
+		// 	folders[i].className = 'folder';
+		// 	folders[i].draggable = 'true';
+		// 	$(`#tab${tabNum}`).append(folders[i])
+		// 	modal = document.createElement('div');
+		// 	modal.className = 'modal';
+		// 	modal.id = 'folder' + (i + 1);
+		// 	$(`#tab${tabNum}`).append(modal);
+		// 	modalBody = document.createElement('div');
+		// 	modalBody.className = 'modalBody';
+		// 	modal.append(modalBody);
+		// 	modalClose = document.createElement('button');
+		// 	modalClose.className = 'modalClose';
+		// 	modalClose.textContent = 'X';
+		// 	modalBody.append(modalClose);
+		// }
 		for (let i = folders.length; i < this.folderNum; i++) {
-			let num = Math.floor(Math.random() * 3 +1)
+			let num = Math.floor(Math.random() * 3 + 1)
 			folders[i] = document.createElement('img');
 			folders[i].src = `./icon/folder${num}.png`;
 			folders[i].alt = `folder${folders.length}`;
 			folders[i].className = 'folder';
 			folders[i].draggable = 'true';
-			$(`#tab${tabNum}`).append(folders[i])
+			$(`#tab${tabNum} > .iconArea`).append(folders[i])
+		}
+		for (let i = folders.length - this.folderNum; i < this.folderNum; i++) {
 			modal = document.createElement('div');
 			modal.className = 'modal';
 			modal.id = 'folder' + (i + 1);
@@ -224,11 +247,10 @@ class Folder {
 			modalClose.className = 'modalClose';
 			modalClose.textContent = 'X';
 			modalBody.append(modalClose);
-			// iconDiv.append(folders[i]);
 		}
-		for (let i = 0; i < folders.length; i++) {
-			folderAlt.push(folders[i].alt);
-		}
+		// for (let i = 0; i < folders.length; i++) {
+		// 	folderAlt.push(folders[i].alt);
+		// }
 	}
 
 }
@@ -242,7 +264,6 @@ class Window {
 	}
 	click() {
 		let boxIcon = document.querySelectorAll('.box>img');
-		console.log(boxIcon)
 		boxIcon.forEach(function (c) {
 			c.addEventListener('click', function () {
 				bubble.style.display = 'none';
@@ -280,27 +301,26 @@ class Window {
 				let originTop = null;
 				let originX = null;
 				let originY = null;
-
 				item.addEventListener('mousedown', function (e) {
 					isDragging = true;
 					originX = e.clientX;
 					originY = e.clientY;
 					originLeft = item.offsetLeft;
 					originTop = item.offsetTop;
-					console.log('마우스 클릭')
+					item.parentElement.classList.remove('click');
 				});
 				document.addEventListener('mouseup', function (e) {
-
+					item.parentElement.classList.remove('click');
 					isDragging = false;
 				});
 				document.addEventListener('mousemove', function (e) {
 					if (isDragging) {
 						const diffX = e.clientX - originX;
 						const diffY = e.clientY - originY;
-						const endOfXPoint = containerWidth - itemWidth/2;
-						const endOfYPoint = containerHeight - itemHeight/2;
-						item.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
-						item.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
+						const endOfXPoint = containerWidth - itemWidth / 2;
+						const endOfYPoint = containerHeight - itemHeight / 2;
+						item.style.left = `${Math.min(Math.max(240, originLeft + diffX), endOfXPoint)}px`;
+						item.style.top = `${Math.min(Math.max(240, originTop + diffY), endOfYPoint)}px`;
 
 					}
 				});
