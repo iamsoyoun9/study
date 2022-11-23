@@ -34,7 +34,7 @@ section {
     display: flex;
     align-items: center;
     flex-wrap: wrap; */
-  background-image: url('img/green.jpg');
+  background-image: url('img/duck.jpg');
   height: 100vh;
   background-size: cover;
 
@@ -58,7 +58,7 @@ footer {
 /** 클래스 */
 /** header */
 .tab {
-  background-color: rgba(164, 190, 123, 1);
+  background-color: #ffda65;
   padding-top: 10px;
   height: 40px;
   display: flex;
@@ -105,8 +105,8 @@ footer {
 /** main */
 .icon,.folder {
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   padding: 10px;
   border: 1px solid rgba(178, 235, 244, 0);
   /* opacity: 0.5; * 현재 드래그 하고 있는 요소 */
@@ -120,10 +120,9 @@ footer {
     /* display: none; */
 /* }
 .view{ */
-  height: 100%;
+  height: 90%;
   display: flex;
     flex-wrap: wrap;
-    padding: 20px;
     padding-top: 70px;
     /* margin-top:50px; */
     position: relative;
@@ -180,6 +179,7 @@ footer {
   z-index: 5;
   text-align: center;
   padding: 10px;
+  border: 1px solid #ffda65;
 }
 
 .bubble:after {
@@ -187,12 +187,13 @@ footer {
   position: absolute;
   border-style: solid;
   border-width: 15px 15px 0;
-  border-color: #FFFFFF transparent;
+  border-color: #ffda65 transparent;
   display: block;
   width: 0;
   z-index: 1;
   bottom: -15px;
   left: 170px;
+  
 }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -209,8 +210,7 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type='submit'] {
     margin-left: 3px;
     cursor: pointer;
-    background-color: #9BA17B;
-    color: #395144;
+    background-color: #ffda65;
     border: none;
     border-radius: 10px;
     padding: 5px 10px;

@@ -22,19 +22,13 @@ let modal;
 let modalBody;
 let modalClose;
 
-/** 드래그 */
-let isDragging = null;
-let originLeft = null;
-let originTop = null;
-let originX = null;
-let originY = null;
-let body = document.querySelector('body');
-
 class Desktop {
 	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor(tabNum) {
 		this.tabNum = tabNum;
 		this.basic();
+
+
 	}
 	/** 처음 실행 시 */
 	basic() {
@@ -64,6 +58,10 @@ class Desktop {
 		$('.tab').append(plusBtn);
 		let tabPlus = document.querySelector('.plusBtn');
 		tabPlus.addEventListener('click', function () {
+			icons = [];
+			folders = [];
+			iconNum = 0;
+			folderNum = 0;
 			tabNum++;
 			console.log(`#tab${tabNum}`)
 			$('.plusBtn').before(
@@ -136,35 +134,35 @@ class drag {
 		this.click();
 	}
 	click() {
-		
-		
-		console.log('드래그 시작해보자')
-		let imgArr = document.querySelector('.box')
+		let imgArr = document.querySelector('.box');
 		// let imgArr = document.querySelector(`#tab1 > .iconDiv > img`);
 		console.log(imgArr);
 
-			let pick = null;
-			let pickIndex = null;
-			imgArr.addEventListener('dragstart', function (e) {
-				console.log(e)
-				const obj = e.target;
-				pick = obj
-				pickIndex = [...obj.parentNode.children].indexOf(obj)
-			})
-			imgArr.addEventListener('dragover', function (e) {
-				e.preventDefault();
-			})
-			imgArr.addEventListener('drop', function (e) {
-				const obj = e.target;
-				const index = [...obj.parentNode.children].indexOf(obj)
-				if (index > pickIndex) {
-					obj.after(pick);
-				} else {
-					obj.before(pick)
-				}
-			})
+		let pick = null;
+		let pickIndex = null;
+		imgArr.addEventListener('click', function () {
+			bubble.style.display = 'none';
+		})
+		imgArr.addEventListener('dragstart', function (e) {
+			console.log(e)
+			const obj = e.target;
+			pick = obj
+			pickIndex = [...obj.parentNode.children].indexOf(obj)
+		})
+		imgArr.addEventListener('dragover', function (e) {
+			e.preventDefault();
+		})
+		imgArr.addEventListener('drop', function (e) {
+			const obj = e.target;
+			const index = [...obj.parentNode.children].indexOf(obj)
+			if (index > pickIndex) {
+				obj.after(pick);
+			} else {
+				obj.before(pick)
+			}
+		})
 	}
-	
+
 }
 
 class Icon {
@@ -174,14 +172,16 @@ class Icon {
 		this.tabNum = tabNum;
 		icons = [];
 		this.create();
-		// this.move();
 		new drag();
+		// this.move();
 	}
 	create() {
 		// $(`#tab${this.tabNum}`).append(iconDiv);
+		
 		for (let i = icons.length; i < this.iconNum; i++) {
+			let num = Math.floor(Math.random() * 5 +1)
 			icons[i] = document.createElement('img');
-			icons[i].src = './icon/icon.png';
+			icons[i].src = `./icon/icon${num}.png`;
 			icons[i].alt = `icon${icons.length}`;
 			icons[i].className = 'icon';
 			icons[i].draggable = 'true';
@@ -198,16 +198,17 @@ class Icon {
 class Folder {
 	/* TODO: Folder 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor(folderNum, tabNum) {
-
 		this.folderNum = folderNum;
 		this.tabNum = tabNum;
 		this.create();
+		new drag();
 	}
 	create() {
 		// $(`#tab${this.tabNum}`).append(iconDiv);
 		for (let i = folders.length; i < this.folderNum; i++) {
+			let num = Math.floor(Math.random() * 3 +1)
 			folders[i] = document.createElement('img');
-			folders[i].src = './icon/folder.png';
+			folders[i].src = `./icon/folder${num}.png`;
 			folders[i].alt = `folder${folders.length}`;
 			folders[i].className = 'folder';
 			folders[i].draggable = 'true';
@@ -237,6 +238,7 @@ class Window {
 	constructor() {
 		this.click();
 		this.show();
+		new drag();
 	}
 	click() {
 		let boxIcon = document.querySelectorAll('.box>img');
@@ -267,7 +269,41 @@ class Window {
 					clickFolder.classList.toggle('show');
 					openModal.innerHTML = '<button class="modalClose">X</button>'; // 중첩방지 초기화
 				})
+				console.log(modalBody)
+				const container = document.querySelector('.show');
+				const item = container.querySelector('.modalBody');
+				const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
+				const { width: itemWidth, height: itemHeight } = item.getBoundingClientRect();
+				/** 드래그 */
+				let isDragging = null;
+				let originLeft = null;
+				let originTop = null;
+				let originX = null;
+				let originY = null;
 
+				item.addEventListener('mousedown', function (e) {
+					isDragging = true;
+					originX = e.clientX;
+					originY = e.clientY;
+					originLeft = item.offsetLeft;
+					originTop = item.offsetTop;
+					console.log('마우스 클릭')
+				});
+				document.addEventListener('mouseup', function (e) {
+
+					isDragging = false;
+				});
+				document.addEventListener('mousemove', function (e) {
+					if (isDragging) {
+						const diffX = e.clientX - originX;
+						const diffY = e.clientY - originY;
+						const endOfXPoint = containerWidth - itemWidth/2;
+						const endOfYPoint = containerHeight - itemHeight/2;
+						item.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
+						item.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
+
+					}
+				});
 			})
 		})
 	}

@@ -235,9 +235,6 @@
 >   3. **함수형 인터페이스**
 >       - 한 개의 추상 메서드를 가지고 있는 인터페이스
 > <br>
-> ```js
-> 
-> ```
 > - 다형성의 장점 : 반복된 코드를 줄이며 꼭 필요한 코드만 수정
 
 > #### **🔸 상속이란 무엇인가요? 상속을 할 때의 장점과 단점은 무엇인가요?**
@@ -299,7 +296,6 @@
 > - IE 사용 X
 > - 사용하는 이유 : 재사용성
 > <br>
-> <br>
 > 
 > - Class 생성
 > ```js
@@ -359,4 +355,41 @@
 >   - 프로토타입 기반<br>- 자바스크립트의 모든 객체는 최소한 하나 이상의 다른 객체로부터 상속을 받으며, 이때 상속되는 정보를 제공하는 객체를 프로토타입이라고 함<br>- 자바스크립트의 모든 객체는 프로토타입이라는 객체를 가지고 있음<br>- 모든 객체는 프로토타입으로부터 프로퍼티와 메소드를 상속 받음
 
 > #### **🔸 자바스크립트의 클래스는 이전의 프로토타입 기반의 객체지향 구현과 어떤 관계를 가지고 있나요?**
-
+> - class는 객체지향언어에 빠질수 없는 개념, 자바스크립트 = 개체지향언어
+> - but, 자바스크립트에는 class개념대신 prototype이 존재
+> - class가 없으니깐 상속기능도 없음 (prototype으로 상속 흉내)
+> - ECMA6 에서 Class 문법 추가 => 문법이 추가되었다는 것, 클래스 기반으로 바뀌었다는 것 X
+> - 자바스크립트의 생성자는 객체
+> - 모든 객체는 자신의 부모역할을 담당하는 객체와 연결되어 있음 (상속 개념처럼)
+> - 이때 부모 객체를 prototype 객체 = prototype
+> - prototype 객체 : 생성자 함수에 의해 성생된 각각의 객체에 공유 프로퍼티를 제공하기 위해 사용
+> ```js
+> function Person(){
+>   this.eyes = 2;
+>   this.nose = 1;
+> }
+> var Na = new Person();
+> console.log(Na.eyes); // 2
+> console.log(Na.nose); // 1
+> ```
+> ```js
+> function Person(){}
+> Person.prototype.eyes = 2;
+> Person.prototype.nose = 1;
+> var Na = new Person();
+> console.log(Na.eyes); // 2
+> console.log(Na.nose); // 1
+> ```
+> ```js
+> class Person(){
+>   constructor(){
+>       this.eyes = 2;
+>       this.nose = 1;
+>       console.log(this.eyes)
+>       console.log(this.nose)
+>   }
+>}
+> let Na = new Person();
+>  // 2
+>  // 1
+> ```
