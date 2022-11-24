@@ -1,0 +1,193 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** 태그 */
+* {
+    font-family: 'LeeSeoyun';
+    font-size: 17px;
+    margin: 0;
+}
+
+body {
+    margin: 0px;
+}
+/** header */
+a {
+    text-decoration: none;
+    color: #000;
+    ;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+  }
+.tab{
+    background-color: #ffda65;
+    padding-top: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+.tab > div{
+  height: 40%;
+  background-color: #fff;
+  padding: 10px;
+  margin-right: 2px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+.tabClose,.tabPlus {
+    margin: 5px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+  }
+  .tabClose:hover,
+.tabPlus:hover {
+  background-color: rgba(213, 213, 213, 0.5);
+}
+
+
+
+
+/** section */
+.boxArea{
+    background-image: url('img/bg.png');
+    height: 100vh;
+    background-size: cover;
+}
+.cont{ 
+  padding-top: 50px;
+}
+.icon,.folder {
+  cursor: pointer;
+  width: 90px;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid rgba(178, 235, 244, 0);
+  /* opacity: 0.5; * 현재 드래그 하고 있는 요소 */
+  padding: 10px;
+}
+
+
+
+
+/** footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    /* background-color: rgba(178, 178, 178, 0.4);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 5; */
+  }
+.plus {
+    width: 50px;
+    padding:10px 30%;
+    background-color: rgba(178, 178, 178, 0.4);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 5;
+  }
+  .plus:hover {
+    cursor: pointer;
+  }
+
+  /** bubble */
+  .bubble {
+    position: absolute;
+    bottom: 90px;
+    width: 350px;
+    height: 100px;
+    padding: 50px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    z-index: 5;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ffda65;
+    
+  }
+  
+  .bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: #ffda65 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -15px;
+    left: 170px;
+    
+  }
+
+  /** input */
+  .inputArea {
+    margin: 20px auto;
+    padding: 7px;
+    border-bottom: 1px solid #9BA17B;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+  .inputArea > h5 {
+    padding: 3px;
+  }
+  
+  .iconInput,.folderInput {
+    width: 220px;
+    padding: 3px;
+    text-align: center;
+    border: none;
+    margin: 10px;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  .iconInput:focus,
+  .folderInput:focus{
+      outline: none;
+  }
+  .success{
+      border: none;
+  }
+  input[type='submit'] {
+      margin-left: 3px;
+      cursor: pointer;
+      background-color: #ffda65;
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      width: 88px;
+      padding: 7px 14px;
+  }

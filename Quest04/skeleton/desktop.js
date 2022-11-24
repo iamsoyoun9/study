@@ -43,9 +43,8 @@ class Desktop {
 	/** 탭 영역 */
 	tab() {
 		tabA = document.createElement('div');
-		tabA.className = `tabA tab${tabNum}`;
-		/*tabBtn.id = 'tab' + this.tabNum;*/
-		tabA.innerText = `${this.tabNum}. 쏘 💻`;
+		tabA.className = 'tab1';
+		tabA.innerText = '1. 쏘 💻';
 		$('.tab').append(tabA);
 		closeBtn = document.createElement('button');
 		closeBtn.className = 'closeBtn';
@@ -56,7 +55,9 @@ class Desktop {
 		plusBtn.innerText = '+';
 		$('.tab').append(plusBtn);
 		let tabPlus = document.querySelector('.plusBtn');
+		let number = 1;
 		tabPlus.addEventListener('click', function () {
+			number++
 			icons = [];
 			folders = [];
 			iconNum = 0;
@@ -64,19 +65,21 @@ class Desktop {
 			tabNum++;
 			console.log(`#tab${tabNum}`)
 			$('.plusBtn').before(
-				`<div class="tabA tab${tabNum}">${tabNum}. 쏘 💻<button class = "closeBtn">X</button></div>`
+				`<div class="tab${number}">${number}. 쏘 💻<button class = "closeBtn">X</button></div>`
 			);
 			myDesktop.box();
 			console.log('클릭');
 
-			let tabList = document.querySelectorAll('.tabA');
+			let tabList = document.querySelectorAll('.tab > div');
 			console.log(tabList)
-			// tabList.forEach(function (c) {
-			// 	c.addEventListener('click', function () {
-			// 		console.log(c.className)[1]
-					
-			// 	})
-			// })
+			let num = /[^0-9]/g;
+			tabList.forEach(function (c) {
+				c.addEventListener('click', function () {
+					console.log(c.className)
+					console.log(c.className.replace(num, ""))
+					tabNum = c.className.replace(num, "")
+				})
+			})
 		});
 
 	}
@@ -135,7 +138,7 @@ class drag {
 		this.click();
 	}
 	click() {
-		let imgArr = document.querySelector('.box');
+		let imgArr = document.querySelector(`#tab${tabNum}>.iconArea`);
 		// let imgArr = document.querySelector(`#tab1 > .iconDiv > img`);
 		console.log(imgArr);
 
@@ -281,7 +284,7 @@ class Window {
 					clickFolder.classList.remove('show')
 				}
 				let openModal = clickFolder.children[0]; // 현재 열려있는 모달
-				openModal.innerHTML += `<h3>이거슨 👉🏻 ${e.alt} 열어돠아아아</h3>`;
+				openModal.innerHTML += `<h3>👉🏻 ${e.alt} 👈🏻</h3>`;
 				openModal.innerHTML += `<h2>폴더 열었다...o(*￣▽￣*)ブ</h2>`;
 				// console.log(openModalCon.children[0]); // 현재 열려있는 모달을 닫는 버튼
 				let closeModal = openModal.children[0];
@@ -291,7 +294,7 @@ class Window {
 					openModal.innerHTML = '<button class="modalClose">X</button>'; // 중첩방지 초기화
 				})
 				console.log(modalBody)
-				const container = document.querySelector('.show');
+				const container = document.querySelector('.iconArea');
 				const item = container.querySelector('.modalBody');
 				const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
 				const { width: itemWidth, height: itemHeight } = item.getBoundingClientRect();
@@ -319,9 +322,8 @@ class Window {
 						const diffY = e.clientY - originY;
 						const endOfXPoint = containerWidth - itemWidth / 2;
 						const endOfYPoint = containerHeight - itemHeight / 2;
-						item.style.left = `${Math.min(Math.max(240, originLeft + diffX), endOfXPoint)}px`;
-						item.style.top = `${Math.min(Math.max(240, originTop + diffY), endOfYPoint)}px`;
-
+						item.style.left = `${Math.min(Math.max(190, originLeft + diffX), endOfXPoint)}px`;
+						item.style.top = `${Math.min(Math.max(135, originTop + diffY), endOfYPoint)}px`;
 					}
 				});
 			})
